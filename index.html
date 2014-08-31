@@ -1,76 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>HCP by depl0y</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>HCP by depl0y</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1>HCP</h1>
+        <p>An iOS application to control HomeWizard, Hue and other devices in your home.</p>
 
-        <header>
-          <h1>HCP</h1>
-          <h2>An iOS application to control HomeWizard, Hue and other devices in your home.</h2>
-        </header>
+        <p class="view"><a href="https://github.com/depl0y/HCP">View the Project on GitHub <small>depl0y/HCP</small></a></p>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/depl0y/HCP/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/depl0y/HCP/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/depl0y/HCP" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
 
-        <hr>
+        <ul>
+          <li><a href="https://github.com/depl0y/HCP/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/depl0y/HCP/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/depl0y/HCP">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="home-control-panel" class="anchor" href="#home-control-panel"><span class="octicon octicon-link"></span></a>Home Control Panel</h1>
 
-        <section id="main_content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<p>Home Control Panel has been in development for a couple of months now, where the first try to set up this project was too complex and user-unfriendly. Because the scope of the project changed a bit (explanation below) and because I was ready for a <em>swift</em>-only project, I decided that most of the stuff could use a rewrite.</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h1>
+<a name="goals" class="anchor" href="#goals"><span class="octicon octicon-link"></span></a>Goals</h1>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p>The goals of <strong>HCP</strong> are to be able to control my home from an iPad which I have laying around. For this, you of course need hardware to perform most of (well, actually: all) functions this application offers.</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>I want to be able to connect to several devices and all control them from one giant control-panel. With this functionality I want to stay as close to the feature-set as the supported hardware supports.</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<p>At first the idea was that only <a href="http://homewizard.nl">HomeWizard</a> devices could be controlled by this application, but as soon as I added beta testers to the first alpha release of the application, requests for more supported devices came rolling in. So HCP is now less <a href="http://homewizard.nl">HomeWizard</a> focussed and also functions when you do not have one.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<h1>
+<a name="ios-compatibility" class="anchor" href="#ios-compatibility"><span class="octicon octicon-link"></span></a>iOS Compatibility</h1>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>iOS7 and up probably, but when HomeKit is fully revealed by Apple it might be iOS8 and higher.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h1>
+<a name="supported-hardware" class="anchor" href="#supported-hardware"><span class="octicon octicon-link"></span></a>Supported Hardware</h1>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Currently the project focusses on 2 hardware devices, but can later be expanded by either me or other fellow developers.</p>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="homewizard" class="anchor" href="#homewizard"><span class="octicon octicon-link"></span></a>HomeWizard</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
+<p>The <a href="http://homewizard.nl">HomeWizard</a> is a device that let's you tie all kinds of devices together. A couple of supported devices are:</p>
 
-        <footer>
-          HCP is maintained by <a href="https://github.com/depl0y">depl0y</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+<ul>
+<li>Smart P1 based power meters</li>
+<li>Klik-aan/Klik-uit switches (quite popular in the Netherlands)</li>
+<li>RF based door sensors</li>
+<li>RF based thermometers</li>
+</ul><h3>
+<a name="philips-hue" class="anchor" href="#philips-hue"><span class="octicon octicon-link"></span></a>Philips Hue</h3>
 
-        
-      </div>
+<p>Does the <a href="http://www2.meethue.com/en-US">Philips Hue Bridge</a> need an introduction? RGB LED powered lights which can be controlled using your phone or tablet.</p>
+
+<h1>
+<a name="model-definitions" class="anchor" href="#model-definitions"><span class="octicon octicon-link"></span></a>Model definitions</h1>
+
+<p>In the model these are defined as <code>Controller</code> objects. A <code>Controller</code> is a device that can control one or more connected devices (like lights, cameras etc.).</p>
+
+<p>Because every controller has different discovery methods and ways to communicate with its devices, the <code>HueBridge</code> and <code>HomeWizard</code> classes are subclassed from the abstract <code>Controller</code> class.</p>
+
+<h1>
+<a name="localisation" class="anchor" href="#localisation"><span class="octicon octicon-link"></span></a>Localisation</h1>
+
+<p>The application will be prepared to be fully multi-lingual, but our main focus is English and Dutch.</p>
+
+<h1>
+<a name="used-frameworks-and-tools" class="anchor" href="#used-frameworks-and-tools"><span class="octicon octicon-link"></span></a>Used Frameworks and tools</h1>
+
+<p>For this application I currently use the following frameworks:</p>
+
+<ul>
+<li>
+<a href="http://afnetworking.com">AFNetworking</a> - An awesome networking library that I use for all HTTP requests.</li>
+<li>
+<a href="https://github.com/magicalpanda/MagicalRecord">MagicalRecord</a> - CoreData in an ActiveRecord kind of way</li>
+<li>
+<a href="https://github.com/rentzsch/mogenerator">Mogenerator</a> - Generate Swift files for my CoreData models</li>
+<li>
+<a href="https://github.com/CocoaLumberjack/CocoaLumberjack">CocoaLumberjack</a> - Better logging than <code>NSLog</code>.</li>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>I chose the current license because I want to be able to share my progress and code with the world, but I also have the intention of putting this application up in the Apple App Store and maybe fund some more hardware for my HCP setup.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/depl0y">depl0y</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
