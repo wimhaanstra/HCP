@@ -1,6 +1,11 @@
 @objc(Switch)
 class Switch: _Switch {
 
-	// Custom logic goes here.
+    func on() {
+        
+    }
+    
+    func off() {
+    }
 
 }

@@ -8,6 +8,9 @@
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sensors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sensor" inverseName="controller" inverseEntity="Sensor" syncable="YES"/>
     </entity>
+    <entity name="Dimmer" representedClassName="Dimmer" parentEntity="Switch" syncable="YES">
+        <attribute name="dimValue" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="HomeWizard" representedClassName="HomeWizard" parentEntity="Controller" syncable="YES"/>
     <entity name="HueBridge" representedClassName="HueBridge" parentEntity="Controller" syncable="YES"/>
     <entity name="Sensor" representedClassName="Sensor" isAbstract="YES" syncable="YES">
@@ -22,5 +25,6 @@
         <element name="HueBridge" positionX="-36" positionY="36" width="128" height="45"/>
         <element name="Sensor" positionX="-45" positionY="18" width="128" height="58"/>
         <element name="Switch" positionX="-36" positionY="45" width="128" height="60"/>
+        <element name="Dimmer" positionX="-27" positionY="54" width="128" height="58"/>
     </elements>
 </model>
