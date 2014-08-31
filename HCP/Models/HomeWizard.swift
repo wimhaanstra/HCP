@@ -13,7 +13,6 @@ class HomeWizard: _HomeWizard {
             if (responseObject.objectForKey("status") as String == "ok") {
                 var ipAddress = responseObject.objectForKey("ip") as String
                 var match: AnyObject! = HomeWizard.findFirstByAttribute("ip", withValue: ipAddress);
-
                 
                 if (match == nil) {
                     var foundObject: HomeWizard = HomeWizard.createEntity() as HomeWizard;

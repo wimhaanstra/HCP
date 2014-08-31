@@ -4,9 +4,11 @@ Home Control Panel
 Home Control Panel has been in development for a couple of months now, where the first try to set up this project was too complex and user-unfriendly. Because the scope of the project changed a bit (explanation below) and because I was ready for a *swift*-only project, I decided that most of the stuff could use a rewrite.
 
 #Goals
-The goals of **HCP** are to be able to control my home from an iPad which I have laying around. For this you of course need hardware to perform most of (well, actually: all) functions this application offers.
+The goals of **HCP** are to be able to control my home from an iPad which I have laying around. For this, you of course need hardware to perform most of (well, actually: all) functions this application offers.
 
 I want to be able to connect to several devices and all control them from one giant control-panel. With this functionality I want to stay as close to the feature-set as the supported hardware supports.
+
+At first the idea was that only [HomeWizard][1] devices could be controlled by this application, but as soon as I added beta testers to the first alpha release of the application, requests for more supported devices came rolling in. So HCP is now less [HomeWizard][1] focussed and also functions when you do not have one.
 
 #iOS Compatibility
 

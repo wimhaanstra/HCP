@@ -3,6 +3,10 @@
 
 import CoreData
 
+enum HueBridgeAttributes: String {
+    case mac = "mac"
+}
+
 @objc
 class _HueBridge: Controller {
 
@@ -28,6 +32,11 @@ class _HueBridge: Controller {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var mac: String?
+
+    // func validateMac(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

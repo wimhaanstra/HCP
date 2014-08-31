@@ -3,7 +3,6 @@
     <entity name="Controller" representedClassName="Controller" isAbstract="YES" syncable="YES">
         <attribute name="ip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUpdate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="mac" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sensors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sensor" inverseName="controller" inverseEntity="Sensor" syncable="YES"/>
@@ -12,19 +11,32 @@
         <attribute name="dimValue" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="HomeWizard" representedClassName="HomeWizard" parentEntity="Controller" syncable="YES"/>
-    <entity name="HueBridge" representedClassName="HueBridge" parentEntity="Controller" syncable="YES"/>
+    <entity name="HueBridge" representedClassName="HueBridge" parentEntity="Controller" syncable="YES">
+        <attribute name="mac" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Room" representedClassName="Room" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="sensors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sensor" inverseName="rooms" inverseEntity="Sensor" syncable="YES"/>
+    </entity>
     <entity name="Sensor" representedClassName="Sensor" isAbstract="YES" syncable="YES">
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="controller" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Controller" inverseName="sensors" inverseEntity="Controller" syncable="YES"/>
+        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Room" inverseName="sensors" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Switch" representedClassName="Switch" parentEntity="Sensor" syncable="YES">
         <attribute name="status" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Controller" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Controller" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="HomeWizard" positionX="-54" positionY="27" width="128" height="43"/>
-        <element name="HueBridge" positionX="-36" positionY="36" width="128" height="45"/>
-        <element name="Sensor" positionX="-45" positionY="18" width="128" height="58"/>
+        <element name="HueBridge" positionX="-36" positionY="36" width="128" height="58"/>
+        <element name="Sensor" positionX="-45" positionY="18" width="128" height="133"/>
         <element name="Switch" positionX="-36" positionY="45" width="128" height="60"/>
         <element name="Dimmer" positionX="-27" positionY="54" width="128" height="58"/>
+        <element name="Room" positionX="-18" positionY="72" width="128" height="88"/>
     </elements>
 </model>

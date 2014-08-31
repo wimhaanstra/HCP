@@ -3,8 +3,16 @@
 
 import CoreData
 
+enum SensorAttributes: String {
+    case displayName = "displayName"
+    case id = "id"
+    case lastUpdate = "lastUpdate"
+    case name = "name"
+}
+
 enum SensorRelationships: String {
     case controller = "controller"
+    case rooms = "rooms"
 }
 
 @objc
@@ -33,6 +41,26 @@ class _Sensor: NSManagedObject {
 
     // MARK: - Properties
 
+    @NSManaged
+    var displayName: String?
+
+    // func validateDisplayName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var id: NSNumber?
+
+    // func validateId(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var lastUpdate: NSDate?
+
+    // func validateLastUpdate(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var name: String?
+
+    // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
     // MARK: - Relationships
 
     @NSManaged
@@ -40,5 +68,35 @@ class _Sensor: NSManagedObject {
 
     // func validateController(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
+    @NSManaged
+    var rooms: NSSet
+
 }
 
+extension _Sensor {
+
+    func addRooms(objects: NSSet) {
+        let mutable = self.rooms.mutableCopy() as NSMutableSet
+        mutable.unionSet(objects)
+        self.rooms = mutable.copy() as NSSet
+    }
+
+    func removeRooms(objects: NSSet) {
+        let mutable = self.rooms.mutableCopy() as NSMutableSet
+        mutable.minusSet(objects)
+        self.rooms = mutable.copy() as NSSet
+    }
+
+    func addRoomsObject(value: Room!) {
+        let mutable = self.rooms.mutableCopy() as NSMutableSet
+        mutable.addObject(value)
+        self.rooms = mutable.copy() as NSSet
+    }
+
+    func removeRoomsObject(value: Room!) {
+        let mutable = self.rooms.mutableCopy() as NSMutableSet
+        mutable.removeObject(value)
+        self.rooms = mutable.copy() as NSSet
+    }
+
+}

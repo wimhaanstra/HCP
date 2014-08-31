@@ -1,26 +1,24 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Controller.swift instead.
+// Make changes to Room.swift instead.
 
 import CoreData
 
-enum ControllerAttributes: String {
-    case ip = "ip"
-    case lastUpdate = "lastUpdate"
+enum RoomAttributes: String {
     case name = "name"
-    case version = "version"
+    case order = "order"
 }
 
-enum ControllerRelationships: String {
+enum RoomRelationships: String {
     case sensors = "sensors"
 }
 
 @objc
-class _Controller: NSManagedObject {
+class _Room: NSManagedObject {
 
     // MARK: - Class methods
 
     class func entityName () -> String {
-        return "Controller"
+        return "Room"
     }
 
     class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -34,21 +32,11 @@ class _Controller: NSManagedObject {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _Controller.entity(managedObjectContext)
+        let entity = _Room.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
-
-    @NSManaged
-    var ip: String?
-
-    // func validateIp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var lastUpdate: NSDate?
-
-    // func validateLastUpdate(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var name: String?
@@ -56,9 +44,9 @@ class _Controller: NSManagedObject {
     // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var version: String?
+    var order: NSNumber?
 
-    // func validateVersion(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateOrder(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
@@ -67,7 +55,7 @@ class _Controller: NSManagedObject {
 
 }
 
-extension _Controller {
+extension _Room {
 
     func addSensors(objects: NSSet) {
         let mutable = self.sensors.mutableCopy() as NSMutableSet
