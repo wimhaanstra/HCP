@@ -1,0 +1,15 @@
+/Pods/
+
+/mogenerator
+
+/HCP.xcworkspace/
+
+.DS_Store
+
+/HCP.xcodeproj/project.xcworkspace/xcuserdata/depl0y.xcuserdatad/UserInterfaceState.xcuserstate
+
+/HCP.xcodeproj/xcuserdata/depl0y.xcuserdatad/xcschemes/HCP.xcscheme
+
+/HCP.xcodeproj/xcuserdata/depl0y.xcuserdatad/xcschemes/xcschememanagement.plist
+
+/HCP.xcodeproj/project.xcworkspace/contents.xcworkspacedata
