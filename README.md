@@ -36,6 +36,12 @@ Because every controller has different discovery methods and ways to communicate
 [1]: http://homewizard.nl
 [2]: http://www2.meethue.com/en-US
 
+#API documentation
+
+I try to document all the API calls I perform, because not everything is documented as good as I'd like. Visit the [Github Wiki][7] I created for this.
+
+[7]: https://github.com/depl0y/HCP/wiki
+
 #Localisation
 The application will be prepared to be fully multi-lingual, but our main focus is English and Dutch.
 
