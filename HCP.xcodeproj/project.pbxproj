@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05BE49C2C7F0474F8866691B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84754954A5A6408EAACE5BC3 /* libPods.a */; };
+		AB61648219B702C100CBF0C0 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB61648119B702C100CBF0C0 /* CocoaLumberjack.swift */; };
+		AB6D711719B6FF090096176D /* ExtendedLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6D711619B6FF090096176D /* ExtendedLogFormatter.m */; };
 		ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC81F19A3D038004B309B /* AppDelegate.swift */; };
 		ABEAC82319A3D038004B309B /* HCP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC82119A3D038004B309B /* HCP.xcdatamodeld */; };
 		ABEAC82519A3D038004B309B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC82419A3D038004B309B /* ViewController.swift */; };
@@ -56,6 +58,9 @@
 		84754954A5A6408EAACE5BC3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A869C26219E34A47B566414F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
+		AB61648119B702C100CBF0C0 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
+		AB6D711519B6FF090096176D /* ExtendedLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedLogFormatter.h; sourceTree = "<group>"; };
+		AB6D711619B6FF090096176D /* ExtendedLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedLogFormatter.m; sourceTree = "<group>"; };
 		ABEAC81A19A3D038004B309B /* HCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEAC81E19A3D038004B309B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABEAC81F19A3D038004B309B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +114,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB61648319B706C900CBF0C0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				ABEAC82119A3D038004B309B /* HCP.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		AB6D711019B6FC660096176D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AB6D711119B6FC660096176D /* CocoaLumberjack */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		AB6D711119B6FC660096176D /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				AB6D711519B6FF090096176D /* ExtendedLogFormatter.h */,
+				AB6D711619B6FF090096176D /* ExtendedLogFormatter.m */,
+				AB61648119B702C100CBF0C0 /* CocoaLumberjack.swift */,
+			);
+			path = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
 		ABEAC81119A3D038004B309B = {
 			isa = PBXGroup;
 			children = (
@@ -132,13 +163,14 @@
 		ABEAC81C19A3D038004B309B /* HCP */ = {
 			isa = PBXGroup;
 			children = (
-				ABF617A519B2F8CA007E920D /* Models */,
+				AB61648319B706C900CBF0C0 /* CoreData */,
 				ABEAC81F19A3D038004B309B /* AppDelegate.swift */,
-				ABEAC82419A3D038004B309B /* ViewController.swift */,
-				ABEAC82619A3D038004B309B /* Main.storyboard */,
+				AB6D711019B6FC660096176D /* Classes */,
 				ABEAC82919A3D038004B309B /* Images.xcassets */,
-				ABEAC82119A3D038004B309B /* HCP.xcdatamodeld */,
+				ABEAC82619A3D038004B309B /* Main.storyboard */,
+				ABF617A519B2F8CA007E920D /* Models */,
 				ABEAC81D19A3D038004B309B /* Supporting Files */,
+				ABEAC82419A3D038004B309B /* ViewController.swift */,
 			);
 			path = HCP;
 			sourceTree = "<group>";
@@ -382,12 +414,14 @@
 				ABF617D719B31BFE007E920D /* _Room.swift in Sources */,
 				ABF617D319B31231007E920D /* _Dimmer.swift in Sources */,
 				ABF617C819B3030D007E920D /* Controller.swift in Sources */,
+				AB6D711719B6FF090096176D /* ExtendedLogFormatter.m in Sources */,
 				ABEAC82319A3D038004B309B /* HCP.xcdatamodeld in Sources */,
 				ABF617BF19B2F8CA007E920D /* _HomeWizard.swift in Sources */,
 				ABF617CD19B30416007E920D /* Switch.swift in Sources */,
 				ABF617C419B30302007E920D /* _Controller.swift in Sources */,
 				ABF617C519B30302007E920D /* _Sensor.swift in Sources */,
 				ABF617C019B2F8CA007E920D /* _HueBridge.swift in Sources */,
+				AB61648219B702C100CBF0C0 /* CocoaLumberjack.swift in Sources */,
 				ABF617BC19B2F8CA007E920D /* HomeWizard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

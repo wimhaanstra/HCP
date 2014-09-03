@@ -29,18 +29,20 @@ PODS:
   - CocoaLumberjack/Core (2.0.0-beta)
   - CocoaLumberjack/Extensions (2.0.0-beta):
     - CocoaLumberjack/Core
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core
-  - MagicalRecord/Core (2.2)
+  - MagicalRecord/Shorthand (2.3.0-beta.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - CocoaLumberjack
-  - MagicalRecord
+  - MagicalRecord/Shorthand (from `https://github.com/magicalpanda/MagicalRecord.git`)
+
+EXTERNAL SOURCES:
+  MagicalRecord:
+    :git: https://github.com/magicalpanda/MagicalRecord.git
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  MagicalRecord: 23dfe0350eab4767cc1ce7d247af4e4cd54ee72c
 
 COCOAPODS: 0.33.1

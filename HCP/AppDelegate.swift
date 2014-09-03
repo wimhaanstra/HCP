@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Realm
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,13 +16,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
 		// Override point for customization after application launch.
-        
-        RLMRealm.migrateDefaultRealmWithBlock { (RLMMigration, UInt) -> UInt in
-            return 1;
-        }
+		
+		DDLog.addLogger(DDASLLogger.sharedInstance())
+		
+		DDTTYLogger.sharedInstance().colorsEnabled = true;
+
+		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.yellowColor(), backgroundColor: nil, forFlag: LOG_FLAG_DEBUG);
+		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.grayColor(), backgroundColor: nil, forFlag: LOG_FLAG_VERBOSE);
+		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.blackColor(), backgroundColor: nil, forFlag: LOG_FLAG_INFO);
+		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.redColor(), backgroundColor: nil, forFlag: LOG_FLAG_ERROR);
+		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.purpleColor(), backgroundColor: nil, forFlag: LOG_FLAG_WARN);
+
+		DDTTYLogger.sharedInstance().setLogFormatter(ExtendedLogFormatter());
+		DDLog.addLogger(DDTTYLogger.sharedInstance())
+		DDLog.logLevel = .Verbose;
+		DDLog.logAsync = false;
+
+		DDLog.logError("Willem");
+		
+		MagicalRecord.setupCoreDataStack();
 		
 		HomeWizard.discover { (results) -> Void in
-	
+			for item in results {
+				logError("HomeWizard: " + item.description());
+			}
 		}
 		
 		return true
@@ -50,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(application: UIApplication!) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 		// Saves changes in the application's managed object context before the application terminates.
+		
+		MagicalRecord.cleanUp();
 	}
 
 }

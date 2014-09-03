@@ -33,6 +33,20 @@ In the model these are defined as `Controller` objects. A `Controller` is a devi
 
 Because every controller has different discovery methods and ways to communicate with its devices, the `HueBridge` and `HomeWizard` classes are subclassed from the abstract `Controller` class.
 
+#Sensor definitions
+Every supported device-type has its own model defined. For example a simple `Switch` connected to the HomeWizard has a model names `Switch`. Each model has the responsibility to create a request which can be send to the `Controller` to perform the selected action.
+
+A switch has 2 methods, `on` and `off` and this is an example of the `on` function.
+
+```
+func on() -> Void {
+        
+    self.controller!.performAction(String(format: "/sw/%d/on", self.id!), completion: { (results) -> Void in
+    });
+        
+}
+```
+
 [1]: http://homewizard.nl
 [2]: http://www2.meethue.com/en-US
 
