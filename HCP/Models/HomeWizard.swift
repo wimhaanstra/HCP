@@ -36,10 +36,9 @@ class HomeWizard: _HomeWizard {
                 logError("Error: " + error.localizedDescription)
             }
         )
-        
     }
     
-    override func performAction(command: String, completion: (results: AnyObject!) -> Void ) -> Void {
+    func performAction(command: String, completion: (results: AnyObject!) -> Void ) -> Void {
 		logDebug("Performing HomeWizard Command: " + command);
 		
 		let url = "http://" + self.ip! + "/" + self.password! + command;

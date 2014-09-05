@@ -33,6 +33,25 @@ In the model these are defined as `Controller` objects. A `Controller` is a devi
 
 Because every controller has different discovery methods and ways to communicate with its devices, the `HueBridge` and `HomeWizard` classes are subclassed from the abstract `Controller` class.
 
+The `Controller` class defines a couple of methods that each subclass of the `Controller` class should override.
+
+**Override these methods**
+
+`class func discover(completion: (results: [Controller]) -> Void)`
+
+The **discover** method should try to find local controllers of this type. Both the Hue Bridge and the HomeWizard devices support discovery of local devices. These devices should be returned in an array, while **not yet** stored in the CoreData database.
+
+
+`func start()`
+
+For both the HomeWizard and the Hue Bridge, this starts a timer which fetches data and new sensors on a regular interval.
+
+
+`func stop()`
+
+This should stop the timers that are running on the `Controller` object.
+
+
 #Sensor definitions
 Every supported device-type has its own model defined. For example a simple `Switch` connected to the HomeWizard has a model names `Switch`. Each model has the responsibility to create a request which can be send to the `Controller` to perform the selected action.
 
