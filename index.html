@@ -74,6 +74,37 @@
 
 <p>Because every controller has different discovery methods and ways to communicate with its devices, the <code>HueBridge</code> and <code>HomeWizard</code> classes are subclassed from the abstract <code>Controller</code> class.</p>
 
+<p>The <code>Controller</code> class defines a couple of methods that each subclass of the <code>Controller</code> class should override.</p>
+
+<p><strong>Override these methods</strong></p>
+
+<p><code>class func discover(completion: (results: [Controller]) -&gt; Void)</code></p>
+
+<p>The <strong>discover</strong> method should try to find local controllers of this type. Both the Hue Bridge and the HomeWizard devices support discovery of local devices. These devices should be returned in an array, while <strong>not yet</strong> stored in the CoreData database.</p>
+
+<p><code>func start()</code></p>
+
+<p>For both the HomeWizard and the Hue Bridge, this starts a timer which fetches data and new sensors on a regular interval.</p>
+
+<p><code>func stop()</code></p>
+
+<p>This should stop the timers that are running on the <code>Controller</code> object.</p>
+
+<h1>
+<a name="sensor-definitions" class="anchor" href="#sensor-definitions"><span class="octicon octicon-link"></span></a>Sensor definitions</h1>
+
+<p>Every supported device-type has its own model defined. For example a simple <code>Switch</code> connected to the HomeWizard has a model names <code>Switch</code>. Each model has the responsibility to create a request which can be send to the <code>Controller</code> to perform the selected action.</p>
+
+<p>A switch has 2 methods, <code>on</code> and <code>off</code> and this is an example of the <code>on</code> function.</p>
+
+<pre><code>func on() -&gt; Void {
+
+    self.controller!.performAction(String(format: "/sw/%d/on", self.id!), completion: { (results) -&gt; Void in
+    });
+
+}
+</code></pre>
+
 <h1>
 <a name="api-documentation" class="anchor" href="#api-documentation"><span class="octicon octicon-link"></span></a>API documentation</h1>
 
