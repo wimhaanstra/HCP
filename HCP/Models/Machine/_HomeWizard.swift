@@ -3,6 +3,10 @@
 
 import CoreData
 
+enum HomeWizardAttributes: String {
+    case password = "password"
+}
+
 @objc
 class _HomeWizard: Controller {
 
@@ -18,7 +22,7 @@ class _HomeWizard: Controller {
 
     // MARK: - Life cycle methods
 
-    override init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 
@@ -28,6 +32,11 @@ class _HomeWizard: Controller {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var password: String?
+
+    // func validatePassword(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

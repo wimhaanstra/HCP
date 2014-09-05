@@ -14,5 +14,14 @@ class Switch: _Switch {
         });
     
     }
+	
+	func stateValue() -> String {
+		if (self.status!.boolValue) {
+			return "on";
+		}
+		else {
+			return "off";
+		}
+	}
 
 }

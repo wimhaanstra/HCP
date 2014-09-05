@@ -22,7 +22,7 @@ class _Dimmer: Switch {
 
     // MARK: - Life cycle methods
 
-    override init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 

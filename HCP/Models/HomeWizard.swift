@@ -41,6 +41,32 @@ class HomeWizard: _HomeWizard {
     
     override func performAction(command: String, completion: (results: AnyObject!) -> Void ) -> Void {
 		logDebug("Performing HomeWizard Command: " + command);
+		
+		let url = "http://" + self.ip! + "/" + self.password! + command;
+		
+		let manager = AFHTTPRequestOperationManager();
+		manager.GET(url, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+			completion(results: responseObject);
+		},
+		failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+		});
     }
+	
+	func login(password: String, completion: (success: Bool) -> Void) -> Void {
+		self.password = password;
+		self.performAction("/enlist", completion: { (results) -> Void in
+			println(results);
+			if (results.objectForKey("status") != nil) {
+				var status: String = results.objectForKey("status") as String;
+				completion(success: (status == "ok"));
+			}
+		});
+	}
+	
+	override func start() {
+	}
+	
+	override func stop() {
+	}
     
 }
