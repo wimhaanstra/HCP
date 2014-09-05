@@ -36,7 +36,7 @@
 <h1>
 <a name="goals" class="anchor" href="#goals"><span class="octicon octicon-link"></span></a>Goals</h1>
 
-<p>The goals of <strong>HCP</strong> are to be able to control my home from an iPad which I have laying around. For this, you of course need hardware to perform most of (well, actually: all) functions this application offers.</p>
+<p>The goals of <strong>HCP</strong> is to be able to control my home from an iPad which I have laying around. For this, you of course need hardware to perform most of (well, actually: all) functions this application offers.</p>
 
 <p>I want to be able to connect to several devices and all control them from one giant control-panel. With this functionality I want to stay as close to the feature-set as the supported hardware supports.</p>
 
@@ -45,7 +45,7 @@
 <h1>
 <a name="ios-compatibility" class="anchor" href="#ios-compatibility"><span class="octicon octicon-link"></span></a>iOS Compatibility</h1>
 
-<p>iOS7 and up probably, but when HomeKit is fully revealed by Apple it might be iOS8 and higher.</p>
+<p>iOS7 and up... <em>probably</em>, but when HomeKit is fully revealed by Apple it might be iOS8 and higher.</p>
 
 <h1>
 <a name="supported-hardware" class="anchor" href="#supported-hardware"><span class="octicon octicon-link"></span></a>Supported Hardware</h1>
@@ -99,8 +99,9 @@
 
 <pre><code>func on() -&gt; Void {
 
-    self.controller!.performAction(String(format: "/sw/%d/on", self.id!), completion: { (results) -&gt; Void in
-    });
+        // Just cast to HomeWizard, this will never make it in production code.... right?        
+        (self.controller! as HomeWizard).performAction(String(format: "/sw/%d/on", self.id!), completion: { (results) -&gt; Void in
+        });
 
 }
 </code></pre>
