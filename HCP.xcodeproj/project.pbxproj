@@ -8,28 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		05BE49C2C7F0474F8866691B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84754954A5A6408EAACE5BC3 /* libPods.a */; };
-		AB61648219B702C100CBF0C0 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB61648119B702C100CBF0C0 /* CocoaLumberjack.swift */; };
-		AB6D711719B6FF090096176D /* ExtendedLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6D711619B6FF090096176D /* ExtendedLogFormatter.m */; };
+		AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0A66C319BAD6A900553CDC /* HCP.xcdatamodeld */; };
+		ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */; };
+		ABA7C58B19BAD37A0085A730 /* ExtendedLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */; };
+		ABA7C59A19BAD37A0085A730 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C58919BAD37A0085A730 /* ViewController.swift */; };
+		ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EEF19BAD85600B02BFC /* _Controller.swift */; };
+		ABB07EFE19BAD85600B02BFC /* _Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF019BAD85600B02BFC /* _Dimmer.swift */; };
+		ABB07EFF19BAD85600B02BFC /* _HomeWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF119BAD85600B02BFC /* _HomeWizard.swift */; };
+		ABB07F0019BAD85600B02BFC /* _HueBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF219BAD85600B02BFC /* _HueBridge.swift */; };
+		ABB07F0119BAD85600B02BFC /* _Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF319BAD85600B02BFC /* _Room.swift */; };
+		ABB07F0219BAD85600B02BFC /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF419BAD85600B02BFC /* _Sensor.swift */; };
+		ABB07F0319BAD85600B02BFC /* _Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF519BAD85600B02BFC /* _Switch.swift */; };
+		ABB07F0419BAD85600B02BFC /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF619BAD85600B02BFC /* Controller.swift */; };
+		ABB07F0519BAD85600B02BFC /* Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF719BAD85600B02BFC /* Dimmer.swift */; };
+		ABB07F0619BAD85600B02BFC /* HomeWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF819BAD85600B02BFC /* HomeWizard.swift */; };
+		ABB07F0719BAD85600B02BFC /* HueBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF919BAD85600B02BFC /* HueBridge.swift */; };
+		ABB07F0819BAD85600B02BFC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFA19BAD85600B02BFC /* Room.swift */; };
+		ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFB19BAD85600B02BFC /* Sensor.swift */; };
+		ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFC19BAD85600B02BFC /* Switch.swift */; };
+		ABB07F1119BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07F1019BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift */; };
+		ABB07F1519BAF88A00B02BFC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */; };
 		ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC81F19A3D038004B309B /* AppDelegate.swift */; };
-		ABEAC82319A3D038004B309B /* HCP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC82119A3D038004B309B /* HCP.xcdatamodeld */; };
-		ABEAC82519A3D038004B309B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC82419A3D038004B309B /* ViewController.swift */; };
 		ABEAC82819A3D038004B309B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82619A3D038004B309B /* Main.storyboard */; };
 		ABEAC82A19A3D038004B309B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82919A3D038004B309B /* Images.xcassets */; };
 		ABEAC83619A3D038004B309B /* HCPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC83519A3D038004B309B /* HCPTests.swift */; };
-		ABF617BC19B2F8CA007E920D /* HomeWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617AF19B2F8CA007E920D /* HomeWizard.swift */; };
-		ABF617BD19B2F8CA007E920D /* HueBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617B019B2F8CA007E920D /* HueBridge.swift */; };
-		ABF617BF19B2F8CA007E920D /* _HomeWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617B319B2F8CA007E920D /* _HomeWizard.swift */; };
-		ABF617C019B2F8CA007E920D /* _HueBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617B419B2F8CA007E920D /* _HueBridge.swift */; };
-		ABF617C419B30302007E920D /* _Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617C219B30302007E920D /* _Controller.swift */; };
-		ABF617C519B30302007E920D /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617C319B30302007E920D /* _Sensor.swift */; };
-		ABF617C819B3030D007E920D /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617C619B3030D007E920D /* Controller.swift */; };
-		ABF617C919B3030D007E920D /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617C719B3030D007E920D /* Sensor.swift */; };
-		ABF617CB19B3040D007E920D /* _Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617CA19B3040D007E920D /* _Switch.swift */; };
-		ABF617CD19B30416007E920D /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617CC19B30416007E920D /* Switch.swift */; };
-		ABF617D119B31228007E920D /* Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617D019B31228007E920D /* Dimmer.swift */; };
-		ABF617D319B31231007E920D /* _Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617D219B31231007E920D /* _Dimmer.swift */; };
-		ABF617D519B31BEB007E920D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617D419B31BEB007E920D /* Room.swift */; };
-		ABF617D719B31BFE007E920D /* _Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF617D619B31BFE007E920D /* _Room.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,34 +59,36 @@
 /* Begin PBXFileReference section */
 		84754954A5A6408EAACE5BC3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A869C26219E34A47B566414F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AB0A66C419BAD6A900553CDC /* HCP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HCP.xcdatamodel; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
-		AB61648119B702C100CBF0C0 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
-		AB6D711519B6FF090096176D /* ExtendedLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedLogFormatter.h; sourceTree = "<group>"; };
-		AB6D711619B6FF090096176D /* ExtendedLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedLogFormatter.m; sourceTree = "<group>"; };
+		ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
+		ABA7C57319BAD37A0085A730 /* ExtendedLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedLogFormatter.h; sourceTree = "<group>"; };
+		ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedLogFormatter.m; sourceTree = "<group>"; };
+		ABA7C58919BAD37A0085A730 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ABB07EEF19BAD85600B02BFC /* _Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Controller.swift; sourceTree = "<group>"; };
+		ABB07EF019BAD85600B02BFC /* _Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Dimmer.swift; sourceTree = "<group>"; };
+		ABB07EF119BAD85600B02BFC /* _HomeWizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HomeWizard.swift; sourceTree = "<group>"; };
+		ABB07EF219BAD85600B02BFC /* _HueBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HueBridge.swift; sourceTree = "<group>"; };
+		ABB07EF319BAD85600B02BFC /* _Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Room.swift; sourceTree = "<group>"; };
+		ABB07EF419BAD85600B02BFC /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
+		ABB07EF519BAD85600B02BFC /* _Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Switch.swift; sourceTree = "<group>"; };
+		ABB07EF619BAD85600B02BFC /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		ABB07EF719BAD85600B02BFC /* Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmer.swift; sourceTree = "<group>"; };
+		ABB07EF819BAD85600B02BFC /* HomeWizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizard.swift; sourceTree = "<group>"; };
+		ABB07EF919BAD85600B02BFC /* HueBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueBridge.swift; sourceTree = "<group>"; };
+		ABB07EFA19BAD85600B02BFC /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		ABB07EFB19BAD85600B02BFC /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		ABB07EFC19BAD85600B02BFC /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		ABB07F1019BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardDiscoveryViewController.swift; sourceTree = "<group>"; };
+		ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
 		ABEAC81A19A3D038004B309B /* HCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEAC81E19A3D038004B309B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABEAC81F19A3D038004B309B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ABEAC82219A3D038004B309B /* HCP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HCP.xcdatamodel; sourceTree = "<group>"; };
-		ABEAC82419A3D038004B309B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABEAC82719A3D038004B309B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABEAC82919A3D038004B309B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ABEAC82F19A3D038004B309B /* HCPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEAC83419A3D038004B309B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABEAC83519A3D038004B309B /* HCPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPTests.swift; sourceTree = "<group>"; };
-		ABF617AF19B2F8CA007E920D /* HomeWizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizard.swift; sourceTree = "<group>"; };
-		ABF617B019B2F8CA007E920D /* HueBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueBridge.swift; sourceTree = "<group>"; };
-		ABF617B319B2F8CA007E920D /* _HomeWizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HomeWizard.swift; sourceTree = "<group>"; };
-		ABF617B419B2F8CA007E920D /* _HueBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HueBridge.swift; sourceTree = "<group>"; };
-		ABF617C219B30302007E920D /* _Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Controller.swift; sourceTree = "<group>"; };
-		ABF617C319B30302007E920D /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
-		ABF617C619B3030D007E920D /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
-		ABF617C719B3030D007E920D /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
-		ABF617CA19B3040D007E920D /* _Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Switch.swift; sourceTree = "<group>"; };
-		ABF617CC19B30416007E920D /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
-		ABF617D019B31228007E920D /* Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmer.swift; sourceTree = "<group>"; };
-		ABF617D219B31231007E920D /* _Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Dimmer.swift; sourceTree = "<group>"; };
-		ABF617D419B31BEB007E920D /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		ABF617D619B31BFE007E920D /* _Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,30 +118,87 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AB61648319B706C900CBF0C0 /* CoreData */ = {
+		ABA7C57019BAD37A0085A730 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ABEAC82119A3D038004B309B /* HCP.xcdatamodeld */,
-			);
-			name = CoreData;
-			sourceTree = "<group>";
-		};
-		AB6D711019B6FC660096176D /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				AB6D711119B6FC660096176D /* CocoaLumberjack */,
+				ABB07F1219BAF85900B02BFC /* Extensions */,
+				ABA7C57119BAD37A0085A730 /* CocoaLumberjack */,
+				ABB07EED19BAD85600B02BFC /* Models */,
+				ABA7C58819BAD37A0085A730 /* ViewControllers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		AB6D711119B6FC660096176D /* CocoaLumberjack */ = {
+		ABA7C57119BAD37A0085A730 /* CocoaLumberjack */ = {
 			isa = PBXGroup;
 			children = (
-				AB6D711519B6FF090096176D /* ExtendedLogFormatter.h */,
-				AB6D711619B6FF090096176D /* ExtendedLogFormatter.m */,
-				AB61648119B702C100CBF0C0 /* CocoaLumberjack.swift */,
+				ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */,
+				ABA7C57319BAD37A0085A730 /* ExtendedLogFormatter.h */,
+				ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */,
 			);
 			path = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
+		ABA7C58819BAD37A0085A730 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABA7C58919BAD37A0085A730 /* ViewController.swift */,
+				ABB07F1019BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ABB07EED19BAD85600B02BFC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABB07EEE19BAD85600B02BFC /* _Machine */,
+				ABB07F0B19BAD9F500B02BFC /* Controller */,
+				ABB07F0C19BADA1D00B02BFC /* HomeWizard */,
+				ABB07EFA19BAD85600B02BFC /* Room.swift */,
+				ABB07EFB19BAD85600B02BFC /* Sensor.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABB07EEE19BAD85600B02BFC /* _Machine */ = {
+			isa = PBXGroup;
+			children = (
+				ABB07EEF19BAD85600B02BFC /* _Controller.swift */,
+				ABB07EF019BAD85600B02BFC /* _Dimmer.swift */,
+				ABB07EF119BAD85600B02BFC /* _HomeWizard.swift */,
+				ABB07EF219BAD85600B02BFC /* _HueBridge.swift */,
+				ABB07EF319BAD85600B02BFC /* _Room.swift */,
+				ABB07EF419BAD85600B02BFC /* _Sensor.swift */,
+				ABB07EF519BAD85600B02BFC /* _Switch.swift */,
+			);
+			path = _Machine;
+			sourceTree = "<group>";
+		};
+		ABB07F0B19BAD9F500B02BFC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ABB07EF619BAD85600B02BFC /* Controller.swift */,
+				ABB07EF819BAD85600B02BFC /* HomeWizard.swift */,
+				ABB07EF919BAD85600B02BFC /* HueBridge.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		ABB07F0C19BADA1D00B02BFC /* HomeWizard */ = {
+			isa = PBXGroup;
+			children = (
+				ABB07EF719BAD85600B02BFC /* Dimmer.swift */,
+				ABB07EFC19BAD85600B02BFC /* Switch.swift */,
+			);
+			name = HomeWizard;
+			sourceTree = "<group>";
+		};
+		ABB07F1219BAF85900B02BFC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		ABEAC81119A3D038004B309B = {
@@ -163,14 +224,12 @@
 		ABEAC81C19A3D038004B309B /* HCP */ = {
 			isa = PBXGroup;
 			children = (
-				AB61648319B706C900CBF0C0 /* CoreData */,
+				AB0A66C319BAD6A900553CDC /* HCP.xcdatamodeld */,
+				ABA7C57019BAD37A0085A730 /* Classes */,
 				ABEAC81F19A3D038004B309B /* AppDelegate.swift */,
-				AB6D711019B6FC660096176D /* Classes */,
 				ABEAC82919A3D038004B309B /* Images.xcassets */,
 				ABEAC82619A3D038004B309B /* Main.storyboard */,
-				ABF617A519B2F8CA007E920D /* Models */,
 				ABEAC81D19A3D038004B309B /* Supporting Files */,
-				ABEAC82419A3D038004B309B /* ViewController.swift */,
 			);
 			path = HCP;
 			sourceTree = "<group>";
@@ -199,59 +258,6 @@
 				ABEAC83419A3D038004B309B /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		ABF617A519B2F8CA007E920D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				ABF617CF19B30434007E920D /* Controllers */,
-				ABF617CE19B30423007E920D /* HomeWizard */,
-				ABF617B119B2F8CA007E920D /* Machine */,
-				ABF617D819B31C5D007E920D /* Other */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		ABF617B119B2F8CA007E920D /* Machine */ = {
-			isa = PBXGroup;
-			children = (
-				ABF617C219B30302007E920D /* _Controller.swift */,
-				ABF617D219B31231007E920D /* _Dimmer.swift */,
-				ABF617B319B2F8CA007E920D /* _HomeWizard.swift */,
-				ABF617B419B2F8CA007E920D /* _HueBridge.swift */,
-				ABF617D619B31BFE007E920D /* _Room.swift */,
-				ABF617C319B30302007E920D /* _Sensor.swift */,
-				ABF617CA19B3040D007E920D /* _Switch.swift */,
-			);
-			path = Machine;
-			sourceTree = "<group>";
-		};
-		ABF617CE19B30423007E920D /* HomeWizard */ = {
-			isa = PBXGroup;
-			children = (
-				ABF617D019B31228007E920D /* Dimmer.swift */,
-				ABF617CC19B30416007E920D /* Switch.swift */,
-			);
-			name = HomeWizard;
-			sourceTree = "<group>";
-		};
-		ABF617CF19B30434007E920D /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				ABF617C619B3030D007E920D /* Controller.swift */,
-				ABF617AF19B2F8CA007E920D /* HomeWizard.swift */,
-				ABF617B019B2F8CA007E920D /* HueBridge.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		ABF617D819B31C5D007E920D /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				ABF617D419B31BEB007E920D /* Room.swift */,
-				ABF617C719B3030D007E920D /* Sensor.swift */,
-			);
-			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,7 +386,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/mogenerator --model hcp/HCP.xcdatamodeld --machine-dir hcp/Models/Machine --human-dir hcp/Models -s";
+			shellScript = "${SRCROOT}/mogenerator --model hcp/HCP.xcdatamodeld --machine-dir hcp/Classes/Models/_Machine --human-dir hcp/Classes/Models -s";
 		};
 		D1AE5693A05B4CD0AADE8506 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -404,25 +410,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABEAC82519A3D038004B309B /* ViewController.swift in Sources */,
-				ABF617CB19B3040D007E920D /* _Switch.swift in Sources */,
-				ABF617D519B31BEB007E920D /* Room.swift in Sources */,
-				ABF617BD19B2F8CA007E920D /* HueBridge.swift in Sources */,
-				ABF617D119B31228007E920D /* Dimmer.swift in Sources */,
-				ABF617C919B3030D007E920D /* Sensor.swift in Sources */,
+				ABB07F0019BAD85600B02BFC /* _HueBridge.swift in Sources */,
+				ABB07F0319BAD85600B02BFC /* _Switch.swift in Sources */,
+				ABA7C58B19BAD37A0085A730 /* ExtendedLogFormatter.m in Sources */,
+				ABB07F0819BAD85600B02BFC /* Room.swift in Sources */,
+				ABB07F0519BAD85600B02BFC /* Dimmer.swift in Sources */,
+				ABA7C59A19BAD37A0085A730 /* ViewController.swift in Sources */,
+				ABB07EFE19BAD85600B02BFC /* _Dimmer.swift in Sources */,
 				ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */,
-				ABF617D719B31BFE007E920D /* _Room.swift in Sources */,
-				ABF617D319B31231007E920D /* _Dimmer.swift in Sources */,
-				ABF617C819B3030D007E920D /* Controller.swift in Sources */,
-				AB6D711719B6FF090096176D /* ExtendedLogFormatter.m in Sources */,
-				ABEAC82319A3D038004B309B /* HCP.xcdatamodeld in Sources */,
-				ABF617BF19B2F8CA007E920D /* _HomeWizard.swift in Sources */,
-				ABF617CD19B30416007E920D /* Switch.swift in Sources */,
-				ABF617C419B30302007E920D /* _Controller.swift in Sources */,
-				ABF617C519B30302007E920D /* _Sensor.swift in Sources */,
-				ABF617C019B2F8CA007E920D /* _HueBridge.swift in Sources */,
-				AB61648219B702C100CBF0C0 /* CocoaLumberjack.swift in Sources */,
-				ABF617BC19B2F8CA007E920D /* HomeWizard.swift in Sources */,
+				ABB07F0619BAD85600B02BFC /* HomeWizard.swift in Sources */,
+				ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */,
+				ABB07F0719BAD85600B02BFC /* HueBridge.swift in Sources */,
+				ABB07F0419BAD85600B02BFC /* Controller.swift in Sources */,
+				ABB07F0119BAD85600B02BFC /* _Room.swift in Sources */,
+				ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */,
+				ABB07EFF19BAD85600B02BFC /* _HomeWizard.swift in Sources */,
+				ABB07F1119BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift in Sources */,
+				ABB07F1519BAF88A00B02BFC /* ArrayExtensions.swift in Sources */,
+				ABB07F0219BAD85600B02BFC /* _Sensor.swift in Sources */,
+				AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */,
+				ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */,
+				ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,12 +642,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		ABEAC82119A3D038004B309B /* HCP.xcdatamodeld */ = {
+		AB0A66C319BAD6A900553CDC /* HCP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				ABEAC82219A3D038004B309B /* HCP.xcdatamodel */,
+				AB0A66C419BAD6A900553CDC /* HCP.xcdatamodel */,
 			);
-			currentVersion = ABEAC82219A3D038004B309B /* HCP.xcdatamodel */;
+			currentVersion = AB0A66C419BAD6A900553CDC /* HCP.xcdatamodel */;
 			path = HCP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -4,6 +4,7 @@ class Switch: _Switch {
     func on() -> Void {
         
         (self.controller! as HomeWizard).performAction(String(format: "/sw/%d/on", self.id!), completion: { (results) -> Void in
+			self.status = true;
         });
         
     }
@@ -11,17 +12,20 @@ class Switch: _Switch {
     func off() -> Void {
 
         (self.controller! as HomeWizard).performAction(String(format: "/sw/%d/off", self.id!), completion: { (results) -> Void in
+			self.status = false;
         });
     
     }
 	
 	func stateValue() -> String {
-		if (self.status!.boolValue) {
-			return "on";
-		}
-		else {
-			return "off";
-		}
+		return (self.status!.boolValue) ? "on" : "off";
 	}
 
+	
+	class func create(definition: Dictionary<String, AnyObject!>) -> Switch {
+		
+		return Switch();
+		
+	}
+	
 }

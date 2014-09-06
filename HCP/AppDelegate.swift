@@ -32,15 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		DDLog.logLevel = .Verbose;
 		DDLog.logAsync = false;
 
-		DDLog.logError("Willem");
+		MagicalRecord.setupAutoMigratingCoreDataStack();
 		
-		MagicalRecord.setupCoreDataStack();
-		
-		HomeWizard.discover { (results) -> Void in
-			for item in results {
-				logError("HomeWizard: " + item.description());
-			}
-		}
+		MagicalRecord.setLoggingLevel(MagicalRecordLoggingLevel.Verbose);
 		
 		return true
 	}
