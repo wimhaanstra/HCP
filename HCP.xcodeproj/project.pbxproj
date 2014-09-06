@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		05BE49C2C7F0474F8866691B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84754954A5A6408EAACE5BC3 /* libPods.a */; };
 		AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0A66C319BAD6A900553CDC /* HCP.xcdatamodeld */; };
+		AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */; };
+		AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */; };
 		ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */; };
 		ABA7C58B19BAD37A0085A730 /* ExtendedLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */; };
 		ABA7C59A19BAD37A0085A730 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C58919BAD37A0085A730 /* ViewController.swift */; };
@@ -26,7 +28,6 @@
 		ABB07F0819BAD85600B02BFC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFA19BAD85600B02BFC /* Room.swift */; };
 		ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFB19BAD85600B02BFC /* Sensor.swift */; };
 		ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFC19BAD85600B02BFC /* Switch.swift */; };
-		ABB07F1119BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07F1019BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift */; };
 		ABB07F1519BAF88A00B02BFC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */; };
 		ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC81F19A3D038004B309B /* AppDelegate.swift */; };
 		ABEAC82819A3D038004B309B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82619A3D038004B309B /* Main.storyboard */; };
@@ -60,6 +61,8 @@
 		84754954A5A6408EAACE5BC3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A869C26219E34A47B566414F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AB0A66C419BAD6A900553CDC /* HCP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HCP.xcdatamodel; sourceTree = "<group>"; };
+		AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardDiscoveryViewController.swift; sourceTree = "<group>"; };
+		AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardSensorManagementViewController.swift; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
 		ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
 		ABA7C57319BAD37A0085A730 /* ExtendedLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedLogFormatter.h; sourceTree = "<group>"; };
@@ -79,7 +82,6 @@
 		ABB07EFA19BAD85600B02BFC /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		ABB07EFB19BAD85600B02BFC /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		ABB07EFC19BAD85600B02BFC /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
-		ABB07F1019BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardDiscoveryViewController.swift; sourceTree = "<group>"; };
 		ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
 		ABEAC81A19A3D038004B309B /* HCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEAC81E19A3D038004B309B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,6 +120,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB0FD7B819BB32F600649C47 /* HomeWizard */ = {
+			isa = PBXGroup;
+			children = (
+				AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */,
+				AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */,
+			);
+			path = HomeWizard;
+			sourceTree = "<group>";
+		};
 		ABA7C57019BAD37A0085A730 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,8 +153,8 @@
 		ABA7C58819BAD37A0085A730 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB0FD7B819BB32F600649C47 /* HomeWizard */,
 				ABA7C58919BAD37A0085A730 /* ViewController.swift */,
-				ABB07F1019BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -425,12 +436,13 @@
 				ABB07F0119BAD85600B02BFC /* _Room.swift in Sources */,
 				ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */,
 				ABB07EFF19BAD85600B02BFC /* _HomeWizard.swift in Sources */,
-				ABB07F1119BAE69A00B02BFC /* HomeWizardDiscoveryViewController.swift in Sources */,
 				ABB07F1519BAF88A00B02BFC /* ArrayExtensions.swift in Sources */,
 				ABB07F0219BAD85600B02BFC /* _Sensor.swift in Sources */,
 				AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */,
+				AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */,
 				ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */,
 				ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */,
+				AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

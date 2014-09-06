@@ -30,8 +30,12 @@ class ViewController: UIViewController {
 	}
 	
 	func popupButton_Clicked() {
+		
 		var c: HomeWizardDiscoveryViewController = HomeWizardDiscoveryViewController();
-		self.popOver = UIPopoverController(contentViewController: c);
+		
+		var navigationController = UINavigationController(rootViewController: c);
+		
+		self.popOver = UIPopoverController(contentViewController: navigationController);
 		self.popOver.presentPopoverFromRect(popupButton.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
 	}
 

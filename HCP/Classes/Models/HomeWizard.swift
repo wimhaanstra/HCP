@@ -4,7 +4,7 @@ class HomeWizard: _HomeWizard {
 	private var _fetchDataTimer: NSTimer? = nil;
 	private var _fetchSensorsTimer: NSTimer? = nil;
     
-    override class func discover(completion: (results: [Controller]) -> Void) {
+    override class func discover(includeStored: Bool, completion: (results: [Controller]) -> Void) {
         
         let discoveryUrl = "http://gateway.homewizard.nl/discovery.php";
 		
@@ -31,9 +31,14 @@ class HomeWizard: _HomeWizard {
 					else {
 						
 						logInfo("Discovered HomeWizard is already in database (" + ipAddress + ")");
-
-						var foundObject: HomeWizard = match as HomeWizard
-						completion(results: [foundObject])
+						
+						if  (includeStored) {
+							var foundObject: HomeWizard = match as HomeWizard
+							completion(results: [foundObject])
+						}
+						else {
+							completion(results: []);
+						}
 					}
 					
 				}

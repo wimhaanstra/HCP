@@ -1,7 +1,7 @@
 @objc(HueBridge)
 class HueBridge: _HueBridge {
     
-    override class func discover(completion: (results: [Controller]) -> Void) {
+    override class func discover(includeStored: Bool, completion: (results: [Controller]) -> Void) {
         
         let discoveryUrl = "http://www.meethue.com/api/nupnp";
         NSLog("Starting Hue Bridge discovery");
