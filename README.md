@@ -93,5 +93,5 @@ For this application I currently use the following frameworks:
 [5]: https://github.com/rentzsch/mogenerator
 [6]: https://github.com/CocoaLumberjack/CocoaLumberjack
 
-#License
-I chose the current license because I want to be able to share my progress and code with the world, but I also have the intention of putting this application up in the Apple App Store and maybe fund some more hardware for my HCP setup.
+-
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
