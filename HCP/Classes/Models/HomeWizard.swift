@@ -87,11 +87,10 @@ class HomeWizard: _HomeWizard {
 		
 		
 		self.performAction("/get-sensors", completion: { (results) -> Void in
-			
 			if (results != nil && results.objectForKey("response") != nil) {
-				let response = results.objectForKey("response");
-				
-				println(response);
+				if let response = results.objectForKey("response") as? Dictionary<String, AnyObject> {
+					self.parse(response);
+				}
 			}
 			if (self._fetchDataTimer == nil) {
 				self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: true);
@@ -103,7 +102,18 @@ class HomeWizard: _HomeWizard {
 	}
 	
 	func fetchData() {
-		logInfo("Fetching data");
+		self.performAction("/get-status", completion: { (results) -> Void in
+			
+			if (results != nil && results.objectForKey("response") != nil) {
+				if let response = results.objectForKey("response") as? Dictionary<String, AnyObject> {
+					self.parse(response);
+				}
+			}
+			if (self._fetchDataTimer == nil) {
+				self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: true);
+			}
+		});
+
 	}
 	
 	override func start() {
@@ -132,5 +142,34 @@ class HomeWizard: _HomeWizard {
 		}
 		
 	}
+	
+	func parse(response: Dictionary<String, AnyObject>) {
+		
+		if let switches = response["switches"] as? NSArray {
+			for item in switches {
+				var itemDictionary: NSDictionary = item as NSDictionary;
+				
+				if (itemDictionary.objectForKey("id") == nil) {
+					continue;
+				}
+				
+				var id = itemDictionary.objectForKey("id") as Int;
+				
+				if let switchType = itemDictionary.objectForKey("type") as? String {
+					logInfo("Switch type: " + switchType);
+					
+					if (switchType == "switch") {
+						EntityFactory<Switch>.create(self, definition: itemDictionary);
+					}
+					else if (switchType == "dimmer") {
+						EntityFactory<Dimmer>.create(self, definition: itemDictionary);
+					}
+				}
+			}
+		}
+		
+	}
+	
+	
     
 }
