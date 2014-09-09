@@ -12,6 +12,7 @@
 		AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */; };
 		AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */; };
 		AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */; };
+		AB62E8FD19BF49FE00BD587A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AB62E8FC19BF49FE00BD587A /* LICENSE */; };
 		ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */; };
 		ABA7C58B19BAD37A0085A730 /* ExtendedLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */; };
 		ABA7C59A19BAD37A0085A730 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C58919BAD37A0085A730 /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardSensorManagementViewController.swift; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
+		AB62E8FC19BF49FE00BD587A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
 		ABA7C57319BAD37A0085A730 /* ExtendedLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedLogFormatter.h; sourceTree = "<group>"; };
 		ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedLogFormatter.m; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				ABEAC82919A3D038004B309B /* Images.xcassets */,
 				ABEAC82619A3D038004B309B /* Main.storyboard */,
 				ABEAC81D19A3D038004B309B /* Supporting Files */,
+				AB62E8FC19BF49FE00BD587A /* LICENSE */,
 			);
 			path = HCP;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB62E8FD19BF49FE00BD587A /* LICENSE in Resources */,
 				ABEAC82819A3D038004B309B /* Main.storyboard in Resources */,
 				ABEAC82A19A3D038004B309B /* Images.xcassets in Resources */,
 			);
