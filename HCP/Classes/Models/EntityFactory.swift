@@ -16,6 +16,8 @@ class EntityFactory<T: Sensor> {
 		
 		var predicate: NSPredicate = NSPredicate(format: "id = %d AND className = %@", id, NSStringFromClass(T));
 		
+		println(predicate);
+		
 		var addedSwitches = controller.sensors.filteredSetUsingPredicate(predicate);
 		var sensor: T? = (addedSwitches.count == 0) ? nil : addedSwitches.allObjects[0] as? T;
 		
@@ -24,12 +26,12 @@ class EntityFactory<T: Sensor> {
 			if (sensor == nil) {
 				var localController = controller.inContext(context);
 				
-				logInfo("Sensor did not exist in DB");
 				sensor = T.createEntityInContext(context);
 				sensor?.id = id;
 				sensor!.controller = localController;
 				localController.addSensorsObject(sensor);
 			}
+			
 			sensor?.update(definition);
 		}
 		

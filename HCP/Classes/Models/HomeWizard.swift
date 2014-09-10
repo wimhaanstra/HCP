@@ -25,7 +25,7 @@ class HomeWizard: _HomeWizard {
 						var foundObject: HomeWizard = HomeWizard.createEntityInContext(nil) as HomeWizard;
 						foundObject.ip = ipAddress;
 						foundObject.name = ipAddress;
-						foundObject.lastUpdate = NSDate.date();
+						foundObject.lastUpdate = NSDate();
 						completion(results: [foundObject]);
 					}
 					else {
@@ -144,7 +144,6 @@ class HomeWizard: _HomeWizard {
 	}
 	
 	func parse(response: Dictionary<String, AnyObject>) {
-		
 		if let switches = response["switches"] as? NSArray {
 			for item in switches {
 				var itemDictionary: NSDictionary = item as NSDictionary;
@@ -156,15 +155,44 @@ class HomeWizard: _HomeWizard {
 				var id = itemDictionary.objectForKey("id") as Int;
 				
 				if let switchType = itemDictionary.objectForKey("type") as? String {
-					logInfo("Switch type: " + switchType);
-					
 					if (switchType == "switch") {
 						EntityFactory<Switch>.create(self, definition: itemDictionary);
 					}
 					else if (switchType == "dimmer") {
 						EntityFactory<Dimmer>.create(self, definition: itemDictionary);
 					}
+					else if (switchType == "hue") {
+						// TODO: Add Hue via HomeWizard support
+					}
+					else if (switchType == "asun") {
+						// TODO: Add Asun support
+					}
 				}
+			}
+		}
+		
+		if let thermometers = response["thermometers"] as? NSArray {
+			for item in thermometers {
+				var itemDictionary: NSDictionary = item as NSDictionary;
+				
+				if (itemDictionary.objectForKey("id") == nil) {
+					continue;
+				}
+				
+				var e = EntityFactory<Thermometer>.create(self, definition: itemDictionary);
+			}
+		}
+
+		
+		if let energyLinks = response["energylinks"] as? NSArray {
+			for item in energyLinks {
+				var itemDictionary: NSDictionary = item as NSDictionary;
+				
+				if (itemDictionary.objectForKey("id") == nil) {
+					continue;
+				}
+				
+				var e = EntityFactory<EnergyLink>.create(self, definition: itemDictionary);
 			}
 		}
 		

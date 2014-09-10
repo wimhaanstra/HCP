@@ -12,6 +12,11 @@
 		AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */; };
 		AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */; };
 		AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */; };
+		AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EBF19BFA4390065062E /* _EnergyLink.swift */; };
+		AB897EC219BFA4450065062E /* EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC119BFA4450065062E /* EnergyLink.swift */; };
+		AB897EC419BFA8B10065062E /* CombinedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC319BFA8B10065062E /* CombinedValue.swift */; };
+		AB897EC619C026F20065062E /* _Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC519C026F20065062E /* _Thermometer.swift */; };
+		AB897EC819C026FA0065062E /* Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC719C026FA0065062E /* Thermometer.swift */; };
 		ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */; };
 		ABA7C58B19BAD37A0085A730 /* ExtendedLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */; };
 		ABA7C59A19BAD37A0085A730 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C58919BAD37A0085A730 /* ViewController.swift */; };
@@ -66,6 +71,11 @@
 		AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardSensorManagementViewController.swift; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
+		AB897EBF19BFA4390065062E /* _EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EnergyLink.swift; sourceTree = "<group>"; };
+		AB897EC119BFA4450065062E /* EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyLink.swift; sourceTree = "<group>"; };
+		AB897EC319BFA8B10065062E /* CombinedValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedValue.swift; sourceTree = "<group>"; };
+		AB897EC519C026F20065062E /* _Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Thermometer.swift; sourceTree = "<group>"; };
+		AB897EC719C026FA0065062E /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
 		ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
 		ABA7C57319BAD37A0085A730 /* ExtendedLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedLogFormatter.h; sourceTree = "<group>"; };
 		ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedLogFormatter.m; sourceTree = "<group>"; };
@@ -170,6 +180,7 @@
 				ABB07EFA19BAD85600B02BFC /* Room.swift */,
 				ABB07EFB19BAD85600B02BFC /* Sensor.swift */,
 				AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */,
+				AB897EC319BFA8B10065062E /* CombinedValue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +188,8 @@
 		ABB07EEE19BAD85600B02BFC /* _Machine */ = {
 			isa = PBXGroup;
 			children = (
+				AB897EC519C026F20065062E /* _Thermometer.swift */,
+				AB897EBF19BFA4390065062E /* _EnergyLink.swift */,
 				ABB07EEF19BAD85600B02BFC /* _Controller.swift */,
 				ABB07EF019BAD85600B02BFC /* _Dimmer.swift */,
 				ABB07EF119BAD85600B02BFC /* _HomeWizard.swift */,
@@ -202,7 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				ABB07EF719BAD85600B02BFC /* Dimmer.swift */,
+				AB897EC119BFA4450065062E /* EnergyLink.swift */,
 				ABB07EFC19BAD85600B02BFC /* Switch.swift */,
+				AB897EC719C026FA0065062E /* Thermometer.swift */,
 			);
 			name = HomeWizard;
 			sourceTree = "<group>";
@@ -424,9 +439,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB897EC819C026FA0065062E /* Thermometer.swift in Sources */,
 				ABB07F0019BAD85600B02BFC /* _HueBridge.swift in Sources */,
 				ABB07F0319BAD85600B02BFC /* _Switch.swift in Sources */,
 				ABA7C58B19BAD37A0085A730 /* ExtendedLogFormatter.m in Sources */,
+				AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */,
 				ABB07F0819BAD85600B02BFC /* Room.swift in Sources */,
 				ABB07F0519BAD85600B02BFC /* Dimmer.swift in Sources */,
 				AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */,
@@ -436,14 +453,17 @@
 				ABB07F0619BAD85600B02BFC /* HomeWizard.swift in Sources */,
 				ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */,
 				ABB07F0719BAD85600B02BFC /* HueBridge.swift in Sources */,
+				AB897EC619C026F20065062E /* _Thermometer.swift in Sources */,
 				ABB07F0419BAD85600B02BFC /* Controller.swift in Sources */,
 				ABB07F0119BAD85600B02BFC /* _Room.swift in Sources */,
 				ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */,
 				ABB07EFF19BAD85600B02BFC /* _HomeWizard.swift in Sources */,
 				ABB07F1519BAF88A00B02BFC /* ArrayExtensions.swift in Sources */,
+				AB897EC219BFA4450065062E /* EnergyLink.swift in Sources */,
 				ABB07F0219BAD85600B02BFC /* _Sensor.swift in Sources */,
 				AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */,
 				AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */,
+				AB897EC419BFA8B10065062E /* CombinedValue.swift in Sources */,
 				ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */,
 				ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */,
 				AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */,

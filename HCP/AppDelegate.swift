@@ -15,10 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-		// Override point for customization after application launch.
-		
-		
-
 		
 		DDLog.addLogger(DDASLLogger.sharedInstance())
 		
@@ -38,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		MagicalRecord.setupAutoMigratingCoreDataStack();
 		
 		MagicalRecord.setLoggingLevel(MagicalRecordLoggingLevel.Verbose);
+
+		println(NSPersistentStore.urlForStoreName(MagicalRecord.defaultStoreName()));
 		
 
 		return true
