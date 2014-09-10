@@ -12,7 +12,7 @@ At first the idea was that only [HomeWizard][1] devices could be controlled by t
 
 #iOS Compatibility
 
-iOS7 and up... *probably*, but when HomeKit is fully revealed by Apple it might be iOS8 and higher.
+**iOS8**, better make sure you got your devices updated and ready.
 
 #Supported Hardware
 
@@ -84,7 +84,7 @@ The application will be prepared to be fully multi-lingual, but our main focus i
 For this application I currently use the following frameworks:
 
 * [AFNetworking][3] - An awesome networking library that I use for all HTTP requests.
-* [MagicalRecord][4] - CoreData in an ActiveRecord kind of way
+* [MagicalRecord/Shorthand][4] - CoreData in an ActiveRecord kind of way
 * [Mogenerator][5] - Generate Swift files for my CoreData models
 * [CocoaLumberjack][6] - Better logging than `NSLog`.
 

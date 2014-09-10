@@ -141,11 +141,20 @@
 			path = HomeWizard;
 			sourceTree = "<group>";
 		};
+		AB897EC919C034C80065062E /* Switches */ = {
+			isa = PBXGroup;
+			children = (
+				ABB07EF719BAD85600B02BFC /* Dimmer.swift */,
+				ABB07EFC19BAD85600B02BFC /* Switch.swift */,
+			);
+			name = Switches;
+			sourceTree = "<group>";
+		};
 		ABA7C57019BAD37A0085A730 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ABB07F1219BAF85900B02BFC /* Extensions */,
 				ABA7C57119BAD37A0085A730 /* CocoaLumberjack */,
+				ABB07F1219BAF85900B02BFC /* Extensions */,
 				ABB07EED19BAD85600B02BFC /* Models */,
 				ABA7C58819BAD37A0085A730 /* ViewControllers */,
 			);
@@ -188,15 +197,15 @@
 		ABB07EEE19BAD85600B02BFC /* _Machine */ = {
 			isa = PBXGroup;
 			children = (
-				AB897EC519C026F20065062E /* _Thermometer.swift */,
-				AB897EBF19BFA4390065062E /* _EnergyLink.swift */,
 				ABB07EEF19BAD85600B02BFC /* _Controller.swift */,
 				ABB07EF019BAD85600B02BFC /* _Dimmer.swift */,
+				AB897EBF19BFA4390065062E /* _EnergyLink.swift */,
 				ABB07EF119BAD85600B02BFC /* _HomeWizard.swift */,
 				ABB07EF219BAD85600B02BFC /* _HueBridge.swift */,
 				ABB07EF319BAD85600B02BFC /* _Room.swift */,
 				ABB07EF419BAD85600B02BFC /* _Sensor.swift */,
 				ABB07EF519BAD85600B02BFC /* _Switch.swift */,
+				AB897EC519C026F20065062E /* _Thermometer.swift */,
 			);
 			path = _Machine;
 			sourceTree = "<group>";
@@ -214,9 +223,8 @@
 		ABB07F0C19BADA1D00B02BFC /* HomeWizard */ = {
 			isa = PBXGroup;
 			children = (
-				ABB07EF719BAD85600B02BFC /* Dimmer.swift */,
+				AB897EC919C034C80065062E /* Switches */,
 				AB897EC119BFA4450065062E /* EnergyLink.swift */,
-				ABB07EFC19BAD85600B02BFC /* Switch.swift */,
 				AB897EC719C026FA0065062E /* Thermometer.swift */,
 			);
 			name = HomeWizard;

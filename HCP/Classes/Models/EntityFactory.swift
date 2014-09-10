@@ -16,23 +16,27 @@ class EntityFactory<T: Sensor> {
 		
 		var predicate: NSPredicate = NSPredicate(format: "id = %d AND className = %@", id, NSStringFromClass(T));
 		
-		println(predicate);
-		
 		var addedSwitches = controller.sensors.filteredSetUsingPredicate(predicate);
 		var sensor: T? = (addedSwitches.count == 0) ? nil : addedSwitches.allObjects[0] as? T;
 		
 		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
 			
 			if (sensor == nil) {
+				logInfo("Creating " + NSStringFromClass(T));
+				
 				var localController = controller.inContext(context);
 				
 				sensor = T.createEntityInContext(context);
 				sensor?.id = id;
+				sensor?.selected = true;
 				sensor!.controller = localController;
 				localController.addSensorsObject(sensor);
 			}
 			
-			sensor?.update(definition);
+			if (sensor?.selected == true) {
+				logInfo("Updating " + NSStringFromClass(T));
+				sensor?.update(definition);
+			}
 		}
 		
 		return sensor;

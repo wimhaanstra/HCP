@@ -11,11 +11,15 @@ import UIKit
 class HomeWizardSensorManagementViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
 	private var tableView: UITableView = UITableView();
-	
+	private var sensors: Array<Sensor> = [];
 	
 	var homeWizard: HomeWizard! = nil {
 		didSet {
+			
 			self.title = homeWizard.name;
+			self.sensors = homeWizard.sensors.allObjects as Array<Sensor>;
+			self.sensors.sort({ $0.name < $1.name });
+			
 		}
 	}
 	
@@ -41,7 +45,7 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if (section == 0) {
-			return 0;
+			return self.homeWizard.sensors.count;
 		}
 		else {
 			return 2;
@@ -66,6 +70,16 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 				cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell");
 			}
 			
+			var sensor: Sensor = self.sensors[indexPath.row];
+			cell.textLabel!.text = sensor.name;
+			
+			if (sensor.selected == true) {
+				cell.accessoryType = .Checkmark;
+			}
+			else {
+				cell.accessoryType = .None;
+			}
+			
 			return cell;
 		}
 		else { //if (indexPath.section == 1) {
@@ -83,8 +97,8 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 				cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator;
 			}
 			else if (indexPath.row == 1) {
-				cell.backgroundColor = UIColor.redColor();
-				cell.textLabel?.textColor = UIColor.whiteColor();
+				cell.textLabel?.textColor = UIColor.redColor();
+				cell.accessoryType = .None;
 				cell.textLabel?.text = "Remove HomeWizard";
 			}
 			
@@ -98,6 +112,26 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 		tableView.deselectRowAtIndexPath(indexPath, animated: true);
 		
 		if (indexPath.section == 0) {
+			
+			var cell = tableView.cellForRowAtIndexPath(indexPath);
+			var sensor: Sensor = self.sensors[indexPath.row];
+			
+			MagicalRecord.saveWithBlockAndWait({ (context) -> Void in
+				var sensorInContext:Sensor = sensor.inContext(context);
+				
+				if (sensor.selected == true) {
+					cell?.accessoryType = .None;
+					sensor.selected = false;
+					sensorInContext.selected = false;
+				}
+				else {
+					sensor.selected = true;
+					sensorInContext.selected = true;
+					cell?.accessoryType = .Checkmark;
+				}
+				
+			});
+			
 		}
 		else if (indexPath.section == 1) {
 			
