@@ -25,15 +25,16 @@ class EntityFactory<T: Sensor> {
 				logInfo("Creating " + NSStringFromClass(T));
 				
 				var localController = controller.inContext(context);
-				
-				sensor = T.createEntityInContext(context);
-				sensor?.id = id;
-				sensor?.selected = true;
-				sensor!.controller = localController;
-				localController.addSensorsObject(sensor);
+				if (localController != nil) {
+					sensor = T.createEntityInContext(context);
+					sensor?.id = id;
+					sensor?.selected = true;
+					sensor!.controller = localController;
+					localController.addSensorsObject(sensor);
+				}
 			}
 			
-			if (sensor?.selected == true) {
+			if (sensor != nil && sensor?.selected == true) {
 				logInfo("Updating " + NSStringFromClass(T));
 				sensor?.update(definition);
 			}

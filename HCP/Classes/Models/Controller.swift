@@ -10,6 +10,12 @@ class Controller: _Controller {
 		return self.name! + " (" + self.ip! + ")";
 	}
 	
+	var entityName: String {
+		return "Controller";
+	}
+	
+	var started: Bool = false;
+	
 	func start() {
 	}
 	

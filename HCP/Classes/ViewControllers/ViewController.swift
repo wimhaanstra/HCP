@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 	var popOver:UIPopoverController! = nil;
 	var popupButton: UIButton! = nil;
 	
+	var homeWizard: HomeWizard! = nil;
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
 		popupButton.setTitle("Discover HW", forState: .Normal);
 		popupButton.setTitleColor(UIColor.blackColor(), forState: .Normal);
 		popupButton.addTarget(self, action: Selector("popupButton_Clicked"), forControlEvents: .TouchUpInside);
+		
 	}
 	
 	override func viewDidAppear(animated: Bool) {

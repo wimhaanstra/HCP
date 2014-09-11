@@ -23,4 +23,6 @@
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
+#import <UICKeyChainStore/UICKeyChainStore.h>
+
 #endif

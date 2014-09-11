@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeWizardSensorManagementViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeWizardSensorManagementViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
 	
 	private var tableView: UITableView = UITableView();
 	private var sensors: Array<Sensor> = [];
@@ -32,6 +32,8 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 		self.tableView.autoresizingMask = .FlexibleHeight | .FlexibleWidth;
 
 		self.view.addSubview(tableView);
+		
+		self.preferredContentSize = CGSizeMake(320, 400);
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -135,18 +137,25 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 		}
 		else if (indexPath.section == 1) {
 			
+			if (indexPath.row == 1) {
+				
+				var alert = UIAlertController(title: "Remove HomeWizard?", message: "Removing this HomeWizard will remove all settings that you configured.", preferredStyle: UIAlertControllerStyle.Alert);
+				alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: { ( action ) -> Void in
+					
+					ControllerManager.sharedInstance.remove(self.homeWizard, completion: { (success) -> Void in
+					});
+					
+					self.navigationController?.popToRootViewControllerAnimated(true);
+				}));
+				
+				alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: { ( action ) -> Void in
+				}));
+				
+				self.presentViewController(alert, animated: true, completion: { () -> Void in
+				});
+			}
+			
 		}
 	}
-	
-
-	/*
-	// MARK: - Navigation
-	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-	// Get the new view controller using segue.destinationViewController.
-	// Pass the selected object to the new view controller.
-	}
-	*/
 	
 }

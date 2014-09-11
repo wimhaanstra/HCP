@@ -36,7 +36,6 @@ class EnergyLink: _EnergyLink {
 			self.s2 = CombinedValue(itemDictionary: s2Value);
 		}
 		
-		println(self);
 	}
 
 }

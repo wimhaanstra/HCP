@@ -51,28 +51,49 @@ class HomeWizard: _HomeWizard {
             }
         )
     }
+	
+	override var entityName: String {
+		return "HomeWizard";
+	}
+
+	
+	func password() -> String? {
+		return UICKeyChainStore.stringForKey(self.ip! + ".password");
+	}
     
     func performAction(command: String, completion: (results: AnyObject!) -> Void ) -> Void {
-		logDebug("Performing HomeWizard Command: " + command);
+		println(self.ip);
+		logDebug("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
 		
-		let url = "http://" + self.ip! + "/" + self.password! + command;
-		
-		let manager = AFHTTPRequestOperationManager();
-		manager.GET(url, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-			completion(results: responseObject);
-		},
-		failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
-		});
+		if (self.password() != nil) {
+			let url = "http://" + self.ip! + "/" + self.password()! + command;
+			
+			let manager = AFHTTPRequestOperationManager();
+			manager.GET(url, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+				completion(results: responseObject);
+			},
+			failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+			});
+		}
     }
 	
 	func login(password: String, completion: (success: Bool) -> Void) -> Void {
-		self.password = password;
+
+		var stored = UICKeyChainStore.setString(password, forKey: self.ip! + ".password");
+		if (!stored) {
+			logError("Storing value in keychain failed");
+		}
+
 		self.performAction("/enlist", completion: { (results) -> Void in
 			if (results.objectForKey("status") != nil) {
 				var status: String = results.objectForKey("status") as String;
 				completion(success: (status == "ok"));
 			}
+			else {
+				completion(success: false);
+			}
 		});
+		
 	}
 	
 	func fetchSensors() {
@@ -125,11 +146,15 @@ class HomeWizard: _HomeWizard {
 		
 		_fetchSensorsTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("fetchSensors"), userInfo: nil, repeats: true);
 		
+		self.started = true;
+		
 		// Because we don't want to wait for the timer to trigger, call fetchSensors now also
 		self.fetchSensors();
 	}
 	
 	override func stop() {
+		
+		self.started = false;
 		
 		if (_fetchDataTimer != nil) {
 			_fetchDataTimer?.invalidate();
@@ -198,6 +223,4 @@ class HomeWizard: _HomeWizard {
 		
 	}
 	
-	
-    
 }

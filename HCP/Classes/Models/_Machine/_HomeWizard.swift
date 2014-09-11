@@ -3,10 +3,6 @@
 
 import CoreData
 
-enum HomeWizardAttributes: String {
-    case password = "password"
-}
-
 @objc
 class _HomeWizard: Controller {
 
@@ -32,11 +28,6 @@ class _HomeWizard: Controller {
     }
 
     // MARK: - Properties
-
-    @NSManaged
-    var password: String?
-
-    // func validatePassword(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

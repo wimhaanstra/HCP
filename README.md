@@ -84,14 +84,16 @@ The application will be prepared to be fully multi-lingual, but our main focus i
 For this application I currently use the following frameworks:
 
 * [AFNetworking][3] - An awesome networking library that I use for all HTTP requests.
-* [MagicalRecord/Shorthand][4] - CoreData in an ActiveRecord kind of way
-* [Mogenerator][5] - Generate Swift files for my CoreData models
+* [MagicalRecord/Shorthand][4] - CoreData in an ActiveRecord kind of way.
+* [Mogenerator][5] - Generate Swift files for my CoreData models.
 * [CocoaLumberjack][6] - Better logging than `NSLog`.
+* [UICKeyChainStore][7] - Easy KeyChain access.
 
 [3]: http://afnetworking.com
 [4]: https://github.com/magicalpanda/MagicalRecord
 [5]: https://github.com/rentzsch/mogenerator
 [6]: https://github.com/CocoaLumberjack/CocoaLumberjack
+[7]: https://github.com/kishikawakatsumi/UICKeyChainStore
 
 -
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

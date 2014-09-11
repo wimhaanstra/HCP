@@ -5,7 +5,7 @@
         <attribute name="lastUpdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="sensors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sensor" inverseName="controller" inverseEntity="Sensor" syncable="YES"/>
+        <relationship name="sensors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Sensor" inverseName="controller" inverseEntity="Sensor" syncable="YES"/>
     </entity>
     <entity name="Dimmer" representedClassName="Dimmer" parentEntity="Switch" syncable="YES">
         <attribute name="dimValue" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -20,9 +20,7 @@
         <attribute name="tariff" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="used" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
-    <entity name="HomeWizard" representedClassName="HomeWizard" parentEntity="Controller" syncable="YES">
-        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
+    <entity name="HomeWizard" representedClassName="HomeWizard" parentEntity="Controller" syncable="YES"/>
     <entity name="HueBridge" representedClassName="HueBridge" parentEntity="Controller" syncable="YES">
         <attribute name="mac" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -50,9 +48,9 @@
         <attribute name="temperature" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Controller" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Controller" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Dimmer" positionX="-27" positionY="54" width="128" height="58"/>
-        <element name="HomeWizard" positionX="-54" positionY="27" width="128" height="60"/>
+        <element name="HomeWizard" positionX="-54" positionY="27" width="128" height="43"/>
         <element name="HueBridge" positionX="-36" positionY="36" width="128" height="58"/>
         <element name="Room" positionX="-18" positionY="72" width="128" height="88"/>
         <element name="Sensor" positionX="-45" positionY="18" width="128" height="150"/>

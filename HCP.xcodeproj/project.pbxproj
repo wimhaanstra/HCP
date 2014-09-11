@@ -11,12 +11,14 @@
 		AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0A66C319BAD6A900553CDC /* HCP.xcdatamodeld */; };
 		AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */; };
 		AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */; };
+		AB19DA7A19C2420300F57D60 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA7919C2420300F57D60 /* ArrayExtensions.swift */; };
 		AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */; };
 		AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EBF19BFA4390065062E /* _EnergyLink.swift */; };
 		AB897EC219BFA4450065062E /* EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC119BFA4450065062E /* EnergyLink.swift */; };
 		AB897EC419BFA8B10065062E /* CombinedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC319BFA8B10065062E /* CombinedValue.swift */; };
 		AB897EC619C026F20065062E /* _Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC519C026F20065062E /* _Thermometer.swift */; };
 		AB897EC819C026FA0065062E /* Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC719C026FA0065062E /* Thermometer.swift */; };
+		AB897ECB19C1708E0065062E /* ControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897ECA19C1708E0065062E /* ControllerManager.swift */; };
 		ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */; };
 		ABA7C58B19BAD37A0085A730 /* ExtendedLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */; };
 		ABA7C59A19BAD37A0085A730 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA7C58919BAD37A0085A730 /* ViewController.swift */; };
@@ -34,7 +36,6 @@
 		ABB07F0819BAD85600B02BFC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFA19BAD85600B02BFC /* Room.swift */; };
 		ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFB19BAD85600B02BFC /* Sensor.swift */; };
 		ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFC19BAD85600B02BFC /* Switch.swift */; };
-		ABB07F1519BAF88A00B02BFC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */; };
 		ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC81F19A3D038004B309B /* AppDelegate.swift */; };
 		ABEAC82819A3D038004B309B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82619A3D038004B309B /* Main.storyboard */; };
 		ABEAC82A19A3D038004B309B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82919A3D038004B309B /* Images.xcassets */; };
@@ -70,12 +71,14 @@
 		AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardDiscoveryViewController.swift; sourceTree = "<group>"; };
 		AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardSensorManagementViewController.swift; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
+		AB19DA7919C2420300F57D60 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		AB897EBF19BFA4390065062E /* _EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EnergyLink.swift; sourceTree = "<group>"; };
 		AB897EC119BFA4450065062E /* EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyLink.swift; sourceTree = "<group>"; };
 		AB897EC319BFA8B10065062E /* CombinedValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedValue.swift; sourceTree = "<group>"; };
 		AB897EC519C026F20065062E /* _Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Thermometer.swift; sourceTree = "<group>"; };
 		AB897EC719C026FA0065062E /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
+		AB897ECA19C1708E0065062E /* ControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
 		ABA7C57219BAD37A0085A730 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
 		ABA7C57319BAD37A0085A730 /* ExtendedLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedLogFormatter.h; sourceTree = "<group>"; };
 		ABA7C57419BAD37A0085A730 /* ExtendedLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedLogFormatter.m; sourceTree = "<group>"; };
@@ -94,7 +97,6 @@
 		ABB07EFA19BAD85600B02BFC /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		ABB07EFB19BAD85600B02BFC /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		ABB07EFC19BAD85600B02BFC /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
-		ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
 		ABEAC81A19A3D038004B309B /* HCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEAC81E19A3D038004B309B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABEAC81F19A3D038004B309B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,14 @@
 			path = HomeWizard;
 			sourceTree = "<group>";
 		};
+		AB19DA7819C241F200F57D60 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AB19DA7919C2420300F57D60 /* ArrayExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AB897EC919C034C80065062E /* Switches */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,8 +163,8 @@
 		ABA7C57019BAD37A0085A730 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AB19DA7819C241F200F57D60 /* Extensions */,
 				ABA7C57119BAD37A0085A730 /* CocoaLumberjack */,
-				ABB07F1219BAF85900B02BFC /* Extensions */,
 				ABB07EED19BAD85600B02BFC /* Models */,
 				ABA7C58819BAD37A0085A730 /* ViewControllers */,
 			);
@@ -190,6 +200,7 @@
 				ABB07EFB19BAD85600B02BFC /* Sensor.swift */,
 				AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */,
 				AB897EC319BFA8B10065062E /* CombinedValue.swift */,
+				AB897ECA19C1708E0065062E /* ControllerManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -228,14 +239,6 @@
 				AB897EC719C026FA0065062E /* Thermometer.swift */,
 			);
 			name = HomeWizard;
-			sourceTree = "<group>";
-		};
-		ABB07F1219BAF85900B02BFC /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				ABB07F1419BAF88A00B02BFC /* ArrayExtensions.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		ABEAC81119A3D038004B309B = {
@@ -462,13 +465,14 @@
 				ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */,
 				ABB07F0719BAD85600B02BFC /* HueBridge.swift in Sources */,
 				AB897EC619C026F20065062E /* _Thermometer.swift in Sources */,
+				AB19DA7A19C2420300F57D60 /* ArrayExtensions.swift in Sources */,
 				ABB07F0419BAD85600B02BFC /* Controller.swift in Sources */,
 				ABB07F0119BAD85600B02BFC /* _Room.swift in Sources */,
 				ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */,
 				ABB07EFF19BAD85600B02BFC /* _HomeWizard.swift in Sources */,
-				ABB07F1519BAF88A00B02BFC /* ArrayExtensions.swift in Sources */,
 				AB897EC219BFA4450065062E /* EnergyLink.swift in Sources */,
 				ABB07F0219BAD85600B02BFC /* _Sensor.swift in Sources */,
+				AB897ECB19C1708E0065062E /* ControllerManager.swift in Sources */,
 				AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */,
 				AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */,
 				AB897EC419BFA8B10065062E /* CombinedValue.swift in Sources */,

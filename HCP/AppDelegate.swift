@@ -35,9 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		MagicalRecord.setLoggingLevel(MagicalRecordLoggingLevel.Verbose);
 
-		println(NSPersistentStore.urlForStoreName(MagicalRecord.defaultStoreName()));
+		ControllerManager.sharedInstance.allHomeWizards();
 		
-
 		return true
 	}
 

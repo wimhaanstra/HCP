@@ -13,7 +13,7 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 	private var tableView: UITableView = UITableView();
 	private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView();
 	private var discoveredHomeWizards: [Controller] = [Controller]();
-	private var storedHomeWizards: [Controller] = [Controller]();
+	private var passwordTextField: UITextField? = nil;
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -25,12 +25,13 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 		self.view.addSubview(tableView);
 		
 		self.title = "HomeWizards";
+		
+		self.preferredContentSize = CGSizeMake(320, 400);
+
 	}
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated);
-		
-		storedHomeWizards = HomeWizard.findAll() as [Controller];
 		
 		HomeWizard.discover(false, completion: { (results) -> Void in
 			self.discoveredHomeWizards = results;
@@ -49,7 +50,7 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if (section == 0) {
-			return storedHomeWizards.count;
+			return ControllerManager.sharedInstance.allHomeWizards().count;
 		}
 		else {
 			return discoveredHomeWizards.count;
@@ -74,7 +75,7 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 					cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell");
 				}
 				
-				var storedHomeWizard: HomeWizard = self.storedHomeWizards[indexPath.row] as HomeWizard;
+				var storedHomeWizard: HomeWizard = ControllerManager.sharedInstance.allHomeWizards()[indexPath.row] as HomeWizard;
 				
 				cell.textLabel?.text = storedHomeWizard.description;
 			
@@ -114,31 +115,46 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 		tableView.deselectRowAtIndexPath(indexPath, animated: true);
 
 		if (indexPath.section == 1) {
-			var discoveredHomeWizard: HomeWizard = self.discoveredHomeWizards[indexPath.row] as HomeWizard;
 			
-			if (discoveredHomeWizard.managedObjectContext == nil) {
-				var cell = tableView.cellForRowAtIndexPath(indexPath);
+			var alert = UIAlertController(title: "Please log in", message: "You need to enter the password for this HomeWizard", preferredStyle: UIAlertControllerStyle.Alert);
+			alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+				textField.placeholder = "Password";
+				textField.secureTextEntry = true;
+				self.passwordTextField = textField;
+			});
+			
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
 				
-				MagicalRecord.saveWithBlock({ (context) -> Void in
-					var homeWizard: HomeWizard! = HomeWizard.createEntityInContext(context);
-					if (homeWizard != nil) {
-						homeWizard.name = discoveredHomeWizard.name;
-						homeWizard.ip = discoveredHomeWizard.ip;
-						homeWizard.lastUpdate = discoveredHomeWizard.lastUpdate;
-					}
+				if (self.passwordTextField == nil || self.passwordTextField?.text! == "") {
+					return;
+				}
+				
+				println(self.passwordTextField?.text);
+				
+				var password: String = self.passwordTextField!.text;
+				
+				var discoveredHomeWizard: HomeWizard = self.discoveredHomeWizards[indexPath.row] as HomeWizard;
+				
+				if (discoveredHomeWizard.managedObjectContext == nil) {
+					var cell = tableView.cellForRowAtIndexPath(indexPath);
 					
-					self.discoveredHomeWizards.removeAtIndex(indexPath.row);
-					
-					}, completion: { (success, error) -> Void in
-						self.storedHomeWizards = HomeWizard.findAll() as [Controller];
-
-						self.tableView.reloadData();
-				});
-			}
+					discoveredHomeWizard.login(password, completion: { (success) -> Void in
+						self.discoveredHomeWizards.removeAtIndex(indexPath.row);
+						
+						ControllerManager.sharedInstance.addHomeWizard(discoveredHomeWizard, completion: { (result) -> Void in
+							self.tableView.reloadData();
+						})
+					});
+				}
+			}));
+			
+			self.presentViewController(alert, animated: true, completion: { () -> Void in
+				
+			});
 		}
 		else if (indexPath.section == 0) {
 			var managementViewController = HomeWizardSensorManagementViewController();
-			managementViewController.homeWizard = self.storedHomeWizards[indexPath.row] as HomeWizard;
+			managementViewController.homeWizard = ControllerManager.sharedInstance.allHomeWizards()[indexPath.row] as HomeWizard;
 			self.navigationController?.pushViewController(managementViewController, animated: true);
 		}
 	}
