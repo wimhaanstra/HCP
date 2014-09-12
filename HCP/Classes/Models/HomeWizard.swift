@@ -190,7 +190,7 @@ class HomeWizard: _HomeWizard {
 						// TODO: Add Hue via HomeWizard support
 					}
 					else if (switchType == "asun") {
-						// TODO: Add Asun support
+						EntityFactory<Asun>.create(self, definition: itemDictionary);
 					}
 				}
 			}

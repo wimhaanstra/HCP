@@ -12,6 +12,8 @@
 		AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */; };
 		AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */; };
 		AB19DA7A19C2420300F57D60 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA7919C2420300F57D60 /* ArrayExtensions.swift */; };
+		AB19DA7C19C2BBAB00F57D60 /* _Asun.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA7B19C2BBAB00F57D60 /* _Asun.swift */; };
+		AB19DA7E19C2BBBA00F57D60 /* Asun.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA7D19C2BBBA00F57D60 /* Asun.swift */; };
 		AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */; };
 		AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EBF19BFA4390065062E /* _EnergyLink.swift */; };
 		AB897EC219BFA4450065062E /* EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC119BFA4450065062E /* EnergyLink.swift */; };
@@ -72,6 +74,8 @@
 		AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWizardSensorManagementViewController.swift; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB19DA7919C2420300F57D60 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		AB19DA7B19C2BBAB00F57D60 /* _Asun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Asun.swift; sourceTree = "<group>"; };
+		AB19DA7D19C2BBBA00F57D60 /* Asun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asun.swift; sourceTree = "<group>"; };
 		AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		AB897EBF19BFA4390065062E /* _EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EnergyLink.swift; sourceTree = "<group>"; };
 		AB897EC119BFA4450065062E /* EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyLink.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		AB897EC919C034C80065062E /* Switches */ = {
 			isa = PBXGroup;
 			children = (
+				AB19DA7D19C2BBBA00F57D60 /* Asun.swift */,
 				ABB07EF719BAD85600B02BFC /* Dimmer.swift */,
 				ABB07EFC19BAD85600B02BFC /* Switch.swift */,
 			);
@@ -208,6 +213,7 @@
 		ABB07EEE19BAD85600B02BFC /* _Machine */ = {
 			isa = PBXGroup;
 			children = (
+				AB19DA7B19C2BBAB00F57D60 /* _Asun.swift */,
 				ABB07EEF19BAD85600B02BFC /* _Controller.swift */,
 				ABB07EF019BAD85600B02BFC /* _Dimmer.swift */,
 				AB897EBF19BFA4390065062E /* _EnergyLink.swift */,
@@ -460,6 +466,7 @@
 				AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */,
 				ABA7C59A19BAD37A0085A730 /* ViewController.swift in Sources */,
 				ABB07EFE19BAD85600B02BFC /* _Dimmer.swift in Sources */,
+				AB19DA7C19C2BBAB00F57D60 /* _Asun.swift in Sources */,
 				ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */,
 				ABB07F0619BAD85600B02BFC /* HomeWizard.swift in Sources */,
 				ABA7C58A19BAD37A0085A730 /* CocoaLumberjack.swift in Sources */,
@@ -475,6 +482,7 @@
 				AB897ECB19C1708E0065062E /* ControllerManager.swift in Sources */,
 				AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */,
 				AB0FD7BB19BB32F600649C47 /* HomeWizardDiscoveryViewController.swift in Sources */,
+				AB19DA7E19C2BBBA00F57D60 /* Asun.swift in Sources */,
 				AB897EC419BFA8B10065062E /* CombinedValue.swift in Sources */,
 				ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */,
 				ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */,
