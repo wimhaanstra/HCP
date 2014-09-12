@@ -29,12 +29,14 @@ PODS:
   - CocoaLumberjack/Core (2.0.0-beta)
   - CocoaLumberjack/Extensions (2.0.0-beta):
     - CocoaLumberjack/Core
+  - DZNSegmentedControl (1.2)
   - MagicalRecord/Shorthand (2.3.0-beta.3)
   - UICKeyChainStore (1.0.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - CocoaLumberjack
+  - DZNSegmentedControl
   - MagicalRecord/Shorthand (from `https://github.com/magicalpanda/MagicalRecord.git`)
   - UICKeyChainStore
 
@@ -45,6 +47,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
+  DZNSegmentedControl: 8b99ddb1c7dfa311422aae027d3f64aa3d7315cb
   MagicalRecord: 23dfe0350eab4767cc1ce7d247af4e4cd54ee72c
   UICKeyChainStore: 4f9719600cc70025064e26f28f1210bcfc3b0c35
 

@@ -24,5 +24,6 @@
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import <DZNSegmentedControl/DZNSegmentedControl.h>
 
 #endif

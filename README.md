@@ -8,7 +8,7 @@ The goals of **HCP** is to be able to control my home from an iPad which I have 
 
 I want to be able to connect to several devices and all control them from one giant control-panel. With this functionality I want to stay as close to the feature-set as the supported hardware supports.
 
-At first the idea was that only [HomeWizard][1] devices could be controlled by this application, but as soon as I added beta testers to the first alpha release of the application, requests for more supported devices came rolling in. So HCP is now less [HomeWizard][1] focussed and also functions when you do not have one.
+At first the idea was that only [HomeWizard](http://homewizard.nl) devices could be controlled by this application, but as soon as I added beta testers to the first alpha release of the application, requests for more supported devices came rolling in. So HCP is now less [HomeWizard](http://homewizard.nl) focussed and also functions when you do not have one.
 
 #iOS Compatibility
 
@@ -19,14 +19,14 @@ At first the idea was that only [HomeWizard][1] devices could be controlled by t
 Currently the project focusses on 2 hardware devices, but can later be expanded by either me or other fellow developers.
 
 ###HomeWizard
-The [HomeWizard][1] is a device that let's you tie all kinds of devices together. A couple of supported devices are:
+The [HomeWizard](http://homewizard.nl) is a device that let's you tie all kinds of devices together. A couple of supported devices are:
 * Smart P1 based power meters
 * Klik-aan/Klik-uit switches (quite popular in the Netherlands)
 * RF based door sensors
 * RF based thermometers
 
 ###Philips Hue
-Does the [Philips Hue Bridge][2] need an introduction? RGB LED powered lights which can be controlled using your phone or tablet.
+Does the [Philips Hue Bridge](http://www2.meethue.com/en-US) need an introduction? RGB LED powered lights which can be controlled using your phone or tablet.
 
 #Model definitions
 In the model these are defined as `Controller` objects. A `Controller` is a device that can control one or more connected devices (like lights, cameras etc.).
@@ -67,14 +67,9 @@ func on() -> Void {
 }
 ```
 
-[1]: http://homewizard.nl
-[2]: http://www2.meethue.com/en-US
-
 #API documentation
 
-I try to document all the API calls I perform, because not everything is documented as good as I'd like. Visit the [Github Wiki][7] I created for this.
-
-[7]: https://github.com/depl0y/HCP/wiki
+I try to document all the API calls I perform, because not everything is documented as good as I'd like. Visit the [Github Wiki](https://github.com/depl0y/HCP/wiki) I created for this.
 
 #Localisation
 The application will be prepared to be fully multi-lingual, but our main focus is English and Dutch.
@@ -83,17 +78,15 @@ The application will be prepared to be fully multi-lingual, but our main focus i
 
 For this application I currently use the following frameworks:
 
-* [AFNetworking][3] - An awesome networking library that I use for all HTTP requests.
-* [MagicalRecord/Shorthand][4] - CoreData in an ActiveRecord kind of way.
-* [Mogenerator][5] - Generate Swift files for my CoreData models.
-* [CocoaLumberjack][6] - Better logging than `NSLog`.
-* [UICKeyChainStore][7] - Easy KeyChain access.
-
-[3]: http://afnetworking.com
-[4]: https://github.com/magicalpanda/MagicalRecord
-[5]: https://github.com/rentzsch/mogenerator
-[6]: https://github.com/CocoaLumberjack/CocoaLumberjack
-[7]: https://github.com/kishikawakatsumi/UICKeyChainStore
+* [AFNetworking](http://afnetworking.com) - An awesome networking library that I use for all HTTP requests.
+* [MagicalRecord/Shorthand](https://github.com/magicalpanda/MagicalRecord) - CoreData in an ActiveRecord kind of way.
+* [Mogenerator](https://github.com/rentzsch/mogenerator) - Generate Swift files for my CoreData models.
+* [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) - Better logging than `NSLog`.
+* [UICKeyChainStore](https://github.com/kishikawakatsumi/UICKeyChainStore) - Easy KeyChain access.
+* [DZNSegmentedControl](https://github.com/dzenbot/DZNSegmentedControl) - A great control, used to page through the screens.
 
 -
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+
+[![BY-NC Logo](https://i.creativecommons.org/l/by-nc/4.0/80x15.png)](http://creativecommons.org/licenses/by-nc/4.0/)
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).

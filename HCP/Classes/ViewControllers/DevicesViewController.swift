@@ -25,6 +25,7 @@ class DevicesViewController: UIViewController {
 	
 	override func viewDidAppear(animated: Bool) {
 		self.popupButton.frame = CGRectMake(100, 100, 150, 44);
+		self.popupButton.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | .FlexibleRightMargin;
 		self.view.addSubview(popupButton);
 	}
 	

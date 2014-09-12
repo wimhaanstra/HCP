@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+class ContainerViewController: UIViewController, DZNSegmentedControlDelegate {
 	
 	private var scrollView:UIScrollView = UIScrollView();
 	private var devicesViewController: DevicesViewController = DevicesViewController();
 	private var roomsViewController: RoomsViewController = RoomsViewController();
+	
+	private var menuBar: DZNSegmentedControl? = nil;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,16 @@ class ContainerViewController: UIViewController {
 		self.scrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
 		self.scrollView.pagingEnabled = true;
 		
-		self.view.addSubview(scrollView);
+		self.menuBar = DZNSegmentedControl(items: ["ROOMS", "DEVICES"]);
+		
+		self.menuBar?.showsCount = false;
+		self.menuBar?.delegate = self;
+		self.menuBar?.selectedSegmentIndex = 0;
+		self.menuBar?.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
+		self.menuBar?.addTarget(self, action: Selector("selectedSegment:"), forControlEvents: UIControlEvents.ValueChanged);
+		
+		self.view.addSubview(self.scrollView);
+		self.view.addSubview(self.menuBar!);
     }
 	
 	override func viewDidAppear(animated: Bool) {
@@ -36,6 +47,19 @@ class ContainerViewController: UIViewController {
 		self.scrollView.addSubview(roomsViewController.view);
 		self.scrollView.addSubview(devicesViewController.view);
 		
+		self.menuBar?.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.menuBar!.height);
+		
+	}
+	
+	func selectedSegment(menuBar: DZNSegmentedControl) -> Void {
+		var viewFrame = self.scrollView.frame;
+		viewFrame.origin.x = viewFrame.size.width * CGFloat(menuBar.selectedSegmentIndex);
+		viewFrame.origin.y = 0;
+		self.scrollView.scrollRectToVisible(viewFrame, animated: true);
+	}
+	
+	func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+		return UIBarPosition.Top;
 	}
 
     override func didReceiveMemoryWarning() {
