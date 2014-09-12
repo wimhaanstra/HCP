@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
+	var containerViewController: ContainerViewController?
 
 
 	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
@@ -32,10 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		DDLog.logAsync = false;
 
 		MagicalRecord.setupAutoMigratingCoreDataStack();
-		
 		MagicalRecord.setLoggingLevel(MagicalRecordLoggingLevel.Verbose);
 
 		ControllerManager.sharedInstance.allHomeWizards();
+		
+		self.window = UIWindow(frame: UIScreen.mainScreen().bounds);
+		self.containerViewController = ContainerViewController();
+		self.window?.rootViewController = self.containerViewController;
+		self.window?.makeKeyAndVisible();
 		
 		return true
 	}

@@ -53,7 +53,7 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 			return ControllerManager.sharedInstance.allHomeWizards().count;
 		}
 		else {
-			return discoveredHomeWizards.count;
+			return self.discoveredHomeWizards.count;
 		}
 	}
 	

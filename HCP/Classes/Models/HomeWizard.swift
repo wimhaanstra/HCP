@@ -113,13 +113,14 @@ class HomeWizard: _HomeWizard {
 					self.parse(response);
 				}
 			}
+	
+			// When done, start updating data (again)
 			if (self._fetchDataTimer == nil) {
 				self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: true);
 			}
 		});
 		
 		
-		// When done, start updating data (again)
 	}
 	
 	func fetchData() {
