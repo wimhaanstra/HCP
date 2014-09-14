@@ -8,25 +8,27 @@
 
 import UIKit
 
-class DevicesViewController: UIViewController {
+class DevicesViewController: MenuViewController {
 
 	var popOver:UIPopoverController! = nil;
-	var popupButton: UIButton! = nil;
+	var addControllerButton: UIButton? = nil;
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		self.popupButton = UIButton();
-		self.popupButton.setTitle("Discover HW", forState: .Normal);
-		self.popupButton.setTitleColor(UIColor.blackColor(), forState: .Normal);
-		self.popupButton.addTarget(self, action: Selector("popupButton_Clicked"), forControlEvents: .TouchUpInside);
-
+		addControllerButton = self.addButton("Controllers", width: 150, selector: Selector("popupButton_Clicked"));
+		self.addButton("Refresh all", width: 150, selector: Selector("popupButton_Clicked"));
+	
+		/*
+		for recognizer in self.tableView.gestureRecognizers as [UIGestureRecognizer] {
+			if let panGesture = recognizer as? UIPanGestureRecognizer {
+				panGesture.requireGestureRecognizerToFail(self.swipeDownGesture!);
+			}
+		}
+		*/
     }
 	
 	override func viewDidAppear(animated: Bool) {
-		self.popupButton.frame = CGRectMake(100, 100, 150, 44);
-		self.popupButton.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | .FlexibleRightMargin;
-		self.view.addSubview(popupButton);
 	}
 	
 	func popupButton_Clicked() {
@@ -36,7 +38,7 @@ class DevicesViewController: UIViewController {
 		var navigationController = UINavigationController(rootViewController: c);
 		
 		self.popOver = UIPopoverController(contentViewController: navigationController);
-		self.popOver.presentPopoverFromRect(popupButton.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
+		self.popOver.presentPopoverFromRect(addControllerButton!.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
 	}
 
 

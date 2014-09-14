@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Classy (0.2.4)
   - CocoaLumberjack (2.0.0-beta):
     - CocoaLumberjack/CLI
     - CocoaLumberjack/Core
@@ -35,6 +36,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Classy (~> 0.2.4)
   - CocoaLumberjack
   - DZNSegmentedControl
   - MagicalRecord/Shorthand (from `https://github.com/magicalpanda/MagicalRecord.git`)
@@ -46,6 +48,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  Classy: 8c8f835d51e20d25e9cce0d864fba5bf1cef6070
   CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
   DZNSegmentedControl: 8b99ddb1c7dfa311422aae027d3f64aa3d7315cb
   MagicalRecord: 23dfe0350eab4767cc1ce7d247af4e4cd54ee72c

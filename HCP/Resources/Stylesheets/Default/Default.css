@@ -1,0 +1,49 @@
+
+$light-font = "AvenirNextCondensed-UltraLight"
+$regular-font = "AvenirNextCondensed-Regular"
+$bold-font = "AvenirNextCondensed-Bold"
+
+$default-background-color = #F1F1F1;
+
+$toolbar-color = #454545;
+$toolbar-title-color = white;
+
+$cell-background-color = white;
+$cell-title-size = 18;
+
+UIButton {
+	titleLabel: @{
+		font: $regular-font 20;
+	}
+}
+
+UITableViewCell {
+	
+	textLabel: @{
+		font: $regular-font 20;
+	}
+	
+}
+
+UILabel {
+	font: $regular-font 20;
+}
+
+UIView.MenuBar {
+	background-color: #F1F1F1;
+	
+	UIButton {
+		titleLabel: @{
+			font: $regular-font 16;
+		}
+	}
+}
+
+
+UICollectionViewCell.Room {
+	background-color: #f1f1f1;
+	
+	UILabel {
+		font: $regular-font 24;
+	}
+}

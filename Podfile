@@ -5,3 +5,4 @@ pod 'CocoaLumberjack'
 pod 'MagicalRecord/Shorthand', :git => "https://github.com/magicalpanda/MagicalRecord.git"
 pod 'UICKeyChainStore'
 pod 'DZNSegmentedControl'
+pod 'Classy', '~> 0.2.4'

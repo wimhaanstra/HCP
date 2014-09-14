@@ -76,14 +76,24 @@ The application will be prepared to be fully multi-lingual, but our main focus i
 
 #Used Frameworks and tools
 
-For this application I currently use the following frameworks:
+For this application I currently use the following frameworks (in no particular order).
 
 * [AFNetworking](http://afnetworking.com) - An awesome networking library that I use for all HTTP requests.
+* [Classy](http://classy.as) - Styling of UIKit using CSS-like files.
+* [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) - Better logging than `NSLog`.
+* [DZNSegmentedControl](https://github.com/dzenbot/DZNSegmentedControl) - A great control, used to page through the screens.
 * [MagicalRecord/Shorthand](https://github.com/magicalpanda/MagicalRecord) - CoreData in an ActiveRecord kind of way.
 * [Mogenerator](https://github.com/rentzsch/mogenerator) - Generate Swift files for my CoreData models.
-* [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) - Better logging than `NSLog`.
+* [Telerik UI for iOS](http://www.telerik.com/ios-ui) (Commercial) - Great graph rendering and feedback system.
 * [UICKeyChainStore](https://github.com/kishikawakatsumi/UICKeyChainStore) - Easy KeyChain access.
-* [DZNSegmentedControl](https://github.com/dzenbot/DZNSegmentedControl) - A great control, used to page through the screens.
+
+#Thanks
+Thanks to the following people, making this project possible:
+
+* [Telerik](http://www.telerik.com/) for supplying me a [Telerik UI for iOS](http://www.telerik.com/ios-ui) license for free to incorporate in this project.
+* My wife, for her eternal patience ;)
+* My enthousiastic Alpha testers.
+
 
 -
 

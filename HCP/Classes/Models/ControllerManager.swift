@@ -65,5 +65,12 @@ class ControllerManager {
 		
 		completion(success: true);
 	}
+	
+	func stopControllers() {
+		for item in self.controllers {
+			logInfo("Stopping " + item.name!);
+			item.stop();
+		}
+	}
 
 }
