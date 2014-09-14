@@ -1,5 +1,6 @@
-Home Control Panel
-==================
+<center><img style="margin: 15px" src="https://raw.githubusercontent.com/depl0y/HCP/develop/HCP/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png"></center>
+
+#Home Control Panel
 
 Home Control Panel has been in development for a couple of months now, where the first try to set up this project was too complex and user-unfriendly. Because the scope of the project changed a bit (explanation below) and because I was ready for a *swift*-only project, I decided that most of the stuff could use a rewrite.
 
