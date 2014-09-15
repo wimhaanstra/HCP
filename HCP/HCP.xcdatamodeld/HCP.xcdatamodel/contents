@@ -49,6 +49,7 @@
         <attribute name="temperature" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Asun" positionX="-45" positionY="81" width="128" height="45"/>
         <element name="Controller" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Dimmer" positionX="-27" positionY="54" width="128" height="58"/>
         <element name="EnergyLink" positionX="-45" positionY="63" width="128" height="165"/>
@@ -58,6 +59,5 @@
         <element name="Sensor" positionX="-45" positionY="18" width="128" height="150"/>
         <element name="Switch" positionX="-36" positionY="45" width="128" height="60"/>
         <element name="Thermometer" positionX="-36" positionY="90" width="128" height="103"/>
-        <element name="Asun" positionX="-45" positionY="81" width="128" height="45"/>
     </elements>
 </model>

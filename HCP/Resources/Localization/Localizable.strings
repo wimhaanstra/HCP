@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  HCP
+
+  Created by Wim Haanstra on 15/09/14.
+  Copyright (c) 2014 Wim Haanstra. All rights reserved.
+*/
+
+"ROOMS_TOP_MENU" = "ROOMS";
+"DEVICES_TOP_MENU" = "DEVICES";
+
+"CONTROLLERS_BUTTON" = "Controllers";
+"REFRESH_ALL_BUTTON" = "Refresh all";
+
+"ADD_ROOM_BUTTON" = "Add Room";
+
+"ADD_ROOM_ALERT_TITLE" = "Add a room";
+"ADD_ROOM_ALERT_TEXT" = "To add a new room, please enter it's name";
+"ADD_ROOM_ALERT_PLACEHOLDER" = "Room name";
+
+"ALERT_OK" = "OK";
+
+"HOMEWIZARD_DISCOVERY_TITLE" = "HomeWizards";
+
+"DISCOVERY_ADDED_SECTION_TITLE" = "Added";
+"DISCOVERY_DISCOVERED_SECTION_TITLE" = "Discovered";

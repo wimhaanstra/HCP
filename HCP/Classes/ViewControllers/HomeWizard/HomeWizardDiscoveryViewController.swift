@@ -24,7 +24,7 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 		self.tableView.autoresizingMask = .FlexibleHeight | .FlexibleWidth;
 		self.view.addSubview(tableView);
 		
-		self.title = "HomeWizards";
+		self.title = NSLocalizedString("HOMEWIZARD_DISCOVERY_TITLE", comment: "HomeWizard discovery popup titlte");
 		
 		self.preferredContentSize = CGSizeMake(320, 400);
 
@@ -59,10 +59,10 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 	
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		if (section == 0) {
-			return "Added";
+			return NSLocalizedString("DISCOVERY_ADDED_SECTION_TITLE", comment: "Discovery added section title");
 		}
 		else {
-			return "Discovered";
+			return NSLocalizedString("DISCOVERY_DISCOVERED_SECTION_TITLE", comment: "Discovery discovered section title");
 		}
 	}
 	
@@ -78,12 +78,6 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 				var storedHomeWizard: HomeWizard = ControllerManager.sharedInstance.allHomeWizards()[indexPath.row] as HomeWizard;
 				
 				cell.textLabel?.text = storedHomeWizard.description;
-			
-			/*
-				cell.userInteractionEnabled = (storedHomeWizard.managedObjectContext == nil);
-				cell.textLabel?.enabled = (storedHomeWizard.managedObjectContext == nil);
-				cell.detailTextLabel?.enabled = (storedHomeWizard.managedObjectContext == nil);
-			*/	
 				cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator;
 				
 				return cell;

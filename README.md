@@ -25,6 +25,7 @@ The [HomeWizard](http://homewizard.nl) is a device that let's you tie all kinds 
 * Klik-aan/Klik-uit switches (quite popular in the Netherlands)
 * RF based door sensors
 * RF based thermometers
+* IP cameras
 
 ###Philips Hue
 Does the [Philips Hue Bridge](http://www2.meethue.com/en-US) need an introduction? RGB LED powered lights which can be controlled using your phone or tablet.
@@ -73,7 +74,17 @@ func on() -> Void {
 I try to document all the API calls I perform, because not everything is documented as good as I'd like. Visit the [Github Wiki](https://github.com/depl0y/HCP/wiki) I created for this.
 
 #Localisation
-The application will be prepared to be fully multi-lingual, but our main focus is English and Dutch.
+The application will be prepared to be fully multi-lingual, but **our** main focus is English and Dutch. We of course will accept pull requests with translations.
+
+#Also on my mind
+There are a couple of things that are on my mind, that I would love to integrate in HCP.
+
+* Time based triggers.
+* Sensor based trigger.
+* XBMC controller, to control XBMC devices located in your house.
+* OSX version, control your house from your OSX status bar.
+
+*These things will be build after the first release to the App Store.*
 
 #Used Frameworks and tools
 

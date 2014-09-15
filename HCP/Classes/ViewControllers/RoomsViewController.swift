@@ -16,7 +16,7 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		var addRoomButton = self.addButton("Add Room", width: 150, selector: Selector("addRoom_Clicked"));
+		var addRoomButton = self.addButton(NSLocalizedString("ADD_ROOM_BUTTON", comment: "Button title in rooms view"), width: 150, selector: Selector("addRoom_Clicked"));
 
 		/*
 UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
@@ -52,6 +52,12 @@ layout.minimumLineSpacing = 25;
 
 		var cell = collectionView.dequeueReusableCellWithReuseIdentifier("base", forIndexPath: indexPath) as UICollectionViewCell;
 		
+		for v in cell.contentView.subviews {
+			if let view = v as? UIView {
+				view.removeFromSuperview();
+			}
+		}
+
 		cell.cas_styleClass = "Room";
 		var room = Room.findAllSortedBy("order", ascending: true)[indexPath.row] as Room;
 		
@@ -67,13 +73,13 @@ layout.minimumLineSpacing = 25;
 	}
 	
 	func addRoom_Clicked() {
-		var alert = UIAlertController(title: "Room name", message: "Please give your new room a name", preferredStyle: UIAlertControllerStyle.Alert);
+		var alert = UIAlertController(title: NSLocalizedString("ADD_ROOM_ALERT_TITLE", comment: "Add room alert title"), message: NSLocalizedString("ADD_ROOM_ALERT_TEXT", comment: "Add room alert text"), preferredStyle: UIAlertControllerStyle.Alert);
 		alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-			textField.placeholder = "Room name";
+			textField.placeholder = NSLocalizedString("ADD_ROOM_ALERT_PLACEHOLDER", comment: "Add room alert placeholder");
 			self.roomNameTextField = textField;
 		});
 		
-		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+		alert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_OK", comment: "Alert OK button"), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
 			
 			if (self.roomNameTextField == nil || self.roomNameTextField?.text! == "") {
 				return;

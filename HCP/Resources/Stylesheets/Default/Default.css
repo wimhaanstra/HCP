@@ -1,7 +1,7 @@
 
-$light-font = "AvenirNextCondensed-UltraLight"
-$regular-font = "AvenirNextCondensed-Regular"
-$bold-font = "AvenirNextCondensed-Bold"
+$light-font = "HelveticaNeue-Thin"
+$regular-font = "HelveticaNeue"
+$bold-font = "HelveticaNeue-Bold"
 
 $default-background-color = #F1F1F1;
 
@@ -20,13 +20,9 @@ UIButton {
 UITableViewCell {
 	
 	textLabel: @{
-		font: $regular-font 20;
+		font: $light-font 18;
 	}
 	
-}
-
-UILabel {
-	font: $regular-font 20;
 }
 
 UIView.MenuBar {
@@ -34,7 +30,7 @@ UIView.MenuBar {
 	
 	UIButton {
 		titleLabel: @{
-			font: $regular-font 16;
+			font: $light-font 16;
 		}
 	}
 }
@@ -44,6 +40,6 @@ UICollectionViewCell.Room {
 	background-color: #f1f1f1;
 	
 	UILabel {
-		font: $regular-font 24;
+		font: $light-font 20;
 	}
 }

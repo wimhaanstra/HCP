@@ -16,8 +16,8 @@ class DevicesViewController: MenuViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		addControllerButton = self.addButton("Controllers", width: 150, selector: Selector("popupButton_Clicked"));
-		self.addButton("Refresh all", width: 150, selector: Selector("popupButton_Clicked"));
+		addControllerButton = self.addButton(NSLocalizedString("CONTROLLERS_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("popupButton_Clicked"));
+		self.addButton(NSLocalizedString("REFRESH_ALL_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("popupButton_Clicked"));
 	
 		/*
 		for recognizer in self.tableView.gestureRecognizers as [UIGestureRecognizer] {

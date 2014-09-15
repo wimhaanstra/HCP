@@ -14,7 +14,7 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 	private var devicesViewController: DevicesViewController = DevicesViewController();
 	private var roomsViewController: RoomsViewController = RoomsViewController();
 	
-	private var menuBar: DZNSegmentedControl = DZNSegmentedControl(items: ["ROOMS", "DEVICES"]);
+	private var menuBar: DZNSegmentedControl = DZNSegmentedControl(items: [ NSLocalizedString("ROOMS_TOP_MENU", comment: "Title in top menu"),  NSLocalizedString("DEVICES_TOP_MENU", comment: "Title in top menu") ]);
 
     override func viewDidLoad() {
         super.viewDidLoad()
