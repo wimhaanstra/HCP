@@ -8,7 +8,7 @@ class HomeWizard: _HomeWizard {
         
         let discoveryUrl = "http://gateway.homewizard.nl/discovery.php";
 		
-		logDebug("HomeWizard Discovery: " + discoveryUrl);
+		XCGLogger.defaultInstance().info("HomeWizard Discovery: " + discoveryUrl);
 		
         let manager = AFHTTPRequestOperationManager();
         
@@ -20,7 +20,7 @@ class HomeWizard: _HomeWizard {
 					
 					if (match == nil) {
 						
-						logInfo("Discovered HomeWizard not yet in database (" + ipAddress + ")");
+						XCGLogger.defaultInstance().info("Discovered HomeWizard not yet in database (" + ipAddress + ")");
 						
 						var foundObject: HomeWizard = HomeWizard.createEntityInContext(nil) as HomeWizard;
 						foundObject.ip = ipAddress;
@@ -30,7 +30,7 @@ class HomeWizard: _HomeWizard {
 					}
 					else {
 						
-						logInfo("Discovered HomeWizard is already in database (" + ipAddress + ")");
+						XCGLogger.defaultInstance().info("Discovered HomeWizard is already in database (" + ipAddress + ")");
 						
 						if  (includeStored) {
 							var foundObject: HomeWizard = match as HomeWizard
@@ -47,7 +47,7 @@ class HomeWizard: _HomeWizard {
 				}
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
-                logError("Error: " + error.localizedDescription)
+                XCGLogger.defaultInstance().info("Error: " + error.localizedDescription)
             }
         )
     }
@@ -62,8 +62,7 @@ class HomeWizard: _HomeWizard {
 	}
     
     func performAction(command: String, completion: (results: AnyObject!) -> Void ) -> Void {
-		println(self.ip);
-		logDebug("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
+		XCGLogger.defaultInstance().info("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
 		
 		if (self.password() != nil) {
 			let url = "http://" + self.ip! + "/" + self.password()! + command;
@@ -81,7 +80,7 @@ class HomeWizard: _HomeWizard {
 
 		var stored = UICKeyChainStore.setString(password, forKey: self.ip! + ".password");
 		if (!stored) {
-			logError("Storing value in keychain failed");
+			XCGLogger.defaultInstance().info("Storing value in keychain failed");
 		}
 
 		self.performAction("/enlist", completion: { (results) -> Void in
@@ -104,7 +103,7 @@ class HomeWizard: _HomeWizard {
 			_fetchDataTimer = nil;
 		}
 		
-		logInfo("Fetching sensors");
+		XCGLogger.defaultInstance().info("Fetching sensors");
 		
 		
 		self.performAction("/get-sensors", completion: { (results) -> Void in
@@ -141,7 +140,7 @@ class HomeWizard: _HomeWizard {
 	override func start() {
 		
 		if (self.managedObjectContext == nil) {
-			logError("This object is not saved, you cannot store sensors for this device.");
+			XCGLogger.defaultInstance().error("This object is not saved, you cannot store sensors for this device.");
 			return;
 		}
 		

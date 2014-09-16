@@ -14,15 +14,16 @@ class EntityFactory<T: Sensor> {
 		
 		var id = definition.objectForKey("id") as Int;
 		
-		var predicate: NSPredicate = NSPredicate(format: "id = %d AND className = %@", id, NSStringFromClass(T));
+		var predicate: NSPredicate? = NSPredicate(format: "id = %d AND className = %@", id, NSStringFromClass(T));
 		
-		var addedSwitches = controller.sensors.filteredSetUsingPredicate(predicate);
+		var addedSwitches = controller.sensors.filteredSetUsingPredicate(predicate!);
 		var sensor: T? = (addedSwitches.count == 0) ? nil : addedSwitches.allObjects[0] as? T;
 		
 		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
 			
 			if (sensor == nil) {
-				logInfo("Creating " + NSStringFromClass(T));
+				
+				XCGLogger.defaultInstance().info("Creating " + NSStringFromClass(T));
 				
 				var localController = controller.inContext(context);
 				if (localController != nil) {
@@ -35,7 +36,7 @@ class EntityFactory<T: Sensor> {
 			}
 			
 			if (sensor != nil && sensor?.selected == true) {
-				logInfo("Updating " + NSStringFromClass(T));
+				XCGLogger.defaultInstance().info("Updating " + NSStringFromClass(T));
 				sensor?.update(definition);
 			}
 		}

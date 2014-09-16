@@ -68,7 +68,7 @@ class ControllerManager {
 	
 	func stopControllers() {
 		for item in self.controllers {
-			logInfo("Stopping " + item.name!);
+			XCGLogger.defaultInstance().info("Stopping " + item.name!);
 			item.stop();
 		}
 	}

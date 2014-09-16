@@ -92,12 +92,12 @@ For this application I currently use the following frameworks (in no particular 
 
 * [AFNetworking](http://afnetworking.com) - An awesome networking library that I use for all HTTP requests.
 * [Classy](http://classy.as) - Styling of UIKit using CSS-like files.
-* [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) - Better logging than `NSLog`.
 * [DZNSegmentedControl](https://github.com/dzenbot/DZNSegmentedControl) - A great control, used to page through the screens.
 * [MagicalRecord/Shorthand](https://github.com/magicalpanda/MagicalRecord) - CoreData in an ActiveRecord kind of way.
 * [Mogenerator](https://github.com/rentzsch/mogenerator) - Generate Swift files for my CoreData models.
 * [Telerik UI for iOS](http://www.telerik.com/ios-ui) (Commercial) - Great graph rendering and feedback system.
 * [UICKeyChainStore](https://github.com/kishikawakatsumi/UICKeyChainStore) - Easy KeyChain access.
+* [XCGLogger](https://github.com/DaveWoodCom/XCGLogger) - XCGLogger is a log framework written in Swift.
 
 #Thanks
 Thanks to the following people, making this project possible:

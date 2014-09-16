@@ -37,7 +37,7 @@ class DevicesViewController: MenuViewController {
 		
 		var navigationController = UINavigationController(rootViewController: c);
 		
-		self.popOver = UIPopoverController(contentViewController: navigationController);
+		self.popOver = UIPopoverController(contentViewController: navigationController!);
 		self.popOver.presentPopoverFromRect(addControllerButton!.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
 	}
 

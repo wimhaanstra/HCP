@@ -4,7 +4,7 @@ class HueBridge: _HueBridge {
     override class func discover(includeStored: Bool, completion: (results: [Controller]) -> Void) {
         
         let discoveryUrl = "http://www.meethue.com/api/nupnp";
-        NSLog("Starting Hue Bridge discovery");
+        XCGLogger.defaultInstance().info("Starting Hue Bridge discovery");
         
         let manager = AFHTTPRequestOperationManager();
         
@@ -27,7 +27,7 @@ class HueBridge: _HueBridge {
             
         },
         failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
-			logError("Error: " + error.localizedDescription);
+			XCGLogger.defaultInstance().error("Error: " + error.localizedDescription);
         });
     }
     

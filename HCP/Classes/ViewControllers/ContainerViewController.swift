@@ -61,13 +61,11 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 		return UIBarPosition.Top;
 	}
 	
-	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-	
-		var indexOfPage = scrollView.contentOffset.x / scrollView.frame.size.width;
+	func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+		var indexOfPage = targetContentOffset.memory.x / scrollView.frame.size.width;
 		self.menuBar.selectedSegmentIndex = Int(indexOfPage);
-		
 	}
-
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

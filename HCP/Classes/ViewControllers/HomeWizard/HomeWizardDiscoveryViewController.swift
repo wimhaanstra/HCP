@@ -123,8 +123,6 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 					return;
 				}
 				
-				println(self.passwordTextField?.text);
-				
 				var password: String = self.passwordTextField!.text;
 				
 				var discoveredHomeWizard: HomeWizard = self.discoveredHomeWizards[indexPath.row] as HomeWizard;
