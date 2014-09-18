@@ -43,3 +43,11 @@ UICollectionViewCell.Room {
 		font: $light-font 20;
 	}
 }
+
+UICollectionViewCell.Sensor {
+	background-color: #f1f1f1;
+	
+	UILabel {
+		font: $light-font 20;
+	}
+}

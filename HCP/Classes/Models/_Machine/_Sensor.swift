@@ -4,6 +4,7 @@
 import CoreData
 
 enum SensorAttributes: String {
+    case available = "available"
     case displayName = "displayName"
     case id = "id"
     case lastUpdate = "lastUpdate"
@@ -41,6 +42,11 @@ class _Sensor: NSManagedObject {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var available: NSNumber?
+
+    // func validateAvailable(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var displayName: String?

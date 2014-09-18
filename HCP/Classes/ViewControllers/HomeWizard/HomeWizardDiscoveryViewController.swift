@@ -131,11 +131,22 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 					var cell = tableView.cellForRowAtIndexPath(indexPath);
 					
 					discoveredHomeWizard.login(password, completion: { (success) -> Void in
-						self.discoveredHomeWizards.removeAtIndex(indexPath.row);
 						
-						ControllerManager.sharedInstance.addHomeWizard(discoveredHomeWizard, completion: { (result) -> Void in
-							self.tableView.reloadData();
-						})
+						if (success) {
+							self.discoveredHomeWizards.removeAtIndex(indexPath.row);
+							
+							ControllerManager.sharedInstance.addHomeWizard(discoveredHomeWizard, completion: { (result) -> Void in
+								self.tableView.reloadData();
+							})
+						}
+						else {
+							XCGLogger.defaultInstance().error("Error logging in on HomeWizard");
+
+							var errorAlert = UIAlertController(title: "Error connecting", message: "There was an error connecting to your HomeWizard", preferredStyle: UIAlertControllerStyle.Alert);
+							self.presentViewController(errorAlert, animated: true, completion: { () -> Void in
+								
+							});
+						}
 					});
 				}
 			}));

@@ -79,6 +79,7 @@ layout.minimumLineSpacing = 25;
 			self.roomNameTextField = textField;
 		});
 		
+		
 		alert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_OK", comment: "Alert OK button"), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
 			
 			if (self.roomNameTextField == nil || self.roomNameTextField?.text! == "") {
@@ -98,6 +99,9 @@ layout.minimumLineSpacing = 25;
 				
 			});
 			
+		}));
+		
+		alert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_CANCEL", comment: "Alert Cancel button"), style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
 		}));
 		
 		self.presentViewController(alert, animated: true, completion: { () -> Void in

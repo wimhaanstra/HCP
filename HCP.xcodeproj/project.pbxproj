@@ -13,12 +13,14 @@
 		AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */; };
 		AB1340C019C30179009A1F09 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1340BF19C30179009A1F09 /* MenuViewController.swift */; };
 		AB1340E119C56EDE009A1F09 /* Default.css in Resources */ = {isa = PBXBuildFile; fileRef = AB1340E019C56EDE009A1F09 /* Default.css */; };
+		AB1831ED19CA245E007BB5B9 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1831EC19CA245E007BB5B9 /* SwitchCell.swift */; };
 		AB19DA7A19C2420300F57D60 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA7919C2420300F57D60 /* ArrayExtensions.swift */; };
 		AB19DA7C19C2BBAB00F57D60 /* _Asun.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA7B19C2BBAB00F57D60 /* _Asun.swift */; };
 		AB19DA7E19C2BBBA00F57D60 /* Asun.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA7D19C2BBBA00F57D60 /* Asun.swift */; };
 		AB19DA8F19C2C8CF00F57D60 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA8C19C2C8CF00F57D60 /* ContainerViewController.swift */; };
 		AB19DA9019C2C8CF00F57D60 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA8D19C2C8CF00F57D60 /* RoomsViewController.swift */; };
 		AB19DA9119C2C8CF00F57D60 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA8E19C2C8CF00F57D60 /* DevicesViewController.swift */; };
+		AB56FC0119C959F700150666 /* SensorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB56FC0019C959F700150666 /* SensorCell.swift */; };
 		AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */; };
 		AB73CE0619C6B52B00B20EB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB73CE0519C6B52B00B20EB2 /* Localizable.strings */; };
 		AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EBF19BFA4390065062E /* _EnergyLink.swift */; };
@@ -41,6 +43,7 @@
 		ABB07F0819BAD85600B02BFC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFA19BAD85600B02BFC /* Room.swift */; };
 		ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFB19BAD85600B02BFC /* Sensor.swift */; };
 		ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFC19BAD85600B02BFC /* Switch.swift */; };
+		ABBDB7EB19CA7F0B00A67AFA /* DimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDB7EA19CA7F0B00A67AFA /* DimmerCell.swift */; };
 		ABE451BA19C8B771004BD73A /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE451B919C8B771004BD73A /* XCGLogger.swift */; };
 		ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC81F19A3D038004B309B /* AppDelegate.swift */; };
 		ABEAC82A19A3D038004B309B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82919A3D038004B309B /* Images.xcassets */; };
@@ -78,12 +81,14 @@
 		AB1340BF19C30179009A1F09 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		AB1340E019C56EDE009A1F09 /* Default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Default.css; sourceTree = "<group>"; };
 		AB14499B19A3D46C00BBE6ED /* HCP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCP-Bridging-Header.h"; sourceTree = "<group>"; };
+		AB1831EC19CA245E007BB5B9 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchCell.swift; path = CollectionViewCells/SwitchCell.swift; sourceTree = "<group>"; };
 		AB19DA7919C2420300F57D60 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		AB19DA7B19C2BBAB00F57D60 /* _Asun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Asun.swift; sourceTree = "<group>"; };
 		AB19DA7D19C2BBBA00F57D60 /* Asun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asun.swift; sourceTree = "<group>"; };
 		AB19DA8C19C2C8CF00F57D60 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		AB19DA8D19C2C8CF00F57D60 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		AB19DA8E19C2C8CF00F57D60 /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
+		AB56FC0019C959F700150666 /* SensorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorCell.swift; path = CollectionViewCells/SensorCell.swift; sourceTree = "<group>"; };
 		AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		AB73CE0519C6B52B00B20EB2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		AB897EBF19BFA4390065062E /* _EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EnergyLink.swift; sourceTree = "<group>"; };
@@ -106,6 +111,7 @@
 		ABB07EFA19BAD85600B02BFC /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		ABB07EFB19BAD85600B02BFC /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		ABB07EFC19BAD85600B02BFC /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		ABBDB7EA19CA7F0B00A67AFA /* DimmerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DimmerCell.swift; path = CollectionViewCells/DimmerCell.swift; sourceTree = "<group>"; };
 		ABE451B819C8B771004BD73A /* XCGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCGLogger.h; sourceTree = "<group>"; };
 		ABE451B919C8B771004BD73A /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		ABEAC81A19A3D038004B309B /* HCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +192,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AB56FBFE19C9596100150666 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				AB56FBFF19C959CD00150666 /* SensorCell */,
+			);
+			name = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		AB56FBFF19C959CD00150666 /* SensorCell */ = {
+			isa = PBXGroup;
+			children = (
+				ABBDB7EA19CA7F0B00A67AFA /* DimmerCell.swift */,
+				AB56FC0019C959F700150666 /* SensorCell.swift */,
+				AB1831EC19CA245E007BB5B9 /* SwitchCell.swift */,
+			);
+			name = SensorCell;
+			sourceTree = "<group>";
+		};
 		AB73CE0419C6B52B00B20EB2 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +235,7 @@
 				ABB07EED19BAD85600B02BFC /* Models */,
 				ABA7C58819BAD37A0085A730 /* ViewControllers */,
 				ABE451B719C8B771004BD73A /* XCGLogger */,
+				AB56FBFE19C9596100150666 /* CollectionViewCells */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -517,12 +542,14 @@
 				ABB07F0019BAD85600B02BFC /* _HueBridge.swift in Sources */,
 				ABB07F0319BAD85600B02BFC /* _Switch.swift in Sources */,
 				AB19DA9019C2C8CF00F57D60 /* RoomsViewController.swift in Sources */,
+				ABBDB7EB19CA7F0B00A67AFA /* DimmerCell.swift in Sources */,
 				AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */,
 				ABB07F0819BAD85600B02BFC /* Room.swift in Sources */,
 				ABB07F0519BAD85600B02BFC /* Dimmer.swift in Sources */,
 				AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */,
 				ABB07EFE19BAD85600B02BFC /* _Dimmer.swift in Sources */,
 				AB19DA7C19C2BBAB00F57D60 /* _Asun.swift in Sources */,
+				AB56FC0119C959F700150666 /* SensorCell.swift in Sources */,
 				AB1340C019C30179009A1F09 /* MenuViewController.swift in Sources */,
 				ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */,
 				ABB07F0619BAD85600B02BFC /* HomeWizard.swift in Sources */,
@@ -535,6 +562,7 @@
 				ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */,
 				ABB07EFF19BAD85600B02BFC /* _HomeWizard.swift in Sources */,
 				AB897EC219BFA4450065062E /* EnergyLink.swift in Sources */,
+				AB1831ED19CA245E007BB5B9 /* SwitchCell.swift in Sources */,
 				ABB07F0219BAD85600B02BFC /* _Sensor.swift in Sources */,
 				AB897ECB19C1708E0065062E /* ControllerManager.swift in Sources */,
 				AB0A66C519BAD6A900553CDC /* HCP.xcdatamodeld in Sources */,

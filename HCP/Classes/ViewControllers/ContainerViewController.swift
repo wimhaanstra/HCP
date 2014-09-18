@@ -22,6 +22,8 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 		self.scrollView.frame = self.view.bounds;
 		self.scrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
 		self.scrollView.pagingEnabled = true;
+		self.scrollView.showsHorizontalScrollIndicator = false;
+		self.scrollView.showsVerticalScrollIndicator = false;
 		self.scrollView.delegate = self;
 		
 		self.menuBar.showsCount = false;

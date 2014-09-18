@@ -61,7 +61,7 @@ class HomeWizard: _HomeWizard {
 		return UICKeyChainStore.stringForKey(self.ip! + ".password");
 	}
     
-    func performAction(command: String, completion: (results: AnyObject!) -> Void ) -> Void {
+	func performAction(command: String, completion: (results: AnyObject!, error: NSError?) -> Void ) -> Void {
 		XCGLogger.defaultInstance().info("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
 		
 		if (self.password() != nil) {
@@ -69,9 +69,10 @@ class HomeWizard: _HomeWizard {
 			
 			let manager = AFHTTPRequestOperationManager();
 			manager.GET(url, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-				completion(results: responseObject);
+				completion(results: responseObject, error: nil);
 			},
 			failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+				completion(results: nil, error: error);
 			});
 		}
     }
@@ -82,17 +83,21 @@ class HomeWizard: _HomeWizard {
 		if (!stored) {
 			XCGLogger.defaultInstance().info("Storing value in keychain failed");
 		}
-
-		self.performAction("/enlist", completion: { (results) -> Void in
-			if (results.objectForKey("status") != nil) {
-				var status: String = results.objectForKey("status") as String;
-				completion(success: (status == "ok"));
-			}
-			else {
+		
+		self.performAction("/enlist", completion: { (results, error) -> Void in
+			if (error != nil) {
 				completion(success: false);
 			}
-		});
-		
+			else {
+				if (results.objectForKey("status") != nil) {
+					var status: String = results.objectForKey("status") as String;
+					completion(success: (status == "ok"));
+				}
+				else {
+					completion(success: false);
+				}
+			}
+		})
 	}
 	
 	func fetchSensors() {
@@ -106,7 +111,7 @@ class HomeWizard: _HomeWizard {
 		XCGLogger.defaultInstance().info("Fetching sensors");
 		
 		
-		self.performAction("/get-sensors", completion: { (results) -> Void in
+		self.performAction("/get-sensors", completion: { (results, error) -> Void in
 			if (results != nil && results.objectForKey("response") != nil) {
 				if let response = results.objectForKey("response") as? Dictionary<String, AnyObject> {
 					self.parse(response);
@@ -123,7 +128,7 @@ class HomeWizard: _HomeWizard {
 	}
 	
 	func fetchData() {
-		self.performAction("/get-status", completion: { (results) -> Void in
+		self.performAction("/get-status", completion: { (results, error) -> Void in
 			
 			if (results != nil && results.objectForKey("response") != nil) {
 				if let response = results.objectForKey("response") as? Dictionary<String, AnyObject> {

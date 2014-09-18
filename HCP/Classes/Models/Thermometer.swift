@@ -41,4 +41,24 @@ class Thermometer: _Thermometer {
 		}
 		
 	}
+	
+	override func addObserversForView(view: UIView) {
+		
+		super.addObserversForView(view);
+		
+		self.addObserver(view, forKeyPath: "channel", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(view, forKeyPath: "humidity", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(view, forKeyPath: "temperature", options: NSKeyValueObservingOptions.New, context: nil);
+		
+	}
+	
+	override func removeObserversForView(view: UIView) {
+		
+		super.removeObserversForView(view);
+		
+		self.removeObserver(view, forKeyPath: "channel");
+		self.removeObserver(view, forKeyPath: "humidity");
+		self.removeObserver(view, forKeyPath: "temperature");
+		
+	}
 }

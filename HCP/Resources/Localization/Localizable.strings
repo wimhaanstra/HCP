@@ -19,6 +19,7 @@
 "ADD_ROOM_ALERT_PLACEHOLDER" = "Room name";
 
 "ALERT_OK" = "OK";
+"ALERT_CANCEL" = "Cancel";
 
 "HOMEWIZARD_DISCOVERY_TITLE" = "HomeWizards";
 

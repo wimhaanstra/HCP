@@ -4,6 +4,7 @@
 import CoreData
 
 enum ControllerAttributes: String {
+    case available = "available"
     case ip = "ip"
     case lastUpdate = "lastUpdate"
     case name = "name"
@@ -39,6 +40,11 @@ class _Controller: NSManagedObject {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var available: NSNumber?
+
+    // func validateAvailable(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var ip: String?
