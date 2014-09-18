@@ -9,6 +9,7 @@ enum SensorAttributes: String {
     case id = "id"
     case lastUpdate = "lastUpdate"
     case name = "name"
+    case onTodayScreen = "onTodayScreen"
     case selected = "selected"
 }
 
@@ -67,6 +68,11 @@ class _Sensor: NSManagedObject {
     var name: String?
 
     // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var onTodayScreen: NSNumber?
+
+    // func validateOnTodayScreen(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var selected: NSNumber?

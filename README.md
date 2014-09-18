@@ -13,7 +13,9 @@ At first the idea was that only [HomeWizard](http://homewizard.nl) devices could
 
 #iOS Compatibility
 
-**iOS8**, better make sure you got your devices updated and ready.
+**iOS8**, HomeKit integration might be useful. It is going to be an universal application, running both on the iPad with iOS8 and your iPhone as well. Currently there are no plans to display a different interface for iPhone 6 and 6+. There will be minor differences between the iPhone and iPad version.
+
+The iPhone version will not prevent locking of your device, which the iPad version will do by default (should be a setting somewhere).
 
 #Supported Hardware
 
@@ -75,6 +77,10 @@ I try to document all the API calls I perform, because not everything is documen
 
 #Localisation
 The application will be prepared to be fully multi-lingual, but **our** main focus is English and Dutch. We of course will accept pull requests with translations.
+
+#Colors
+
+The application will be have both a light and a dark mode. The light mode will show different colors, while the dark mode uses different tints of gray to differentiate different sensors. Themes will be accepted as pull requests also, as long as you are willing to support them.
 
 #Also on my mind
 There are a couple of things that are on my mind, that I would love to integrate in HCP.

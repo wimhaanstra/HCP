@@ -31,6 +31,7 @@ class EntityFactory<T: Sensor> {
 					sensor?.id = id;
 					sensor?.selected = true;
 					sensor!.controller = localController;
+					sensor?.onTodayScreen = false;
 					localController.addSensorsObject(sensor);
 				}
 			}

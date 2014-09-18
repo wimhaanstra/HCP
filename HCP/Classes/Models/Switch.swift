@@ -27,7 +27,7 @@ class Switch: _Switch {
 		if let statusValue = definition.objectForKey("status") as? String {
 			var newValue = (statusValue == "off") ? false : true;
 			
-			if (self.status! != newValue) {
+			if (self.status == nil || self.status! != newValue) {
 				self.status = newValue;
 			}
 		}

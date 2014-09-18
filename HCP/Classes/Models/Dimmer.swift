@@ -11,7 +11,7 @@ class Dimmer: _Dimmer {
 		super.update(definition);
 		
 		if let dimmerValue = definition.objectForKey("dimlevel") as? Int {
-			if (dimmerValue != self.dimValue!) {
+			if (self.dimValue == nil || dimmerValue != self.dimValue!) {
 				self.dimValue = dimmerValue
 			}
 		}

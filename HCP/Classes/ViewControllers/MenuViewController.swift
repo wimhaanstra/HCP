@@ -48,6 +48,12 @@ class MenuViewController: UIViewController {
 		self.blurView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 		self.blurView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3);
     }
+	
+	override func viewDidAppear(animated: Bool) {
+		
+		super.viewDidAppear(animated);
+		
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

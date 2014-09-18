@@ -14,12 +14,22 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 	var addControllerButton: UIButton? = nil;
 	private var collectionView: UICollectionView?;
 	
+	var edgeOffset = 5.0;
+	var itemsPerRow = 5;
+	var interItemSpacing = 5.0;
+	
 	private var sensors: [Sensor] = [];
 	
 	private var availableTypes: [String] = ["Sensor", "Switch", "Dimmer", "EnergyLink", "Thermometer"];
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+			itemsPerRow = 2;
+			interItemSpacing = 0;
+			edgeOffset = 0;
+		}
 
 		addControllerButton = self.addButton(NSLocalizedString("CONTROLLERS_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("popupButton_Clicked"));
 		self.addButton(NSLocalizedString("REFRESH_ALL_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("popupButton_Clicked"));
@@ -31,12 +41,16 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 			}
 		}
 		*/
+
+		var itemSize = (self.view.bounds.size.width - (2 * CGFloat(edgeOffset)) - (CGFloat(itemsPerRow) * CGFloat(edgeOffset))) / CGFloat(itemsPerRow);
+		
+//		var itemSize: CGFloat = CGFloat( (CGFloat(self.view.bounds.size.width) - CGFloat(2 * edgeOffset) - CGFloat(interItemSpacing * CGFloat(itemsPerRow))) / CGFloat(itemsPerRow));
 		
 		var layout = UICollectionViewFlowLayout();
-		layout.sectionInset = UIEdgeInsetsMake(25, 25, 25, 25);
-		layout.minimumInteritemSpacing = 25;
-		layout.minimumLineSpacing = 25;
-		layout.itemSize = CGSizeMake(220, 220);
+		layout.sectionInset = UIEdgeInsetsMake(CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset));
+		layout.minimumInteritemSpacing = CGFloat(interItemSpacing);
+		layout.minimumLineSpacing = CGFloat(interItemSpacing);
+		layout.itemSize = CGSizeMake(itemSize, itemSize);
 		
 		self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout);
 		self.collectionView!.registerClass(SensorCell.self, forCellWithReuseIdentifier: "Sensor");
@@ -67,6 +81,7 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 		self.popOver = UIPopoverController(contentViewController: navigationController!);
 		self.popOver.delegate = self;
 		self.popOver.presentPopoverFromRect(addControllerButton!.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
+
 	}
 	
 	func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {

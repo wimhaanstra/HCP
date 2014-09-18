@@ -12,6 +12,9 @@ class SwitchCell: SensorCell {
 	
 	var onButton: UIButton;
 	var offButton: UIButton;
+	
+	var offBackgroundColor: UIColor = UIColor(red: 0.996, green: 0.710, blue: 0.506, alpha: 1.0);
+	var onBackgroundColor: UIColor = UIColor(red: 0.996, green: 0.553, blue: 0.278, alpha: 1.0);
 
 	override init(frame: CGRect) {
 		
@@ -33,6 +36,16 @@ class SwitchCell: SensorCell {
 		self.offButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal);
 		self.offButton.addTarget(self, action: Selector("OffButton_Clicked"), forControlEvents: UIControlEvents.TouchUpInside);
 		self.contentView.addSubview(self.offButton);
+		
+		self.textLabel.textColor = UIColor.whiteColor();
+	}
+	
+	override var sensor: Sensor? {
+		didSet {
+			if (self.sensor != nil) {
+				self.contentView.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
+			}
+		}
 	}
 
 	required init(coder aDecoder: NSCoder) {
@@ -44,7 +57,7 @@ class SwitchCell: SensorCell {
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
 		
 		if (keyPath == "status") {
-			self.textLabel.text = self.sensor!.displayName!.uppercaseString;
+			self.contentView.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
 		}
 		
 	}
@@ -57,4 +70,5 @@ class SwitchCell: SensorCell {
 		(self.sensor! as Switch).off();
 	}
 
+	
 }

@@ -31,13 +31,13 @@ class SensorCell: UICollectionViewCell {
 
 	override init(frame: CGRect) {
 
-		self.textLabel = UILabel(frame: CGRectMake(5, frame.size.height - 35, frame.size.width - 10, 30));
-		self.textLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20);
+		self.textLabel = UILabel(frame: CGRectMake(5, frame.size.height - 30, frame.size.width - 10, 30));
+		self.textLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16);
+		self.textLabel.textColor = UIColor.whiteColor();
 
 		super.init(frame: frame);
 
 		self.contentView.addSubview(self.textLabel);
-		self.layer.cornerRadius = 5;
 		self.cas_styleClass = "Sensor";
 		
 	}

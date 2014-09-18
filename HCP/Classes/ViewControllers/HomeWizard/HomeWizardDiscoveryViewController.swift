@@ -28,6 +28,12 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 		
 		self.preferredContentSize = CGSizeMake(320, 400);
 
+		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+			
+			var closeButton = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Done, target: self, action: Selector("Close_Clicked"));
+			self.navigationItem.rightBarButtonItem = closeButton;
+			
+		}
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -36,6 +42,14 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 		HomeWizard.discover(false, completion: { (results) -> Void in
 			self.discoveredHomeWizards = results;
 			self.tableView.reloadData();
+		});
+		
+
+	}
+	
+	func Close_Clicked() {
+		self.dismissViewControllerAnimated(true, completion: { () -> Void in
+			
 		});
 	}
 	
@@ -143,6 +157,9 @@ class HomeWizardDiscoveryViewController: UIViewController, UITableViewDataSource
 							XCGLogger.defaultInstance().error("Error logging in on HomeWizard");
 
 							var errorAlert = UIAlertController(title: "Error connecting", message: "There was an error connecting to your HomeWizard", preferredStyle: UIAlertControllerStyle.Alert);
+							errorAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
+							}));
+							
 							self.presentViewController(errorAlert, animated: true, completion: { () -> Void in
 								
 							});
