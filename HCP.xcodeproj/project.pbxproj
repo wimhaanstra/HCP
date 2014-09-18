@@ -44,6 +44,8 @@
 		ABB07F0919BAD85600B02BFC /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFB19BAD85600B02BFC /* Sensor.swift */; };
 		ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EFC19BAD85600B02BFC /* Switch.swift */; };
 		ABBDB7EB19CA7F0B00A67AFA /* DimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDB7EA19CA7F0B00A67AFA /* DimmerCell.swift */; };
+		ABBDB7ED19CAAE0600A67AFA /* EnergyLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDB7EC19CAAE0600A67AFA /* EnergyLinkCell.swift */; };
+		ABBDB7EF19CAB20D00A67AFA /* ThermometerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDB7EE19CAB20D00A67AFA /* ThermometerCell.swift */; };
 		ABE451BA19C8B771004BD73A /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE451B919C8B771004BD73A /* XCGLogger.swift */; };
 		ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC81F19A3D038004B309B /* AppDelegate.swift */; };
 		ABEAC82A19A3D038004B309B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82919A3D038004B309B /* Images.xcassets */; };
@@ -112,6 +114,8 @@
 		ABB07EFB19BAD85600B02BFC /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		ABB07EFC19BAD85600B02BFC /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		ABBDB7EA19CA7F0B00A67AFA /* DimmerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DimmerCell.swift; path = CollectionViewCells/DimmerCell.swift; sourceTree = "<group>"; };
+		ABBDB7EC19CAAE0600A67AFA /* EnergyLinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnergyLinkCell.swift; path = CollectionViewCells/EnergyLinkCell.swift; sourceTree = "<group>"; };
+		ABBDB7EE19CAB20D00A67AFA /* ThermometerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThermometerCell.swift; path = CollectionViewCells/ThermometerCell.swift; sourceTree = "<group>"; };
 		ABE451B819C8B771004BD73A /* XCGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCGLogger.h; sourceTree = "<group>"; };
 		ABE451B919C8B771004BD73A /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		ABEAC81A19A3D038004B309B /* HCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,8 +208,10 @@
 			isa = PBXGroup;
 			children = (
 				ABBDB7EA19CA7F0B00A67AFA /* DimmerCell.swift */,
+				ABBDB7EC19CAAE0600A67AFA /* EnergyLinkCell.swift */,
 				AB56FC0019C959F700150666 /* SensorCell.swift */,
 				AB1831EC19CA245E007BB5B9 /* SwitchCell.swift */,
+				ABBDB7EE19CAB20D00A67AFA /* ThermometerCell.swift */,
 			);
 			name = SensorCell;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				ABB07F0319BAD85600B02BFC /* _Switch.swift in Sources */,
 				AB19DA9019C2C8CF00F57D60 /* RoomsViewController.swift in Sources */,
 				ABBDB7EB19CA7F0B00A67AFA /* DimmerCell.swift in Sources */,
+				ABBDB7EF19CAB20D00A67AFA /* ThermometerCell.swift in Sources */,
 				AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */,
 				ABB07F0819BAD85600B02BFC /* Room.swift in Sources */,
 				ABB07F0519BAD85600B02BFC /* Dimmer.swift in Sources */,
@@ -551,6 +558,7 @@
 				AB19DA7C19C2BBAB00F57D60 /* _Asun.swift in Sources */,
 				AB56FC0119C959F700150666 /* SensorCell.swift in Sources */,
 				AB1340C019C30179009A1F09 /* MenuViewController.swift in Sources */,
+				ABBDB7ED19CAAE0600A67AFA /* EnergyLinkCell.swift in Sources */,
 				ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */,
 				ABB07F0619BAD85600B02BFC /* HomeWizard.swift in Sources */,
 				AB19DA8F19C2C8CF00F57D60 /* ContainerViewController.swift in Sources */,

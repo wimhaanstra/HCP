@@ -16,6 +16,8 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 	
 	private var sensors: [Sensor] = [];
 	
+	private var availableTypes: [String] = ["Sensor", "Switch", "Dimmer", "EnergyLink", "Thermometer"];
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +42,8 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 		self.collectionView!.registerClass(SensorCell.self, forCellWithReuseIdentifier: "Sensor");
 		self.collectionView!.registerClass(SwitchCell.self, forCellWithReuseIdentifier: "Switch");
 		self.collectionView!.registerClass(DimmerCell.self, forCellWithReuseIdentifier: "Dimmer");
+		self.collectionView!.registerClass(EnergyLinkCell.self, forCellWithReuseIdentifier: "EnergyLink");
+		self.collectionView!.registerClass(ThermometerCell.self, forCellWithReuseIdentifier: "Thermometer");
 
 		self.collectionView!.delegate = self
 		self.collectionView!.dataSource = self;
@@ -69,7 +73,7 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 	
 		var predicate = NSPredicate(format: "selected = %@", argumentArray: [ true ] );
 		self.sensors = Sensor.findAllSortedBy("displayName", ascending: true, withPredicate: predicate) as [Sensor];
-		self.collectionView?.reloadData();
+		self.collectionView!.reloadData();
 		
 	}
 
@@ -81,17 +85,10 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 		
 		var sensor = self.sensors[indexPath.row];
 		
-		if (sensor.entity.name == "Switch") {
-			NSLog("Switch!");
-			var cell = collectionView.dequeueReusableCellWithReuseIdentifier("Switch", forIndexPath: indexPath) as SwitchCell;
+		if (find(availableTypes, sensor.entity.name) != nil) {
+			var cell = collectionView.dequeueReusableCellWithReuseIdentifier(sensor.entity.name, forIndexPath: indexPath) as SensorCell;
 			cell.sensor = sensor;
-			cell.cas_styleClass = "Sensor";
-			return cell;
-		}
-		else if (sensor.entity.name == "Dimmer") {
-			var cell = collectionView.dequeueReusableCellWithReuseIdentifier("Dimmer", forIndexPath: indexPath) as SensorCell;
-			cell.sensor = sensor;
-			cell.cas_styleClass = "Dimmer";
+			cell.cas_styleClass = sensor.entity.name;
 			return cell;
 		}
 		else {

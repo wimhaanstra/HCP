@@ -18,6 +18,8 @@ class DimmerCell: SensorCell {
 		self.dimValueLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 40);
 		self.dimValueLabel.textAlignment = NSTextAlignment.Center;
 		
+		self.dimValueLabel.text = "0";
+		
 		super.init(frame: frame);
 		
 		self.contentView.addSubview(self.dimValueLabel);
@@ -32,7 +34,6 @@ class DimmerCell: SensorCell {
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
 		
 		if (keyPath == "dimValue") {
-			NSLog("Dimlevel changed");
 			self.dimValueLabel.text = (self.sensor as Dimmer).dimValue?.stringValue;
 		}
 		
