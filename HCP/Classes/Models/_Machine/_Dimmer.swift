@@ -4,6 +4,7 @@
 import CoreData
 
 enum DimmerAttributes: String {
+    case defaultDimValue = "defaultDimValue"
     case dimValue = "dimValue"
 }
 
@@ -32,6 +33,11 @@ class _Dimmer: Switch {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var defaultDimValue: NSNumber?
+
+    // func validateDefaultDimValue(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var dimValue: NSNumber?

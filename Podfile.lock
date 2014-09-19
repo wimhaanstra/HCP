@@ -22,6 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Classy (0.2.4)
   - DZNSegmentedControl (1.2)
+  - FXForms (1.1.6)
   - MagicalRecord/Shorthand (2.3.0-beta.3)
   - UICKeyChainStore (1.0.5)
 
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - Classy (~> 0.2.4)
   - DZNSegmentedControl
+  - FXForms
   - MagicalRecord/Shorthand (from `https://github.com/magicalpanda/MagicalRecord.git`)
   - UICKeyChainStore
 
@@ -40,6 +42,7 @@ SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   Classy: 8c8f835d51e20d25e9cce0d864fba5bf1cef6070
   DZNSegmentedControl: 8b99ddb1c7dfa311422aae027d3f64aa3d7315cb
+  FXForms: 9387c60ee6f3e1c75e0f8998012acc1ce0ad8d0a
   MagicalRecord: 23dfe0350eab4767cc1ce7d247af4e4cd54ee72c
   UICKeyChainStore: 4f9719600cc70025064e26f28f1210bcfc3b0c35
 

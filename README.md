@@ -71,6 +71,20 @@ func on() -> Void {
 }
 ```
 
+It is also important to override the `fields` method, when your custom sensor has settings that can be configured. The example below is the `fields` method from the `Dimmer` sensor. It fetches the fields from the superclass and appends a new configuration option.
+
+```
+override func fields() -> [AnyObject]! {
+		
+	var superFields = super.fields();
+	superFields.append([ "key": "defaultDimValue", "title": "Default Dim Value", "type": "number" ]);
+	return superFields;
+	
+}
+```
+
+Read the [documentation of FXForms](https://github.com/nicklockwood/FXForms) for more information.
+
 #API documentation
 
 I try to document all the API calls I perform, because not everything is documented as good as I'd like. Visit the [Github Wiki](https://github.com/depl0y/HCP/wiki) I created for this.
@@ -99,6 +113,7 @@ For this application I currently use the following frameworks (in no particular 
 * [AFNetworking](http://afnetworking.com) - An awesome networking library that I use for all HTTP requests.
 * [Classy](http://classy.as) - Styling of UIKit using CSS-like files.
 * [DZNSegmentedControl](https://github.com/dzenbot/DZNSegmentedControl) - A great control, used to page through the screens.
+* [FXForms](https://github.com/nicklockwood/FXForms) - A great way to create forms per sensor. This is used for the settings screens.
 * [MagicalRecord/Shorthand](https://github.com/magicalpanda/MagicalRecord) - CoreData in an ActiveRecord kind of way.
 * [Mogenerator](https://github.com/rentzsch/mogenerator) - Generate Swift files for my CoreData models.
 * [Telerik UI for iOS](http://www.telerik.com/ios-ui) (Commercial) - Great graph rendering and feedback system.

@@ -15,6 +15,10 @@ class Dimmer: _Dimmer {
 				self.dimValue = dimmerValue
 			}
 		}
+		
+		if (self.defaultDimValue == nil || self.defaultDimValue == 0) {
+			self.defaultDimValue = 70;
+		}
 	}
 	
 	override func addObserversForView(view: UIView) {
@@ -30,4 +34,13 @@ class Dimmer: _Dimmer {
 		self.removeObserver(view, forKeyPath: "dimValue");
 		
 	}
+	
+	override func fields() -> [AnyObject]! {
+		
+		var superFields = super.fields();
+		superFields.append([ "key": "defaultDimValue", "title": "Default Dim Value", "type": "number" ]);
+		return superFields;
+		
+	}
+
 }

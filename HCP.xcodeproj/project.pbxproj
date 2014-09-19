@@ -21,6 +21,7 @@
 		AB19DA9019C2C8CF00F57D60 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA8D19C2C8CF00F57D60 /* RoomsViewController.swift */; };
 		AB19DA9119C2C8CF00F57D60 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB19DA8E19C2C8CF00F57D60 /* DevicesViewController.swift */; };
 		AB56FC0119C959F700150666 /* SensorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB56FC0019C959F700150666 /* SensorCell.swift */; };
+		AB5977F619CBF66000DA0B7E /* SensorConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5977F519CBF66000DA0B7E /* SensorConfigurationViewController.swift */; };
 		AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */; };
 		AB73CE0619C6B52B00B20EB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB73CE0519C6B52B00B20EB2 /* Localizable.strings */; };
 		AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EBF19BFA4390065062E /* _EnergyLink.swift */; };
@@ -91,6 +92,7 @@
 		AB19DA8D19C2C8CF00F57D60 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		AB19DA8E19C2C8CF00F57D60 /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		AB56FC0019C959F700150666 /* SensorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorCell.swift; path = CollectionViewCells/SensorCell.swift; sourceTree = "<group>"; };
+		AB5977F519CBF66000DA0B7E /* SensorConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorConfigurationViewController.swift; path = HCP/Classes/ViewControllers/SensorConfigurationViewController.swift; sourceTree = SOURCE_ROOT; };
 		AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		AB73CE0519C6B52B00B20EB2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		AB897EBF19BFA4390065062E /* _EnergyLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EnergyLink.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				AB0FD7B919BB32F600649C47 /* HomeWizardDiscoveryViewController.swift */,
 				AB0FD7BA19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift */,
+				AB5977F519CBF66000DA0B7E /* SensorConfigurationViewController.swift */,
 			);
 			path = HomeWizard;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */,
 				ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */,
 				AB19DA9119C2C8CF00F57D60 /* DevicesViewController.swift in Sources */,
+				AB5977F619CBF66000DA0B7E /* SensorConfigurationViewController.swift in Sources */,
 				AB0FD7BC19BB32F600649C47 /* HomeWizardSensorManagementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

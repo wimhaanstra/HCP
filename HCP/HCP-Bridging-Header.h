@@ -17,5 +17,6 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <DZNSegmentedControl/DZNSegmentedControl.h>
 #import <Classy/Classy.h>
+#import <FXForms/FXForms.h>
 
 #endif

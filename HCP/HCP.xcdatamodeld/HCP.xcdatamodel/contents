@@ -10,6 +10,7 @@
         <relationship name="sensors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Sensor" inverseName="controller" inverseEntity="Sensor" syncable="YES"/>
     </entity>
     <entity name="Dimmer" representedClassName="Dimmer" parentEntity="Switch" syncable="YES">
+        <attribute name="defaultDimValue" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="dimValue" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="EnergyLink" representedClassName="EnergyLink" parentEntity="Sensor" syncable="YES">
@@ -54,7 +55,7 @@
     <elements>
         <element name="Asun" positionX="-45" positionY="81" width="128" height="45"/>
         <element name="Controller" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="Dimmer" positionX="-27" positionY="54" width="128" height="58"/>
+        <element name="Dimmer" positionX="-27" positionY="54" width="128" height="75"/>
         <element name="EnergyLink" positionX="-45" positionY="63" width="128" height="165"/>
         <element name="HomeWizard" positionX="-54" positionY="27" width="128" height="45"/>
         <element name="HueBridge" positionX="-36" positionY="36" width="128" height="58"/>

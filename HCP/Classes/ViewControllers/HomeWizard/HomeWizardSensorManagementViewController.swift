@@ -118,6 +118,7 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 			var cell = tableView.cellForRowAtIndexPath(indexPath);
 			var sensor: Sensor = self.sensors[indexPath.row];
 			
+			/*
 			MagicalRecord.saveWithBlockAndWait({ (context) -> Void in
 				var sensorInContext:Sensor = sensor.inContext(context);
 				
@@ -133,11 +134,19 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 				}
 				
 			});
+			*/
+			
+			var sensorConfiguration = SensorConfigurationViewController();
+			sensorConfiguration.sensor = sensor;
+			self.navigationController?.pushViewController(sensorConfiguration, animated: true);
+			
 			
 		}
 		else if (indexPath.section == 1) {
-			
-			if (indexPath.row == 1) {
+			if (indexPath.row == 0) {
+
+			}
+			else if (indexPath.row == 1) {
 				
 				var alert = UIAlertController(title: "Remove HomeWizard?", message: "Removing this HomeWizard will remove all settings that you configured.", preferredStyle: UIAlertControllerStyle.Alert);
 				alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: { ( action ) -> Void in

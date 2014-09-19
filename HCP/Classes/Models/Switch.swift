@@ -1,5 +1,5 @@
 @objc(Switch)
-class Switch: _Switch {
+class Switch: _Switch, FXForm {
 	
 	func on() -> Void {
 		
@@ -46,5 +46,6 @@ class Switch: _Switch {
 		self.removeObserver(view, forKeyPath: "status");
 		
 	}
+	
 	
 }

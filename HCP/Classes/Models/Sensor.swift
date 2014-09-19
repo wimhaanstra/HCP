@@ -1,5 +1,5 @@
 @objc(Sensor)
-class Sensor: _Sensor {
+class Sensor: _Sensor, FXForm {
 
 	func update(definition: NSDictionary) {
 
@@ -24,6 +24,16 @@ class Sensor: _Sensor {
 		
 		self.removeObserver(view, forKeyPath: "name");
 		self.removeObserver(view, forKeyPath: "displayName");
+		
+	}
+	
+	func fields() -> [AnyObject]! {
+		
+		return [
+			[ "key": "displayName", "title": "Display name", "type": "text" ],
+			[ "key": "selected", "title": "Active", "type": "boolean" ],
+			[ "key": "onTodayScreen", "title": "Display in Widget", "type": "boolean" ]
+		];
 		
 	}
 	
