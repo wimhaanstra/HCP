@@ -109,6 +109,19 @@
 }
 </code></pre>
 
+<p>It is also important to override the <code>fields</code> method, when your custom sensor has settings that can be configured. The example below is the <code>fields</code> method from the <code>Dimmer</code> sensor. It fetches the fields from the superclass and appends a new configuration option.</p>
+
+<pre><code>override func fields() -&gt; [AnyObject]! {
+
+    var superFields = super.fields();
+    superFields.append([ "key": "defaultDimValue", "title": "Default Dim Value", "type": "number" ]);
+    return superFields;
+
+}
+</code></pre>
+
+<p>Read the <a href="https://github.com/nicklockwood/FXForms">documentation of FXForms</a> for more information.</p>
+
 <h1>
 <a name="api-documentation" class="anchor" href="#api-documentation"><span class="octicon octicon-link"></span></a>API documentation</h1>
 
@@ -148,6 +161,8 @@
 <a href="http://classy.as">Classy</a> - Styling of UIKit using CSS-like files.</li>
 <li>
 <a href="https://github.com/dzenbot/DZNSegmentedControl">DZNSegmentedControl</a> - A great control, used to page through the screens.</li>
+<li>
+<a href="https://github.com/nicklockwood/FXForms">FXForms</a> - A great way to create forms per sensor. This is used for the settings screens.</li>
 <li>
 <a href="https://github.com/magicalpanda/MagicalRecord">MagicalRecord/Shorthand</a> - CoreData in an ActiveRecord kind of way.</li>
 <li>
