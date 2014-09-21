@@ -23,21 +23,25 @@ class EntityFactory<T: Sensor> {
 			
 			if (sensor == nil) {
 				
-				XCGLogger.defaultInstance().info("Creating " + NSStringFromClass(T));
-				
+				//XCGLogger.defaultInstance().info("Creating " + NSStringFromClass(T));
 				var localController = controller.inContext(context);
 				if (localController != nil) {
 					sensor = T.createEntityInContext(context);
-					sensor?.id = id;
-					sensor?.selected = true;
+					sensor!.id = id;
+					sensor!.selected = true;
+					sensor!.available = true;
 					sensor!.controller = localController;
-					sensor?.onTodayScreen = false;
+					sensor!.onTodayScreen = false;
 					localController.addSensorsObject(sensor);
 				}
 			}
 			
+			if (sensor!.available != true) {
+				sensor?.available = true;
+			}
+			
 			if (sensor != nil && sensor?.selected == true) {
-				XCGLogger.defaultInstance().info("Updating " + NSStringFromClass(T));
+				//XCGLogger.defaultInstance().info("Updating " + NSStringFromClass(T));
 				sensor?.update(definition);
 			}
 		}

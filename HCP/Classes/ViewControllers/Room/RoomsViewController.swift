@@ -12,31 +12,36 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 	
 	var collectionView: UICollectionView?;
 	private var roomNameTextField: UITextField? = nil;
+	
+	var edgeOffset = 5.0;
+	var itemsPerRow = 5;
+	var interItemSpacing = 5.0;
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		var addRoomButton = self.addButton(NSLocalizedString("ADD_ROOM_BUTTON", comment: "Button title in rooms view"), width: 150, selector: Selector("addRoom_Clicked"));
 
-		/*
-UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
-layout.sectionInset = UIEdgeInsetsMake(25, 25, 25, 25);
-layout.minimumInteritemSpacing = 25;
-layout.minimumLineSpacing = 25;
-		*/
-
+		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+			itemsPerRow = 2;
+			interItemSpacing = 0;
+			edgeOffset = 0;
+		}
+		
+		var itemSize = (self.view.bounds.size.width - (2 * CGFloat(edgeOffset)) - (CGFloat(itemsPerRow) * CGFloat(edgeOffset))) / CGFloat(itemsPerRow);
+		
 		var layout = UICollectionViewFlowLayout();
-		layout.sectionInset = UIEdgeInsetsMake(25, 25, 25, 25);
-		layout.minimumInteritemSpacing = 25;
-		layout.minimumLineSpacing = 25;
-		layout.itemSize = CGSizeMake(220, 220);
+		layout.sectionInset = UIEdgeInsetsMake(CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset));
+		layout.minimumInteritemSpacing = CGFloat(interItemSpacing);
+		layout.minimumLineSpacing = CGFloat(interItemSpacing);
+		layout.itemSize = CGSizeMake(itemSize, itemSize);
 		
 		self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout);
 		self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "base");
 		self.collectionView!.delegate = self
 		self.collectionView!.dataSource = self;
-		self.contentView.addSubview(self.collectionView!);
 		self.collectionView!.backgroundColor = UIColor.whiteColor();
+		self.contentView.addSubview(self.collectionView!);
 	}
 
     override func didReceiveMemoryWarning() {
@@ -61,12 +66,13 @@ layout.minimumLineSpacing = 25;
 		cell.cas_styleClass = "Room";
 		var room = Room.findAllSortedBy("order", ascending: true)[indexPath.row] as Room;
 		
-		var label = UILabel(frame: CGRectMake(5, cell.frame.size.height - 35, cell.frame.size.width - 10, 30));
-		label.font = UIFont(name: "HelveticaNeue-Thin", size: 30);
-		cell.contentView.addSubview(label);
-		cell.layer.cornerRadius = 5;
+		var textLabel = UILabel(frame: CGRectMake(5, cell.frame.size.height - 27, cell.frame.size.width - 10, 30));
+		textLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16);
+		textLabel.textColor = UIColor(white: 0.600, alpha: 1.0);
 		
-		label.text = room.name;
+		cell.contentView.addSubview(textLabel);
+		
+		textLabel.text = room.name;
 		
 		return cell;
 		
@@ -105,7 +111,6 @@ layout.minimumLineSpacing = 25;
 		}));
 		
 		self.presentViewController(alert, animated: true, completion: { () -> Void in
-			
-		});	}
-
+		});
+	}
 }

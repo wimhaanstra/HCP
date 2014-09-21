@@ -38,33 +38,33 @@ class EnergyLink: _EnergyLink {
 		
 	}
 	
-	override func addObserversForView(view: UIView) {
+	override func addObserversForObject(object: NSObject) {
+	
+		super.addObserversForObject(object);
 		
-		super.addObserversForView(view);
-		
-		self.addObserver(view, forKeyPath: "tariff", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "t1", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "t2", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "used", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "aggregate", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "gas", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "s1", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "s2", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "tariff", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "t1", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "t2", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "used", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "aggregate", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "gas", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "s1", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "s2", options: NSKeyValueObservingOptions.New, context: nil);
 		
 	}
 	
-	override func removeObserversForView(view: UIView) {
+	override func removeObserversForObject(object: NSObject) {
 		
-		super.removeObserversForView(view);
+		super.removeObserversForObject(object);
 
-		self.removeObserver(view, forKeyPath: "tariff");
-		self.removeObserver(view, forKeyPath: "t1");
-		self.removeObserver(view, forKeyPath: "t2");
-		self.removeObserver(view, forKeyPath: "used");
-		self.removeObserver(view, forKeyPath: "aggregate");
-		self.removeObserver(view, forKeyPath: "gas");
-		self.removeObserver(view, forKeyPath: "s1");
-		self.removeObserver(view, forKeyPath: "s2");
+		self.removeObserver(object, forKeyPath: "tariff");
+		self.removeObserver(object, forKeyPath: "t1");
+		self.removeObserver(object, forKeyPath: "t2");
+		self.removeObserver(object, forKeyPath: "used");
+		self.removeObserver(object, forKeyPath: "aggregate");
+		self.removeObserver(object, forKeyPath: "gas");
+		self.removeObserver(object, forKeyPath: "s1");
+		self.removeObserver(object, forKeyPath: "s2");
 		
 	}
 

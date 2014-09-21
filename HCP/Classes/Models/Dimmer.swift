@@ -21,25 +21,24 @@ class Dimmer: _Dimmer {
 		}
 	}
 	
-	override func addObserversForView(view: UIView) {
-		
-		super.addObserversForView(view);
-		self.addObserver(view, forKeyPath: "dimValue", options: NSKeyValueObservingOptions.New, context: nil);
+	override func addObserversForObject(object: NSObject) {
+		super.addObserversForObject(object);
+		self.addObserver(object, forKeyPath: "dimValue", options: NSKeyValueObservingOptions.New, context: nil);
 		
 	}
 	
-	override func removeObserversForView(view: UIView) {
+	override func removeObserversForObject(object: NSObject) {
 		
-		super.removeObserversForView(view);
-		self.removeObserver(view, forKeyPath: "dimValue");
+		super.removeObserversForObject(object);
+		self.removeObserver(object, forKeyPath: "dimValue");
 		
 	}
 	
 	override func fields() -> [AnyObject]! {
 		
-		var superFields = super.fields();
-		superFields.append([ "key": "defaultDimValue", "title": "Default Dim Value", "type": "number" ]);
-		return superFields;
+		var fields: [AnyObject] = [ [ "key": "defaultDimValue", "title": "Tap Dim Value", "type": "number", "header" : "Dimmer" ] ];
+		fields = fields + super.fields();
+		return fields;
 		
 	}
 

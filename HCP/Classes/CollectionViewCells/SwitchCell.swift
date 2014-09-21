@@ -14,7 +14,8 @@ class SwitchCell: SensorCell {
 	var offButton: UIButton;
 	
 	var offBackgroundColor: UIColor = UIColor(red: 0.996, green: 0.710, blue: 0.506, alpha: 1.0);
-	var onBackgroundColor: UIColor = UIColor(red: 0.996, green: 0.553, blue: 0.278, alpha: 1.0);
+	
+	var onBackgroundColor: UIColor = UIColor(red: 0.902, green: 0.424, blue: 0.159, alpha: 1.0);
 
 	override init(frame: CGRect) {
 		
@@ -43,7 +44,7 @@ class SwitchCell: SensorCell {
 	override var sensor: Sensor? {
 		didSet {
 			if (self.sensor != nil) {
-				self.contentView.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
+				self.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
 			}
 		}
 	}

@@ -31,8 +31,7 @@ class MenuViewController: UIViewController {
 		self.view.addGestureRecognizer(self.swipeDownGesture!);
 		
 		self.tapGesture = UITapGestureRecognizer(target: self, action: Selector("menuViewTapped"));
-		self.tapGesture?.numberOfTouchesRequired = 2;
-		self.view.addGestureRecognizer(self.tapGesture!);
+		self.tapGesture?.numberOfTouchesRequired = 1;
 		
 		self.menuBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 0);
 		self.menuBar.userInteractionEnabled = true;
@@ -49,10 +48,22 @@ class MenuViewController: UIViewController {
 		self.blurView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3);
     }
 	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated);
+	}
+	
 	override func viewDidAppear(animated: Bool) {
+
+		if (self.view.frame.origin.y < 0) {
 		
+			UIView.animateWithDuration(0.2, animations: { () -> Void in
+				var frame = self.view.frame;
+				frame.origin.y = 0;
+				self.view.frame = frame;
+			});
+			
+		}
 		super.viewDidAppear(animated);
-		
 	}
 
     override func didReceiveMemoryWarning() {
@@ -81,8 +92,10 @@ class MenuViewController: UIViewController {
 			UIView.animateWithDuration(0.2, animations: { () -> Void in
 				self.blurView.alpha = 1;
 				self.menuBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.menuHeight);
-				self.contentView.frame = CGRectOffset(self.contentView.frame, 0, self.menuHeight);
+				self.contentView.frame = CGRectMake(0, self.menuHeight, self.view.bounds.size.width, self.view.bounds.size.height);
 				self.contentView.addSubview(self.blurView);
+				
+				self.view.addGestureRecognizer(self.tapGesture!);
 			});
 		}
 	}
@@ -94,10 +107,11 @@ class MenuViewController: UIViewController {
 			
 			UIView.animateWithDuration(0.2, animations: { () -> Void in
 				self.menuBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 0);
-				self.contentView.frame = CGRectOffset(self.contentView.frame, 0, -1 * self.menuHeight);
+				self.contentView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
 				self.blurView.alpha = 0;
 			}, completion: { (complete) -> Void in
 				self.blurView.removeFromSuperview();
+				self.view.removeGestureRecognizer(self.tapGesture!);
 			});
 			
 		}

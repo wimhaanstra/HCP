@@ -8,17 +8,17 @@
 
 import UIKit
 
-class HomeWizardSensorManagementViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
+class ControllerSensorManagementViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
 	
 	private var tableView: UITableView = UITableView();
 	private var sensors: Array<Sensor> = [];
 	
-	var homeWizard: HomeWizard! = nil {
+	var controller: Controller! = nil {
 		didSet {
 			
-			self.title = homeWizard.name;
-			self.sensors = homeWizard.sensors.allObjects as Array<Sensor>;
-			self.sensors.sort({ $0.name < $1.name });
+			self.title = controller.name;
+			self.sensors = controller.sensors.allObjects as Array<Sensor>;
+			self.sensors.sort({ $0.displayName < $1.displayName });
 			
 		}
 	}
@@ -47,7 +47,7 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if (section == 0) {
-			return self.homeWizard.sensors.count;
+			return self.controller.sensors.count;
 		}
 		else {
 			return 2;
@@ -73,14 +73,8 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 			}
 			
 			var sensor: Sensor = self.sensors[indexPath.row];
-			cell.textLabel!.text = sensor.name;
-			
-			if (sensor.selected == true) {
-				cell.accessoryType = .Checkmark;
-			}
-			else {
-				cell.accessoryType = .None;
-			}
+			cell.textLabel!.text = sensor.displayName;
+			cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
 			
 			return cell;
 		}
@@ -101,7 +95,7 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 			else if (indexPath.row == 1) {
 				cell.textLabel?.textColor = UIColor.redColor();
 				cell.accessoryType = .None;
-				cell.textLabel?.text = "Remove HomeWizard";
+				cell.textLabel?.text = "Delete";
 			}
 			
 			return cell;
@@ -118,24 +112,6 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 			var cell = tableView.cellForRowAtIndexPath(indexPath);
 			var sensor: Sensor = self.sensors[indexPath.row];
 			
-			/*
-			MagicalRecord.saveWithBlockAndWait({ (context) -> Void in
-				var sensorInContext:Sensor = sensor.inContext(context);
-				
-				if (sensor.selected == true) {
-					cell?.accessoryType = .None;
-					sensor.selected = false;
-					sensorInContext.selected = false;
-				}
-				else {
-					sensor.selected = true;
-					sensorInContext.selected = true;
-					cell?.accessoryType = .Checkmark;
-				}
-				
-			});
-			*/
-			
 			var sensorConfiguration = SensorConfigurationViewController();
 			sensorConfiguration.sensor = sensor;
 			self.navigationController?.pushViewController(sensorConfiguration, animated: true);
@@ -144,14 +120,16 @@ class HomeWizardSensorManagementViewController: UIViewController, UITableViewDat
 		}
 		else if (indexPath.section == 1) {
 			if (indexPath.row == 0) {
-
+				var configuration = ControllerConfigurationViewController();
+				configuration.controller = self.controller;
+				self.navigationController?.pushViewController(configuration, animated: true);
 			}
 			else if (indexPath.row == 1) {
 				
-				var alert = UIAlertController(title: "Remove HomeWizard?", message: "Removing this HomeWizard will remove all settings that you configured.", preferredStyle: UIAlertControllerStyle.Alert);
+				var alert = UIAlertController(title: "Remove controller?", message: "Removing this controller will remove all settings that you configured.", preferredStyle: UIAlertControllerStyle.Alert);
 				alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: { ( action ) -> Void in
 					
-					ControllerManager.sharedInstance.remove(self.homeWizard, completion: { (success) -> Void in
+					ControllerManager.sharedInstance.remove(self.controller, completion: { (success) -> Void in
 					});
 					
 					self.navigationController?.popToRootViewControllerAnimated(true);

@@ -13,10 +13,15 @@
 
 #define MR_SHORTHAND
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/NSManagedObjectContext+MagicalSaves.h>
+#import <MagicalRecord/MagicalRecord+Actions.h>
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <DZNSegmentedControl/DZNSegmentedControl.h>
 #import <Classy/Classy.h>
 #import <FXForms/FXForms.h>
+
+#import <ADFlipTransition/UICollectionViewController+ADFlipTransition.h>
+#import <ADFlipTransition/UIViewController+ADFlipTransition.h>
 
 #endif

@@ -3,85 +3,116 @@ class HomeWizard: _HomeWizard {
 	
 	private var _fetchDataTimer: NSTimer? = nil;
 	private var _fetchSensorsTimer: NSTimer? = nil;
-    
-    override class func discover(includeStored: Bool, completion: (results: [Controller]) -> Void) {
-        
-        let discoveryUrl = "http://gateway.homewizard.nl/discovery.php";
+	
+	override class func discover(includeStored: Bool, completion: (results: [Controller]) -> Void) {
 		
-		XCGLogger.defaultInstance().info("HomeWizard Discovery: " + discoveryUrl);
+		let discoveryUrl = "http://gateway.homewizard.nl/discovery.php";
 		
-        let manager = AFHTTPRequestOperationManager();
-        
-        manager.GET(discoveryUrl, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+		NSLog("HomeWizard Discovery: " + discoveryUrl);
+		
+		let manager = AFHTTPRequestOperationManager();
+		
+		manager.GET(discoveryUrl, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+			
+			let responseDict = responseObject as Dictionary<String, AnyObject>
+			
+			let status: String? = (responseDict["status"] as AnyObject?) as? String;
+			let ip: String? = (responseDict["ip"] as AnyObject?) as? String;
+			
+			if (status != nil && status == "ok" && ip != nil && ip != "") {
 				
-				if (responseObject.objectForKey("status") as String == "ok") {
-					var ipAddress = responseObject.objectForKey("ip") as String
-					var match: AnyObject! = HomeWizard.findFirstByAttribute("ip", withValue: ipAddress);
+				var ipAddress = responseObject.objectForKey("ip") as String
+				var match: AnyObject! = HomeWizard.findFirstByAttribute("ip", withValue: ipAddress);
+				
+				if (match == nil) {
 					
-					if (match == nil) {
-						
-						XCGLogger.defaultInstance().info("Discovered HomeWizard not yet in database (" + ipAddress + ")");
-						
-						var foundObject: HomeWizard = HomeWizard.createEntityInContext(nil) as HomeWizard;
-						foundObject.ip = ipAddress;
-						foundObject.name = ipAddress;
-						foundObject.lastUpdate = NSDate();
-						completion(results: [foundObject]);
-					}
-					else {
-						
-						XCGLogger.defaultInstance().info("Discovered HomeWizard is already in database (" + ipAddress + ")");
-						
-						if  (includeStored) {
-							var foundObject: HomeWizard = match as HomeWizard
-							completion(results: [foundObject])
-						}
-						else {
-							completion(results: []);
-						}
-					}
+					NSLog("Discovered HomeWizard not yet in database (" + ipAddress + ")");
 					
+					var foundObject: HomeWizard = HomeWizard.createEntityInContext(nil) as HomeWizard;
+					foundObject.ip = ipAddress;
+					foundObject.name = "HomeWizard (\(ipAddress))";
+					foundObject.type = kControllerType.HomeWizard;
+					foundObject.lastUpdate = NSDate();
+					foundObject.dataRefreshInterval = 5;
+					foundObject.sensorRefreshInterval = 30;
+					completion(results: [foundObject]);
 				}
 				else {
-					completion(results: []);
+					
+					NSLog("Discovered HomeWizard is already in database (" + ipAddress + ")");
+					
+					if  (includeStored) {
+						var foundObject: HomeWizard = match as HomeWizard
+						completion(results: [foundObject])
+					}
+					else {
+						completion(results: []);
+					}
 				}
-            },
-            failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
-                XCGLogger.defaultInstance().info("Error: " + error.localizedDescription)
-            }
-        )
-    }
+				
+			}
+			else {
+				completion(results: []);
+			}
+			},
+			failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
+				NSLog("Error: " + error.localizedDescription)
+			}
+		)
+	}
 	
 	override var entityName: String {
 		return "HomeWizard";
 	}
-
+	
+	override var description: String {
+		return "HomeWizard (" + self.ip! + ")";
+	}
 	
 	func password() -> String? {
 		return UICKeyChainStore.stringForKey(self.ip! + ".password");
 	}
-    
+	
+	func available() -> Bool {
+		
+		let url = "http://" + self.ip! + "/";
+		
+		var request = NSMutableURLRequest(URL: NSURL(string: url));
+		request.HTTPMethod = "HEAD";
+		request.timeoutInterval = 2.0;
+		var response: NSURLResponse?;
+		var error: NSError?;
+		
+		NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error);
+		println(error);
+		return (error == nil) ? true : false;
+		
+	}
+	
 	func performAction(command: String, completion: (results: AnyObject!, error: NSError?) -> Void ) -> Void {
-		XCGLogger.defaultInstance().info("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
+		NSLog("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
 		
 		if (self.password() != nil) {
+			
 			let url = "http://" + self.ip! + "/" + self.password()! + command;
 			
 			let manager = AFHTTPRequestOperationManager();
+			
 			manager.GET(url, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-				completion(results: responseObject, error: nil);
-			},
-			failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
-				completion(results: nil, error: error);
+					completion(results: responseObject, error: nil);
+				},
+				failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+					NSLog(error.localizedDescription);
+					completion(results: nil, error: error);
 			});
 		}
-    }
+	}
 	
 	func login(password: String, completion: (success: Bool) -> Void) -> Void {
-
+		
 		var stored = UICKeyChainStore.setString(password, forKey: self.ip! + ".password");
 		if (!stored) {
-			XCGLogger.defaultInstance().info("Storing value in keychain failed");
+			//			NSLog("Storing value in keychain failed");
 		}
 		
 		self.performAction("/enlist", completion: { (results, error) -> Void in
@@ -108,23 +139,29 @@ class HomeWizard: _HomeWizard {
 			_fetchDataTimer = nil;
 		}
 		
-		XCGLogger.defaultInstance().info("Fetching sensors");
-		
+		if (_fetchSensorsTimer != nil) {
+			_fetchSensorsTimer?.invalidate();
+			_fetchSensorsTimer = nil;
+		}
 		
 		self.performAction("/get-sensors", completion: { (results, error) -> Void in
-			if (results != nil && results.objectForKey("response") != nil) {
+			if (error == nil && results != nil && results.objectForKey("response") != nil) {
 				if let response = results.objectForKey("response") as? Dictionary<String, AnyObject> {
 					self.parse(response);
 				}
+				
+				// When done, start updating data (again)
+				if (self._fetchDataTimer == nil) {
+					self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(self.dataRefreshInterval!, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: false);
+				}
 			}
-	
-			// When done, start updating data (again)
-			if (self._fetchDataTimer == nil) {
-				self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: true);
-			}
+			
+			self._fetchSensorsTimer = NSTimer.scheduledTimerWithTimeInterval(self.sensorRefreshInterval!,
+				target: self,
+				selector: Selector("fetchSensors"),
+				userInfo: nil,
+				repeats: false);
 		});
-		
-		
 	}
 	
 	func fetchData() {
@@ -135,21 +172,26 @@ class HomeWizard: _HomeWizard {
 					self.parse(response);
 				}
 			}
-			if (self._fetchDataTimer == nil) {
-				self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: true);
-			}
+			
+			self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(self.dataRefreshInterval!, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: false);
 		});
-
+		
 	}
 	
 	override func start() {
 		
 		if (self.managedObjectContext == nil) {
-			XCGLogger.defaultInstance().error("This object is not saved, you cannot store sensors for this device.");
+			//			XCGLogger.defaultInstance().error("This object is not saved, you cannot store sensors for this device.");
 			return;
 		}
 		
-		_fetchSensorsTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("fetchSensors"), userInfo: nil, repeats: true);
+		self._fetchSensorsTimer = NSTimer.scheduledTimerWithTimeInterval(
+			self.sensorRefreshInterval!,
+			target: self,
+			selector: Selector("fetchSensors"),
+			userInfo: nil,
+			repeats: false
+		);
 		
 		self.started = true;
 		
@@ -212,7 +254,7 @@ class HomeWizard: _HomeWizard {
 				var e = EntityFactory<Thermometer>.create(self, definition: itemDictionary);
 			}
 		}
-
+		
 		
 		if let energyLinks = response["energylinks"] as? NSArray {
 			for item in energyLinks {
@@ -227,5 +269,15 @@ class HomeWizard: _HomeWizard {
 		}
 		
 	}
+	
+	override func fields() -> [AnyObject]! {
+		
+		var superFields = super.fields();
+		superFields.append([ "key": "dataRefreshInterval", "title": "Sensor data refresh rate", "type": "number" ]);
+		superFields.append([ "key": "sensorRefreshInterval", "title": "Sensor inventory refresh rate", "type": "number" ]);
+		return superFields;
+		
+	}
+	
 	
 }

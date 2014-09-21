@@ -37,6 +37,12 @@ class SensorConfigurationViewController: UIViewController, FXFormControllerDeleg
 		self.formController.tableView = self.tableView;
 		self.formController.delegate = self;
 		
+		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+			
+			var closeButton = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Done, target: self, action: Selector("Close_Clicked"));
+			self.navigationItem.rightBarButtonItem = closeButton;
+			
+		}
 	}
 	
 	override init() {
@@ -65,15 +71,16 @@ class SensorConfigurationViewController: UIViewController, FXFormControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	override func viewWillDisappear(animated: Bool) {
+		NSLog("Disappearing");
+		
+		self.sensor.managedObjectContext.saveToPersistentStoreAndWait();
+	}
+	
+	func Close_Clicked() {
+		self.dismissViewControllerAnimated(true, completion: { () -> Void in
+			
+		});
+	}
 
 }

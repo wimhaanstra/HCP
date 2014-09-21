@@ -30,8 +30,7 @@ class EnergyLinkCell: SensorCell {
 		self.backgroundColor = UIColor(white: 0.945, alpha: 1.0);
 		self.contentView.addSubview(self.currentUsageLabel);
 		self.contentView.addSubview(self.maxUsageLabel);
-		
-		self.backgroundColor = UIColor(red: 0.502, green: 0.435, blue: 0.682, alpha: 1.0);
+		self.backgroundColor = UIColor(red: 0.341, green: 0.273, blue: 0.502, alpha: 1.0);
 	}
 	
 	required init(coder aDecoder: NSCoder) {
@@ -59,9 +58,11 @@ class EnergyLinkCell: SensorCell {
 			
 			var graphRect = CGRectInset(rect, rect.size.width / 10, rect.size.width / 10);
 			var currentValue = usedValue.currentValue;
-			var percentage: Double = currentValue / (usedValue.maxValue / 100);
+			
+			var graphMax: NSNumber = (usedValue.maxValue.integerValue < usedValue.currentValue.integerValue) ? currentValue : usedValue.maxValue;
+			
+			var percentage: Double = currentValue / (graphMax / 100);
 
-			// UIColor(white: 0.876, alpha: 0.7)
 			self.drawCircleInRect(graphRect, color: UIColor(white: 0.800, alpha: 1.0), percentage: 100.0);
 			
 			var color = UIColor(red: 0.876, green: 0.265, blue: 0.217, alpha: 1.0);

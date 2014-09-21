@@ -1,14 +1,14 @@
 @objc(Controller)
-class Controller: _Controller {
+class Controller: _Controller, FXForm {
 
 	// Custom logic goes here.
 	class func discover(includeStored: Bool, completion: (results: [Controller]) -> Void) {
         completion(results: [])
     }
     	
-	override var description: String {
-		return self.name! + " (" + self.ip! + ")";
-	}
+	var type: kControllerType = kControllerType.Controller;
+	
+	var reachabilityManager: AFNetworkReachabilityManager?;
 	
 	var entityName: String {
 		return "Controller";
@@ -21,5 +21,15 @@ class Controller: _Controller {
 	
 	func stop() {
 	}
+	
+	func fields() -> [AnyObject]! {
+		
+		return [
+			[ "key": "name", "title": "Name", "type": "text" ]
+		];
+		
+	}
+	
+	
 
 }

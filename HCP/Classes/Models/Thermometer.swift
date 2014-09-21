@@ -42,23 +42,23 @@ class Thermometer: _Thermometer {
 		
 	}
 	
-	override func addObserversForView(view: UIView) {
+	override func addObserversForObject(object: NSObject) {
 		
-		super.addObserversForView(view);
+		super.addObserversForObject(object);
 		
-		self.addObserver(view, forKeyPath: "channel", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "humidity", options: NSKeyValueObservingOptions.New, context: nil);
-		self.addObserver(view, forKeyPath: "temperature", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "channel", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "humidity", options: NSKeyValueObservingOptions.New, context: nil);
+		self.addObserver(object, forKeyPath: "temperature", options: NSKeyValueObservingOptions.New, context: nil);
 		
 	}
 	
-	override func removeObserversForView(view: UIView) {
+	override func removeObserversForObject(object: NSObject) {
 		
-		super.removeObserversForView(view);
+		super.removeObserversForObject(object);
 		
-		self.removeObserver(view, forKeyPath: "channel");
-		self.removeObserver(view, forKeyPath: "humidity");
-		self.removeObserver(view, forKeyPath: "temperature");
+		self.removeObserver(object, forKeyPath: "channel");
+		self.removeObserver(object, forKeyPath: "humidity");
+		self.removeObserver(object, forKeyPath: "temperature");
 		
 	}
 }

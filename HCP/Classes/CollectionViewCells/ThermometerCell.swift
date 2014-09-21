@@ -21,7 +21,8 @@ class ThermometerCell: SensorCell {
 		
 		super.init(frame: frame);
 
-		self.backgroundColor = UIColor(red: 1.0, green: 0.773, blue: 0.278, alpha: 1.0);
+//		[UIColor colorWithRed:0.881 green:0.646 blue:0.147 alpha:1.000]
+		self.backgroundColor = UIColor(red: 0.881, green: 0.646, blue: 0.147, alpha: 1.0);
 		self.contentView.addSubview(self.currentTemperatureLabel);
 	}
 	

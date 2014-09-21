@@ -1,3 +1,7 @@
+enum DeviceType: Int {
+	case Light = 0, TV, Other;
+}
+
 @objc(Switch)
 class Switch: _Switch, FXForm {
 	
@@ -33,18 +37,36 @@ class Switch: _Switch, FXForm {
 		}
 	}
 	
-	override func addObserversForView(view: UIView) {
+	override func addObserversForObject(object: NSObject) {
 		
-		super.addObserversForView(view);
-		self.addObserver(view, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: nil);
+		super.addObserversForObject(object);
+		self.addObserver(object, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: nil);
 		
 	}
 	
-	override func removeObserversForView(view: UIView) {
+	override func removeObserversForObject(object: NSObject) {
 		
-		super.removeObserversForView(view);
-		self.removeObserver(view, forKeyPath: "status");
+		super.removeObserversForObject(object);
+		self.removeObserver(object, forKeyPath: "status");
 		
+	}
+	
+	/*
+	func deviceTypeField() -> NSDictionary {
+		
+		return [ "options" : [ DeviceType.Light, DeviceType.TV, DeviceType.Other ]];
+		
+	}
+	*/
+	
+	override func fields() -> [AnyObject]! {
+		
+//		var optionDictionary = [ "options" : ["Test", "Test 2", "Test 3"] ];
+		
+		var superFields = super.fields();
+		superFields.append([ "key": "deviceType", "title": "Device type", "type": "option", "options": ["test", "test2", "test3"] ]);
+		return superFields;
+
 	}
 	
 	

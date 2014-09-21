@@ -4,6 +4,7 @@
 import CoreData
 
 enum SwitchAttributes: String {
+    case deviceType = "deviceType"
     case status = "status"
 }
 
@@ -32,6 +33,11 @@ class _Switch: Sensor {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var deviceType: NSNumber?
+
+    // func validateDeviceType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var status: NSNumber?

@@ -96,6 +96,9 @@ The application will be prepared to be fully multi-lingual, but **our** main foc
 
 The application will be have both a light and a dark mode. The light mode will show different colors, while the dark mode uses different tints of gray to differentiate different sensors. Themes will be accepted as pull requests also, as long as you are willing to support them.
 
+#Events
+Events are 
+
 #Also on my mind
 There are a couple of things that are on my mind, that I would love to integrate in HCP.
 

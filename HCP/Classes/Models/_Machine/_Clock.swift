@@ -1,20 +1,19 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to HomeWizard.swift instead.
+// Make changes to Clock.swift instead.
 
 import CoreData
 
-enum HomeWizardAttributes: String {
-    case dataRefreshInterval = "dataRefreshInterval"
-    case sensorRefreshInterval = "sensorRefreshInterval"
+enum ClockAttributes: String {
+    case timeZoneOffset = "timeZoneOffset"
 }
 
 @objc
-class _HomeWizard: Controller {
+class _Clock: Sensor {
 
     // MARK: - Class methods
 
     override class func entityName () -> String {
-        return "HomeWizard"
+        return "Clock"
     }
 
     override class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -28,21 +27,16 @@ class _HomeWizard: Controller {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _HomeWizard.entity(managedObjectContext)
+        let entity = _Clock.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
 
     @NSManaged
-    var dataRefreshInterval: NSNumber?
+    var timeZoneOffset: NSNumber?
 
-    // func validateDataRefreshInterval(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var sensorRefreshInterval: NSNumber?
-
-    // func validateSensorRefreshInterval(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateTimeZoneOffset(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
