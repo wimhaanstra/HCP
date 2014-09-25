@@ -11,6 +11,7 @@ import UIKit
 class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 	
 	var collectionView: UICollectionView?;
+	var addRoomButton: UIButton?;
 	private var roomNameTextField: UITextField? = nil;
 	
 	var edgeOffset = 5.0;
@@ -20,7 +21,7 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		var addRoomButton = self.addButton(NSLocalizedString("ADD_ROOM_BUTTON", comment: "Button title in rooms view"), width: 150, selector: Selector("addRoom_Clicked"));
+		addRoomButton = self.addButton(NSLocalizedString("ADD_ROOM_BUTTON", comment: "Button title in rooms view"), width: 150, selector: Selector("addRoom_Clicked"));
 
 		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
 			itemsPerRow = 2;
@@ -42,6 +43,22 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 		self.collectionView!.dataSource = self;
 		self.collectionView!.backgroundColor = UIColor.whiteColor();
 		self.contentView.addSubview(self.collectionView!);
+		
+		for recognizer in self.collectionView!.gestureRecognizers as [UIGestureRecognizer] {
+			if let panGesture = recognizer as? UIPanGestureRecognizer {
+				panGesture.requireGestureRecognizerToFail(self.swipeDownGesture!);
+			}
+		}
+		
+		self.collectionView!.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero);
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated);
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated);
 	}
 
     override func didReceiveMemoryWarning() {

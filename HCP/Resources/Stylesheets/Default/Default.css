@@ -17,6 +17,12 @@ UIButton {
 	}
 }
 
+UIButton.switch {
+	titleLabel: @{
+		font: $light-font 40;
+	}
+}
+
 UITableViewCell {
 	
 	textLabel: @{

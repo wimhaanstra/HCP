@@ -1,3 +1,3 @@
 enum kControllerType {
-	case Controller, HomeWizard, Time, HueBridge
+	case Controller, HomeWizard, Time, HueBridge, Weather
 }

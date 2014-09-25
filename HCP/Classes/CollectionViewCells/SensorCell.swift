@@ -37,9 +37,11 @@ class SensorCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		
-		self.textLabel = UILabel(frame: CGRectMake(5, frame.size.height - 27, frame.size.width - 10, 30));
+		self.textLabel = UILabel();
 		self.textLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16);
 		self.textLabel.textColor = UIColor.whiteColor();
+		self.textLabel.adjustsFontSizeToFitWidth = true;
+
 		
 		super.init(frame: frame);
 		
@@ -47,6 +49,11 @@ class SensorCell: UICollectionViewCell {
 		
 		self.contentView.addSubview(self.textLabel);
 		self.cas_styleClass = "Sensor";
+		
+		self.textLabel.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self, withOffset: 8);
+		self.textLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 3);
+		self.textLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -3);
+		self.textLabel.autoSetDimension(ALDimension.Height, toSize: 36);
 		
 	}
 	

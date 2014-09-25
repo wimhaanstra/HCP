@@ -25,8 +25,12 @@ class ControllerManager {
 		
 		for item in controllers {
 			
+			if (item.ip == nil) {
+				continue;
+			}
+			
 			if (item.ip! == "localhost") {
-				self.markSensorsAvailable(item, available: true);
+				self.setSensorAvailability(item, available: true);
 				item.start();
 				continue;
 			}
@@ -34,8 +38,6 @@ class ControllerManager {
 			let validIpAddressRegex = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
 			
 			if (item.ip!.rangeOfString(validIpAddressRegex, options: NSStringCompareOptions.RegularExpressionSearch, range:Range<String.Index>(start: item.ip!.startIndex, end: item.ip!.endIndex), locale: nil) != nil) {
-				
-				NSLog("IP: \(item.name)");
 				
 				var port = 80;
 				
@@ -48,11 +50,8 @@ class ControllerManager {
 				);
 				
 				item.reachabilityManager = AFNetworkReachabilityManager(forAddress: &server_address);
-				//item.reachabilityManager = AFNetworkReachabilityManager(forDomain: item.ip!)
-				
 			}
 			else {
-				NSLog("DOMAIN: \(item.name)");
 				item.reachabilityManager = AFNetworkReachabilityManager(forDomain: item.ip!)
 			}
 			
@@ -60,13 +59,11 @@ class ControllerManager {
 				
 				switch(status) {
 					case AFNetworkReachabilityStatus.NotReachable, AFNetworkReachabilityStatus.Unknown, AFNetworkReachabilityStatus.ReachableViaWWAN:
-						NSLog("UNREACHABLE: \(item.name)");
-						self.markSensorsAvailable(item, available: false);
+						self.setSensorAvailability(item, available: false);
 						item.stop();
 						break;
 					case AFNetworkReachabilityStatus.ReachableViaWiFi:
-						NSLog("Found \(item.name)");
-						self.markSensorsAvailable(item, available: true);
+						self.setSensorAvailability(item, available: true);
 						item.start();
 						break;
 				}
@@ -77,16 +74,31 @@ class ControllerManager {
 			item.reachabilityManager!.startMonitoring();
 			
 			if (item.reachabilityManager!.reachable) {
-				NSLog("IF Reachable \(item.name)");
-				self.markSensorsAvailable(item, available: true);
+				self.setSensorAvailability(item, available: true);
 				item.start();
 			}
 			else {
-				NSLog("IF NotReachable \(item.name)");
-				self.markSensorsAvailable(item, available: false);
+				self.setSensorAvailability(item, available: false);
 				
 			}
 		}
+	}
+	
+	
+	func add(controller: Controller, completion: (success: Bool) -> Void) {
+		
+		if (controller.managedObjectContext == nil) {
+			
+			NSManagedObjectContext.rootSavingContext().insertObject(controller);
+			NSManagedObjectContext.rootSavingContext().saveOnlySelfAndWait();
+			
+		}
+		
+		self.controllers.append(controller);
+		controller.start();
+		
+		completion(success: true);
+		
 	}
 	
 	func remove(controller: Controller, completion: (success: Bool) -> Void) {
@@ -108,67 +120,43 @@ class ControllerManager {
 		return controllers;
 	}
 	
-	func allHomeWizards() -> [HomeWizard] {
-		return controllers.filter({ $0.entityName == "HomeWizard" }) as [HomeWizard];
-	}
 	
-	func addTime(controller: Controller, completion: (success: Bool) -> Void) {
-
-		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
-			
-			var localController: Time! = Time.createEntityInContext(context);
-			
-			if (localController != nil) {
-				localController.name = controller.name;
-				localController.ip = controller.ip;
-				localController.lastUpdate = controller.lastUpdate;
-			}
-
-		}
-		
-		var controller = Time.findFirstByAttribute("ip", withValue: controller.ip);
-		self.controllers.append(controller);
-		controller.start();
-
-		completion(success: true);
-		
-	}
-	
-	func markSensorsAvailable(controller: Controller, available: Bool) {
-		
+	func setSensorAvailability(controller: Controller, available: Bool) {
 		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
 			
 			for item in controller.sensors {
-				
-				NSLog("Marking sensor [\((item as Sensor).name)");
 				(item as Sensor).available = available;
-				
 			}
 			
 		}
-		
 	}
 	
-	func addHomeWizard(controller: HomeWizard, completion: (success: Bool) -> Void) {
+	func moveSenor(fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) -> [Sensor] {
 		
-		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
-			var homeWizard: HomeWizard! = HomeWizard.createEntityInContext(context);
-			
-			if (homeWizard != nil) {
-				homeWizard.name = controller.name;
-				homeWizard.ip = controller.ip;
-				homeWizard.lastUpdate = controller.lastUpdate;
-				homeWizard.dataRefreshInterval = controller.dataRefreshInterval;
-				homeWizard.sensorRefreshInterval = controller.sensorRefreshInterval;
-			}
-		};
+		var sensors = self.allSensors();
 
-		var controller = HomeWizard.findFirstByAttribute("ip", withValue: controller.ip);
-		self.controllers.append(controller);
-		controller.start();
+		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
+			var sensor = sensors[fromIndexPath.row].inContext(context);
+			sensors.removeAtIndex(fromIndexPath.row);
+			sensors.insert(sensor, atIndex: toIndexPath.row);
+			
+			var index = 0;
+			for item in sensors {
+				item.sortOrder = index;
+				index++;
+			}
+		}
 		
-		completion(success: true);
+		return sensors;
 	}
+	
+	func allSensors() -> [Sensor] {
+
+		var predicate = NSPredicate(format: "selected = %@", argumentArray: [ true ] );
+		return Sensor.findAllSortedBy("sortOrder", ascending: true, withPredicate: predicate) as [Sensor];
+
+	}
+
 	
 	func stopControllers() {
 		for item in self.controllers {

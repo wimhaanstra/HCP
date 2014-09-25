@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		MagicalRecord.setupAutoMigratingCoreDataStack();
 		MagicalRecord.setLoggingLevel(MagicalRecordLoggingLevel.Verbose);
 
-		ControllerManager.sharedInstance.allHomeWizards();
+		ControllerManager.sharedInstance.all();
 		
 		self.window = UIWindow(frame: UIScreen.mainScreen().bounds);
 		self.containerViewController = ContainerViewController();

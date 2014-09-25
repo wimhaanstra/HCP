@@ -9,16 +9,19 @@
 import UIKit
 
 class EnergyLinkDetailsViewController: SensorDetailsViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.view.backgroundColor = UIColor(red: 0.341, green: 0.273, blue: 0.502, alpha: 1.0);
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated);
+		self.view.backgroundColor = UIColor(red: 0.341, green: 0.273, blue: 0.502, alpha: 1.0);
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
+	
 }

@@ -46,6 +46,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="onTodayScreen" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="selected" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="controller" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Controller" inverseName="sensors" inverseEntity="Controller" syncable="YES"/>
         <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Room" inverseName="sensors" inverseEntity="Room" syncable="YES"/>
     </entity>
@@ -60,18 +61,26 @@
         <attribute name="temperature" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <entity name="Time" representedClassName="Time" parentEntity="Controller" syncable="YES"/>
+    <entity name="Weather" representedClassName="Weather" parentEntity="Sensor" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="YahooWeather" representedClassName="YahooWeather" parentEntity="Controller" syncable="YES">
+        <attribute name="refreshRate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Asun" positionX="-45" positionY="81" width="128" height="45"/>
+        <element name="Clock" positionX="-45" positionY="81" width="128" height="60"/>
         <element name="Controller" positionX="-63" positionY="-18" width="128" height="133"/>
         <element name="Dimmer" positionX="-27" positionY="54" width="128" height="75"/>
         <element name="EnergyLink" positionX="-45" positionY="63" width="128" height="165"/>
         <element name="HomeWizard" positionX="-54" positionY="27" width="128" height="73"/>
         <element name="HueBridge" positionX="-36" positionY="36" width="128" height="58"/>
         <element name="Room" positionX="-18" positionY="72" width="128" height="88"/>
-        <element name="Sensor" positionX="-45" positionY="18" width="128" height="180"/>
+        <element name="Sensor" positionX="-45" positionY="18" width="128" height="193"/>
         <element name="Switch" positionX="-36" positionY="45" width="128" height="75"/>
         <element name="Thermometer" positionX="-36" positionY="90" width="128" height="103"/>
         <element name="Time" positionX="-45" positionY="81" width="128" height="45"/>
-        <element name="Clock" positionX="-45" positionY="81" width="128" height="60"/>
+        <element name="Weather" positionX="-18" positionY="108" width="128" height="58"/>
+        <element name="YahooWeather" positionX="-27" positionY="99" width="128" height="60"/>
     </elements>
 </model>

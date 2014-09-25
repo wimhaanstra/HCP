@@ -15,6 +15,8 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <MagicalRecord/NSManagedObjectContext+MagicalSaves.h>
 #import <MagicalRecord/MagicalRecord+Actions.h>
+#import <MagicalRecord/NSManagedObject+MagicalDataImport.h>
+#import <MagicalRecord/NSManagedObject+MagicalDataImport.h>
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <DZNSegmentedControl/DZNSegmentedControl.h>
@@ -23,5 +25,9 @@
 
 #import <ADFlipTransition/UICollectionViewController+ADFlipTransition.h>
 #import <ADFlipTransition/UIViewController+ADFlipTransition.h>
+
+#import <LXReorderableCollectionViewFlowLayout/LXReorderableCollectionViewFlowLayout.h>
+
+#import <PureLayout/PureLayout.h>
 
 #endif

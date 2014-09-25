@@ -14,14 +14,13 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 	private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView();
 	private var discoveredControllers: [Controller] = [Controller]();
 	private var passwordTextField: UITextField? = nil;
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
 		self.tableView.frame = self.view.bounds;
 		self.tableView.delegate = self;
 		self.tableView.dataSource = self;
-		self.tableView.autoresizingMask = .FlexibleHeight | .FlexibleWidth;
 		self.view.addSubview(tableView);
 		
 		self.title = NSLocalizedString("CONTROLLER_DISCOVERY_TITLE", comment: "Controller discovery popup titlte");
@@ -34,8 +33,8 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 			self.navigationItem.rightBarButtonItem = closeButton;
 			
 		}
-
-    }
+		
+	}
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated);
@@ -49,7 +48,15 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 					self.discoveredControllers.append(item);
 				}
 				
-				self.tableView.reloadData();
+				YahooWeather.discover(false, completion: { (results) -> Void in
+					
+					for item in results {
+						self.discoveredControllers.append(item);
+					}
+					
+					self.tableView.reloadData();
+				});
+				
 			})
 		});
 	}
@@ -58,12 +65,12 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 		self.dismissViewControllerAnimated(true, completion: { () -> Void in
 		});
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 2;
 	}
@@ -131,44 +138,40 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 		if (indexPath.section == 1) {
 			var controller = self.discoveredControllers[indexPath.row] as Controller;
 			
-			NSLog(controller.description);
-			
 			switch (controller.type) {
-				case .HomeWizard:
-					self.addHomeWizard(controller as HomeWizard, indexPath: indexPath);
-				case .Time:
-					self.addTime(controller as Time, indexPath: indexPath);
-				case .HueBridge:
-					println("Hue");
-				default:
-					println("Unknown");
+			case .HomeWizard:
+				self.addHomeWizard(controller as HomeWizard, indexPath: indexPath);
+			case .Time, .Weather:
+				self.addController(controller, indexPath: indexPath);
+			case .HueBridge:
+				println("Hue");
+			default:
+				println("Unknown");
 			}
 		}
 		else if (indexPath.section == 0) {
 			var controller = ControllerManager.sharedInstance.all()[indexPath.row];
 			
-				var managementViewController = ControllerSensorManagementViewController();
+			var managementViewController = ControllerSensorManagementViewController();
 			managementViewController.controller = controller;
-				self.navigationController?.pushViewController(managementViewController, animated: true);
+			self.navigationController?.pushViewController(managementViewController, animated: true);
 		}
 	}
 	
-	func addTime(controller: Time, indexPath: NSIndexPath) {
-
-		ControllerManager.sharedInstance.addTime(controller, completion: { (success) -> Void in
-			
+	func addController(controller: Controller, indexPath: NSIndexPath) {
+		
+		ControllerManager.sharedInstance.add(controller, completion: { (success) -> Void in
 			if (success) {
 				self.discoveredControllers.removeAtIndex(indexPath.row);
 				self.tableView.reloadData();
 			}
 			else {
-//				XCGLogger.defaultInstance().error("Error logging in on HomeWizard");
+				//				XCGLogger.defaultInstance().error("Error logging in on HomeWizard");
 			}
-			
 		});
 		
 	}
-
+	
 	func addHomeWizard(controller: HomeWizard, indexPath: NSIndexPath) {
 		var alert = UIAlertController(title: "Please log in", message: "You need to enter the password for this HomeWizard", preferredStyle: UIAlertControllerStyle.Alert);
 		alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
@@ -186,20 +189,16 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 			var password: String = self.passwordTextField!.text;
 			
 			if (controller.managedObjectContext == nil) {
-//				var cell = self.tableView.cellForRowAtIndexPath(indexPath);
-				
 				controller.login(password, completion: { (success) -> Void in
 					
 					if (success) {
 						self.discoveredControllers.removeAtIndex(indexPath.row);
 						
-						ControllerManager.sharedInstance.addHomeWizard(controller, completion: { (result) -> Void in
+						ControllerManager.sharedInstance.add(controller, completion: { (result) -> Void in
 							self.tableView.reloadData();
 						})
 					}
 					else {
-//						XCGLogger.defaultInstance().error("Error logging in on HomeWizard");
-						
 						var errorAlert = UIAlertController(title: "Error connecting", message: "There was an error connecting to your HomeWizard", preferredStyle: UIAlertControllerStyle.Alert);
 						errorAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
 						}));
@@ -216,5 +215,5 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 			
 		});
 	}
-
+	
 }

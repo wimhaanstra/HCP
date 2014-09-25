@@ -15,11 +15,16 @@ class DimmerCell: SensorCell {
 	var offBackgroundColor: UIColor = UIColor(red: 0.420, green: 0.671, blue: 0.278, alpha: 0.4); //UIColor(red: 0.644, green: 0.996, blue: 0.506, alpha: 1.0);
 	var onBackgroundColor: UIColor = UIColor(red: 0.420, green: 0.671, blue: 0.278, alpha: 1.0);
 	
-//	[UIColor colorWithRed:0.420 green:0.671 blue:0.339 alpha:1.000]
+	override var sensor: Sensor? {
+		didSet {
+			self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
+			self.backgroundColor = ((self.sensor as Dimmer).status == true) ? onBackgroundColor : offBackgroundColor;
+		}
+	}
 
 	override init(frame: CGRect) {
 		
-		self.dimValueLabel = UILabel(frame: CGRectMake(5, (frame.size.height / 2) - 30, frame.size.width - 10, 60));
+		self.dimValueLabel = UILabel();
 		self.dimValueLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 40);
 		self.dimValueLabel.textAlignment = NSTextAlignment.Center;
 		self.dimValueLabel.textColor = UIColor.whiteColor();
@@ -29,6 +34,12 @@ class DimmerCell: SensorCell {
 		super.init(frame: frame);
 		
 		self.contentView.addSubview(self.dimValueLabel);
+		
+		self.dimValueLabel.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self);
+		self.dimValueLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 10);
+		self.dimValueLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -10);
+		self.dimValueLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self);
+
 	}
 	
 	required init(coder aDecoder: NSCoder) {
@@ -39,8 +50,8 @@ class DimmerCell: SensorCell {
 		
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
 		
-		if (keyPath == "dimValue") {
-			self.dimValueLabel.text = (self.sensor as Dimmer).dimValue?.stringValue;
+		if (keyPath == "dimValue" && (self.sensor as Dimmer).dimValue != nil) {
+			self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
 		}
 		
 		self.backgroundColor = ((self.sensor as Dimmer).status == true) ? onBackgroundColor : offBackgroundColor;

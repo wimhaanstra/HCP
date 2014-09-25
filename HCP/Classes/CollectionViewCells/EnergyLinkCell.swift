@@ -15,10 +15,11 @@ class EnergyLinkCell: SensorCell {
 	
 	override init(frame: CGRect) {
 		
-		self.currentUsageLabel = UILabel(frame: CGRectMake(5, (frame.size.height / 2) - 30, frame.size.width - 10, 60));
+		self.currentUsageLabel = UILabel(frame: CGRectMake(25, (frame.size.height / 2) - 30, frame.size.width - 50, 60));
 		self.currentUsageLabel.font = UIFont(name: "HelveticaNeue", size: 32);
 		self.currentUsageLabel.textAlignment = NSTextAlignment.Center;
 		self.currentUsageLabel.textColor = UIColor.whiteColor();
+		self.currentUsageLabel.adjustsFontSizeToFitWidth = true;
 		
 		self.maxUsageLabel = UILabel(frame: CGRectMake(5, frame.size.height - 50, frame.size.width - 10, 24));
 		self.maxUsageLabel.font = UIFont(name: "HelveticaNeue", size: 14);
@@ -27,7 +28,6 @@ class EnergyLinkCell: SensorCell {
 		
 		super.init(frame: frame);
 		
-		self.backgroundColor = UIColor(white: 0.945, alpha: 1.0);
 		self.contentView.addSubview(self.currentUsageLabel);
 		self.contentView.addSubview(self.maxUsageLabel);
 		self.backgroundColor = UIColor(red: 0.341, green: 0.273, blue: 0.502, alpha: 1.0);

@@ -9,6 +9,8 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+	
+	var containerViewController: UIViewController?;
 
 	var swipeDownGesture: UISwipeGestureRecognizer? = nil;
 	var tapGesture: UITapGestureRecognizer? = nil;
@@ -17,8 +19,11 @@ class MenuViewController: UIViewController {
 	var contentView: UIView = UIView();
 
 	var blurView: UIView = UIView();
+	
 	var menuVisible: Bool = false;
 	let menuHeight: CGFloat = 40.0;
+	
+	var menuBarHeightConstraint: NSLayoutConstraint?;
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,37 +38,35 @@ class MenuViewController: UIViewController {
 		self.tapGesture = UITapGestureRecognizer(target: self, action: Selector("menuViewTapped"));
 		self.tapGesture?.numberOfTouchesRequired = 1;
 		
-		self.menuBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 0);
 		self.menuBar.userInteractionEnabled = true;
-		self.menuBar.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleBottomMargin;
 		self.menuBar.cas_styleClass = "MenuBar";
 		self.menuBar.clipsToBounds = true;
-		self.view.addSubview(self.menuBar);
 		
-		self.contentView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-		self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+		self.view.addSubview(self.menuBar);
 		self.view.addSubview(self.contentView);
 		
-		self.blurView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+		self.menuBar.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero, excludingEdge: ALEdge.Bottom);
+		
+//		self.menuBar.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.view);
+//		self.menuBar.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self.view);
+//		self.menuBar.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self.view);
+		menuBarHeightConstraint = self.menuBar.autoSetDimension(ALDimension.Height, toSize: 0);
+		
+		self.contentView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero, excludingEdge: ALEdge.Top);
+		self.contentView.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: self.menuBar);
+		
 		self.blurView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3);
     }
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated);
+		
+		self.view.layoutIfNeeded();
 	}
 	
 	override func viewDidAppear(animated: Bool) {
-
-		if (self.view.frame.origin.y < 0) {
-		
-			UIView.animateWithDuration(0.2, animations: { () -> Void in
-				var frame = self.view.frame;
-				frame.origin.y = 0;
-				self.view.frame = frame;
-			});
-			
-		}
 		super.viewDidAppear(animated);
+		self.view.layoutIfNeeded();
 	}
 
     override func didReceiveMemoryWarning() {
@@ -86,15 +89,17 @@ class MenuViewController: UIViewController {
 
 		if (!self.menuVisible) {
 			self.menuVisible = true;
-			self.blurView.frame = self.contentView.frame;
 			self.blurView.alpha = 0;
+			
+			self.contentView.addSubview(self.blurView);
+			self.blurView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero);
 
 			UIView.animateWithDuration(0.2, animations: { () -> Void in
 				self.blurView.alpha = 1;
-				self.menuBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.menuHeight);
-				self.contentView.frame = CGRectMake(0, self.menuHeight, self.view.bounds.size.width, self.view.bounds.size.height);
-				self.contentView.addSubview(self.blurView);
+
+				self.menuBarHeightConstraint?.constant = self.menuHeight;
 				
+				self.view.layoutIfNeeded();
 				self.view.addGestureRecognizer(self.tapGesture!);
 			});
 		}
@@ -106,12 +111,13 @@ class MenuViewController: UIViewController {
 			self.menuVisible = false;
 			
 			UIView.animateWithDuration(0.2, animations: { () -> Void in
-				self.menuBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 0);
-				self.contentView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+				self.menuBarHeightConstraint?.constant = 0;
 				self.blurView.alpha = 0;
+				self.view.layoutIfNeeded();
+
 			}, completion: { (complete) -> Void in
-				self.blurView.removeFromSuperview();
 				self.view.removeGestureRecognizer(self.tapGesture!);
+				self.blurView.removeFromSuperview();
 			});
 			
 		}

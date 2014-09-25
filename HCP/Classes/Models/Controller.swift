@@ -10,10 +10,6 @@ class Controller: _Controller, FXForm {
 	
 	var reachabilityManager: AFNetworkReachabilityManager?;
 	
-	var entityName: String {
-		return "Controller";
-	}
-	
 	var started: Bool = false;
 	
 	func start() {

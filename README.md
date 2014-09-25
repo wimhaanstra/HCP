@@ -32,7 +32,7 @@ The [HomeWizard](http://homewizard.nl) is a device that let's you tie all kinds 
 ###Philips Hue
 Does the [Philips Hue Bridge](http://www2.meethue.com/en-US) need an introduction? RGB LED powered lights which can be controlled using your phone or tablet.
 
-#Model definitions
+#Controller definitions
 In the model these are defined as `Controller` objects. A `Controller` is a device that can control one or more connected devices (like lights, cameras etc.).
 
 Because every controller has different discovery methods and ways to communicate with its devices, the `HueBridge` and `HomeWizard` classes are subclassed from the abstract `Controller` class.
@@ -105,7 +105,6 @@ There are a couple of things that are on my mind, that I would love to integrate
 * Time based triggers.
 * Sensor based trigger.
 * XBMC controller, to control XBMC devices located in your house.
-* OSX version, control your house from your OSX status bar.
 
 *These things will be build after the first release to the App Store.*
 

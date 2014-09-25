@@ -14,16 +14,21 @@ class ThermometerCell: SensorCell {
 	
 	override init(frame: CGRect) {
 		
-		self.currentTemperatureLabel = UILabel(frame: CGRectMake(5, (frame.size.height / 2) - 30, frame.size.width - 10, 60));
-		self.currentTemperatureLabel.font = UIFont(name: "HelveticaNeue", size: 32);
+		self.currentTemperatureLabel = UILabel();
+		self.currentTemperatureLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 40);
 		self.currentTemperatureLabel.textAlignment = NSTextAlignment.Center;
 		self.currentTemperatureLabel.textColor = UIColor.whiteColor();
 		
 		super.init(frame: frame);
 
-//		[UIColor colorWithRed:0.881 green:0.646 blue:0.147 alpha:1.000]
 		self.backgroundColor = UIColor(red: 0.881, green: 0.646, blue: 0.147, alpha: 1.0);
 		self.contentView.addSubview(self.currentTemperatureLabel);
+		
+		self.currentTemperatureLabel.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self);
+		self.currentTemperatureLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 10);
+		self.currentTemperatureLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -10);
+		self.currentTemperatureLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self);
+
 	}
 	
 	required init(coder aDecoder: NSCoder) {
@@ -35,7 +40,7 @@ class ThermometerCell: SensorCell {
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
 		if (keyPath == "temperature") {
 			if let temperatureValue = (self.sensor as Thermometer).temperature as? CombinedValue {
-				self.currentTemperatureLabel.text = "\(temperatureValue.currentValue)°C";
+				self.currentTemperatureLabel.text = "\(temperatureValue.currentValue^1)°C";
 			}
 		}
 		

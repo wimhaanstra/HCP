@@ -24,7 +24,9 @@ PODS:
   - Classy (0.2.4)
   - DZNSegmentedControl (1.2)
   - FXForms (1.1.6)
+  - LXReorderableCollectionViewFlowLayout (0.1.1)
   - MagicalRecord/Shorthand (2.3.0-beta.3)
+  - PureLayout (1.1.0)
   - UICKeyChainStore (1.0.5)
 
 DEPENDENCIES:
@@ -33,7 +35,9 @@ DEPENDENCIES:
   - Classy (~> 0.2.4)
   - DZNSegmentedControl
   - FXForms (from `https://github.com/nicklockwood/FXForms.git`)
+  - LXReorderableCollectionViewFlowLayout
   - MagicalRecord/Shorthand (from `https://github.com/magicalpanda/MagicalRecord.git`)
+  - PureLayout
   - UICKeyChainStore
 
 EXTERNAL SOURCES:
@@ -50,7 +54,9 @@ SPEC CHECKSUMS:
   Classy: 8c8f835d51e20d25e9cce0d864fba5bf1cef6070
   DZNSegmentedControl: 8b99ddb1c7dfa311422aae027d3f64aa3d7315cb
   FXForms: d1c3fccab32a6702430b14808f7b46061008a4a9
+  LXReorderableCollectionViewFlowLayout: b4e25543263e27d4c147109ae5ead01cc9119f23
   MagicalRecord: 23dfe0350eab4767cc1ce7d247af4e4cd54ee72c
+  PureLayout: c8960fa0f3b40d849d5e177d699d0148faa63b63
   UICKeyChainStore: 4f9719600cc70025064e26f28f1210bcfc3b0c35
 
 COCOAPODS: 0.33.1

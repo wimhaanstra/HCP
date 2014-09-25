@@ -24,19 +24,18 @@ class SwitchCell: SensorCell {
 		
 		super.init(frame: frame);
 		
-		self.onButton.frame = CGRectMake(10, 10, frame.size.width - 20, 44);
-		self.onButton.setTitle("ON", forState: UIControlState.Normal);
-		self.onButton.backgroundColor = UIColor.grayColor();
-		self.onButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal);
-		self.onButton.addTarget(self, action: Selector("OnButton_Clicked"), forControlEvents: UIControlEvents.TouchUpInside);
-		self.contentView.addSubview(self.onButton);
+		self.onButton.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+		self.onButton.cas_styleClass = "switch";
 
-		self.offButton.frame = CGRectMake(10, 64, frame.size.width - 20, 44);
-		self.offButton.setTitle("OFF", forState: UIControlState.Normal);
-		self.offButton.backgroundColor = UIColor.grayColor();
-		self.offButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal);
-		self.offButton.addTarget(self, action: Selector("OffButton_Clicked"), forControlEvents: UIControlEvents.TouchUpInside);
-		self.contentView.addSubview(self.offButton);
+		self.onButton.addTarget(self, action: Selector("OnButton_Clicked"), forControlEvents: UIControlEvents.TouchUpInside);
+		
+		self.contentView.addSubview(self.onButton);
+		
+		self.onButton.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self);
+		self.onButton.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 10);
+		self.onButton.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -10);
+		self.onButton.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self);
+
 		
 		self.textLabel.textColor = UIColor.whiteColor();
 	}
@@ -45,6 +44,10 @@ class SwitchCell: SensorCell {
 		didSet {
 			if (self.sensor != nil) {
 				self.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
+				
+				var text = ((self.sensor as Switch).status == true) ? "ON" : "OFF";
+				self.onButton.setTitle(text, forState: .Normal);
+
 			}
 		}
 	}
@@ -58,13 +61,21 @@ class SwitchCell: SensorCell {
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
 		
 		if (keyPath == "status") {
-			self.contentView.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
+			self.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
+			var text = ((self.sensor as Switch).status == true) ? "ON" : "OFF";
+			self.onButton.setTitle(text, forState: .Normal);
 		}
 		
 	}
 	
 	func OnButton_Clicked() {
-		(self.sensor! as Switch).on();
+		
+		if ((self.sensor as Switch).status == true) {
+			(self.sensor! as Switch).off();
+		}
+		else {
+			(self.sensor! as Switch).on();
+		}
 	}
 	
 	func OffButton_Clicked() {

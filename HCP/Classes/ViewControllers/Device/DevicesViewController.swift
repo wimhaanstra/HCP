@@ -8,8 +8,8 @@
 
 import UIKit
 
-class DevicesViewController: MenuViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverControllerDelegate {
-
+class DevicesViewController: MenuViewController, LXReorderableCollectionViewDataSource, UICollectionViewDelegate, UIPopoverControllerDelegate {
+	
 	var popOver:UIPopoverController! = nil;
 	var addControllerButton: UIButton? = nil;
 	private var collectionView: UICollectionView?;
@@ -22,36 +22,35 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 	
 	private var availableTypes: [String] = ["Sensor", "Switch", "Dimmer", "EnergyLink", "Thermometer", "Clock"];
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
+		itemsPerRow = self.numberOfItemsPerRow(UIApplication.sharedApplication().statusBarOrientation);
+
 		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
-			itemsPerRow = 2;
 			interItemSpacing = 0;
 			edgeOffset = 0;
 		}
-
-		addControllerButton = self.addButton(NSLocalizedString("CONTROLLERS_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("popupButton_Clicked"));
-		self.addButton(NSLocalizedString("REFRESH_ALL_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("popupButton_Clicked"));
-	
-
-		var itemSize = (self.view.bounds.size.width - (2 * CGFloat(edgeOffset)) - (CGFloat(itemsPerRow) * CGFloat(edgeOffset))) / CGFloat(itemsPerRow);
 		
-		var layout = UICollectionViewFlowLayout();
+		addControllerButton = self.addButton(NSLocalizedString("CONTROLLERS_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("controllersButton_Clicked"));
+		self.addButton(NSLocalizedString("REFRESH_ALL_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("controllersButton_Clicked"));
+		
+		
+		
+		var layout = LXReorderableCollectionViewFlowLayout();
 		layout.sectionInset = UIEdgeInsetsMake(CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset));
 		layout.minimumInteritemSpacing = CGFloat(interItemSpacing);
 		layout.minimumLineSpacing = CGFloat(interItemSpacing);
-		layout.itemSize = CGSizeMake(itemSize, itemSize);
+//		layout.itemSize = CGSizeMake(itemSize, itemSize);
 		
 		self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout);
-		self.collectionView?.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
 		self.collectionView!.registerClass(SensorCell.self, forCellWithReuseIdentifier: "Sensor");
 		self.collectionView!.registerClass(SwitchCell.self, forCellWithReuseIdentifier: "Switch");
 		self.collectionView!.registerClass(DimmerCell.self, forCellWithReuseIdentifier: "Dimmer");
 		self.collectionView!.registerClass(EnergyLinkCell.self, forCellWithReuseIdentifier: "EnergyLink");
 		self.collectionView!.registerClass(ThermometerCell.self, forCellWithReuseIdentifier: "Thermometer");
 		self.collectionView!.registerClass(ClockCell.self, forCellWithReuseIdentifier: "Clock");
-
+		
 		self.collectionView!.delegate = self
 		self.collectionView!.dataSource = self;
 		self.contentView.addSubview(self.collectionView!);
@@ -63,11 +62,8 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 			}
 		}
 
-	
-		var predicate = NSPredicate(format: "selected = %@", argumentArray: [ true ] );
-		self.sensors = Sensor.findAllSortedBy("displayName", ascending: true, withPredicate: predicate) as [Sensor];
-		//self.sensors = Sensor.findAllSortedBy("displayName", ascending: true, withPredicate: NSPredicate(format: "selected == %@", true)!);
-    }
+		self.collectionView!.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero);
+	}
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated);
@@ -75,34 +71,45 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated);
-	}
-	
-	func popupButton_Clicked() {
 		
-		var c: ControllerDiscoveryViewController = ControllerDiscoveryViewController();
+		self.sensors = ControllerManager.sharedInstance.allSensors();
+		self.collectionView?.reloadData();
 		
-		var navigationController = UINavigationController(rootViewController: c);
-		
-		self.popOver = UIPopoverController(contentViewController: navigationController);
-		self.popOver.delegate = self;
-		self.popOver.presentPopoverFromRect(addControllerButton!.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
+		self.view.layoutIfNeeded();
 
 	}
 	
+	func controllersButton_Clicked() {
+		
+		var c: ControllerDiscoveryViewController = ControllerDiscoveryViewController();
+		var navigationController = UINavigationController(rootViewController: c);
+		
+		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+			self.containerViewController!.presentViewController(navigationController, animated: true, completion: { () -> Void in
+			});
+			
+		}
+		else {
+			self.popOver = UIPopoverController(contentViewController: navigationController);
+			self.popOver.delegate = self;
+			self.popOver.presentPopoverFromRect(addControllerButton!.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
+		}
+		
+	}
+	
 	func popoverControllerShouldDismissPopover(popoverController: UIPopoverController) -> Bool {
-//		XCGLogger.defaultInstance().info(NSStringFromCGRect(self.view.frame));
+		//		XCGLogger.defaultInstance().info(NSStringFromCGRect(self.view.frame));
 		return true;
 	}
 	
 	func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
-//		XCGLogger.defaultInstance().info(NSStringFromCGRect(self.view.frame));
-	
-		var predicate = NSPredicate(format: "selected = %@", argumentArray: [ true ] );
-		self.sensors = Sensor.findAllSortedBy("displayName", ascending: true, withPredicate: predicate) as [Sensor];
+		//		XCGLogger.defaultInstance().info(NSStringFromCGRect(self.view.frame));
+		
+		self.sensors = ControllerManager.sharedInstance.allSensors();
 		self.collectionView!.reloadData();
 		
 	}
-
+	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.sensors.count;
 	}
@@ -127,12 +134,12 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 			cell.sensor = sensor;
 			cell.cas_styleClass = "Sensor";
 			cell.addGestureRecognizer(settingsTap);
-
+			
 			return cell;
 		}
 		
 	}
-
+	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		var sensor = self.sensors[indexPath.row];
 		var attributes = collectionView.layoutAttributesForItemAtIndexPath(indexPath);
@@ -150,9 +157,56 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 		}
 	}
 	
-	func cellTapped(gesture: UITapGestureRecognizer) {
+	 func collectionView(collectionView: UICollectionView!, itemAtIndexPath fromIndexPath: NSIndexPath!, didMoveToIndexPath toIndexPath: NSIndexPath!) {
 		
-		NSLog("Tapped");
+		self.sensors = ControllerManager.sharedInstance.moveSenor(fromIndexPath, toIndexPath: toIndexPath);
+
+		/*
+		var sensor = self.sensors[fromIndexPath.row];
+		
+		self.sensors.removeAtIndex(fromIndexPath.row);
+		self.sensors.insert(sensor, atIndex: toIndexPath.row);
+		
+		var index = 0;
+		for item in self.sensors {
+			item.sortOrder = index;
+			item.managedObjectContext.saveOnlySelfAndWait();
+			index++;
+			
+			NSLog("\(item.name) with index \(index)");
+		}
+		
+//		var predicate = NSPredicate(format: "selected = %@", argumentArray: [ true ] );
+//		self.sensors = Sensor.findAllSortedBy("sortOrder", ascending: true, withPredicate: predicate) as [Sensor];
+//		self.collectionView?.reloadData();*/
+	}
+	
+	func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
+	{
+		var itemSize = (self.view.bounds.size.width - (2 * CGFloat(edgeOffset)) - (CGFloat(itemsPerRow) * CGFloat(edgeOffset))) / CGFloat(itemsPerRow);
+		return CGSizeMake(itemSize, itemSize);
+	}
+
+	override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+		
+		itemsPerRow = self.numberOfItemsPerRow(toInterfaceOrientation);
+		self.collectionView!.collectionViewLayout.invalidateLayout();
+		self.collectionView!.reloadData();
+		
+	}
+	
+	func numberOfItemsPerRow(interfaceOrientation: UIInterfaceOrientation) -> Int {
+		
+		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+			return (interfaceOrientation.isLandscape) ? 3 : 2;
+		}
+		else {
+			return (interfaceOrientation.isLandscape) ? 5 : 4;
+		}
+		
+	}
+	
+	func cellTapped(gesture: UITapGestureRecognizer) {
 		
 		if let sensorCell = gesture.view as? SensorCell {
 			
@@ -164,14 +218,14 @@ class DevicesViewController: MenuViewController, UICollectionViewDataSource, UIC
 			self.popOver = UIPopoverController(contentViewController: navigationController);
 			self.popOver.delegate = self;
 			self.popOver.presentPopoverFromRect(sensorCell.frame, inView: self.view, permittedArrowDirections: .Any, animated: true);
-
+			
 		}
 		
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	
 }

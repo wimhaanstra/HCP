@@ -8,7 +8,7 @@ class HomeWizard: _HomeWizard {
 		
 		let discoveryUrl = "http://gateway.homewizard.nl/discovery.php";
 		
-		NSLog("HomeWizard Discovery: " + discoveryUrl);
+		//NSLog("HomeWizard Discovery: " + discoveryUrl);
 		
 		let manager = AFHTTPRequestOperationManager();
 		
@@ -57,12 +57,9 @@ class HomeWizard: _HomeWizard {
 			},
 			failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
 				NSLog("Error: " + error.localizedDescription)
+				completion(results: []);
 			}
 		)
-	}
-	
-	override var entityName: String {
-		return "HomeWizard";
 	}
 	
 	override var description: String {
@@ -90,7 +87,7 @@ class HomeWizard: _HomeWizard {
 	}
 	
 	func performAction(command: String, completion: (results: AnyObject!, error: NSError?) -> Void ) -> Void {
-		NSLog("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
+		//NSLog("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
 		
 		if (self.password() != nil) {
 			

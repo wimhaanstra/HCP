@@ -39,6 +39,10 @@
 		AB897EC619C026F20065062E /* _Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC519C026F20065062E /* _Thermometer.swift */; };
 		AB897EC819C026FA0065062E /* Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC719C026FA0065062E /* Thermometer.swift */; };
 		AB897ECB19C1708E0065062E /* ControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897ECA19C1708E0065062E /* ControllerManager.swift */; };
+		AB9769CE19D03BDC00F3FDC1 /* _YahooWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9769CD19D03BDC00F3FDC1 /* _YahooWeather.swift */; };
+		AB9769D019D03BE400F3FDC1 /* YahooWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9769CF19D03BE400F3FDC1 /* YahooWeather.swift */; };
+		AB9769D219D03C5200F3FDC1 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9769D119D03C5200F3FDC1 /* Weather.swift */; };
+		AB9769D419D03C6300F3FDC1 /* _Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9769D319D03C6300F3FDC1 /* _Weather.swift */; };
 		ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EEF19BAD85600B02BFC /* _Controller.swift */; };
 		ABB07EFE19BAD85600B02BFC /* _Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF019BAD85600B02BFC /* _Dimmer.swift */; };
 		ABB07EFF19BAD85600B02BFC /* _HomeWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB07EF119BAD85600B02BFC /* _HomeWizard.swift */; };
@@ -59,6 +63,7 @@
 		ABEAC82019A3D038004B309B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC81F19A3D038004B309B /* AppDelegate.swift */; };
 		ABEAC82A19A3D038004B309B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABEAC82919A3D038004B309B /* Images.xcassets */; };
 		ABEAC83619A3D038004B309B /* HCPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEAC83519A3D038004B309B /* HCPTests.swift */; };
+		ABF0AF1B19D1E96100353A83 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABF0AF1A19D1E96100353A83 /* FontAwesome.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +123,10 @@
 		AB897EC519C026F20065062E /* _Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Thermometer.swift; sourceTree = "<group>"; };
 		AB897EC719C026FA0065062E /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
 		AB897ECA19C1708E0065062E /* ControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
+		AB9769CD19D03BDC00F3FDC1 /* _YahooWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _YahooWeather.swift; sourceTree = "<group>"; };
+		AB9769CF19D03BE400F3FDC1 /* YahooWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YahooWeather.swift; sourceTree = "<group>"; };
+		AB9769D119D03C5200F3FDC1 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		AB9769D319D03C6300F3FDC1 /* _Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Weather.swift; sourceTree = "<group>"; };
 		ABB07EEF19BAD85600B02BFC /* _Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Controller.swift; sourceTree = "<group>"; };
 		ABB07EF019BAD85600B02BFC /* _Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Dimmer.swift; sourceTree = "<group>"; };
 		ABB07EF119BAD85600B02BFC /* _HomeWizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HomeWizard.swift; sourceTree = "<group>"; };
@@ -142,6 +151,7 @@
 		ABEAC82F19A3D038004B309B /* HCPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEAC83419A3D038004B309B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABEAC83519A3D038004B309B /* HCPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPTests.swift; sourceTree = "<group>"; };
+		ABF0AF1A19D1E96100353A83 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +184,7 @@
 		AB1340C219C56E84009A1F09 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ABF0AF1A19D1E96100353A83 /* FontAwesome.ttf */,
 				AB73CE0419C6B52B00B20EB2 /* Localization */,
 				AB1340DE19C56ECC009A1F09 /* Stylesheets */,
 			);
@@ -316,6 +327,17 @@
 			name = Switches;
 			sourceTree = "<group>";
 		};
+		AB9769D519D03C7E00F3FDC1 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				AB6FD54419CD3AC800ECFC1C /* Clock.swift */,
+				ABB07EFB19BAD85600B02BFC /* Sensor.swift */,
+				AB9769D119D03C5200F3FDC1 /* Weather.swift */,
+				ABB07F0C19BADA1D00B02BFC /* HomeWizard */,
+			);
+			name = Sensors;
+			sourceTree = "<group>";
+		};
 		ABA7C57019BAD37A0085A730 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,10 +355,8 @@
 			children = (
 				ABB07EEE19BAD85600B02BFC /* _Machine */,
 				ABB07F0B19BAD9F500B02BFC /* Controller */,
-				ABB07F0C19BADA1D00B02BFC /* HomeWizard */,
-				AB6FD54419CD3AC800ECFC1C /* Clock.swift */,
+				AB9769D519D03C7E00F3FDC1 /* Sensors */,
 				ABB07EFA19BAD85600B02BFC /* Room.swift */,
-				ABB07EFB19BAD85600B02BFC /* Sensor.swift */,
 				AB62E8FA19BF45CC00BD587A /* EntityFactory.swift */,
 				AB897EC319BFA8B10065062E /* CombinedValue.swift */,
 				AB897ECA19C1708E0065062E /* ControllerManager.swift */,
@@ -359,6 +379,8 @@
 				ABB07EF519BAD85600B02BFC /* _Switch.swift */,
 				AB897EC519C026F20065062E /* _Thermometer.swift */,
 				AB5977FB19CD1DB000DA0B7E /* _Time.swift */,
+				AB9769D319D03C6300F3FDC1 /* _Weather.swift */,
+				AB9769CD19D03BDC00F3FDC1 /* _YahooWeather.swift */,
 			);
 			path = _Machine;
 			sourceTree = "<group>";
@@ -370,6 +392,7 @@
 				ABB07EF819BAD85600B02BFC /* HomeWizard.swift */,
 				ABB07EF919BAD85600B02BFC /* HueBridge.swift */,
 				AB5977F719CC3AE700DA0B7E /* Time.swift */,
+				AB9769CF19D03BE400F3FDC1 /* YahooWeather.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -532,6 +555,7 @@
 				AB1340E119C56EDE009A1F09 /* Default.css in Resources */,
 				AB73CE0619C6B52B00B20EB2 /* Localizable.strings in Resources */,
 				ABEAC82A19A3D038004B309B /* Images.xcassets in Resources */,
+				ABF0AF1B19D1E96100353A83 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +645,8 @@
 				ABB07F0519BAD85600B02BFC /* Dimmer.swift in Sources */,
 				AB5977F819CC3AE700DA0B7E /* Time.swift in Sources */,
 				AB62E8FB19BF45CC00BD587A /* EntityFactory.swift in Sources */,
+				AB9769CE19D03BDC00F3FDC1 /* _YahooWeather.swift in Sources */,
+				AB9769D219D03C5200F3FDC1 /* Weather.swift in Sources */,
 				ABB07EFE19BAD85600B02BFC /* _Dimmer.swift in Sources */,
 				AB19DA7C19C2BBAB00F57D60 /* _Asun.swift in Sources */,
 				AB6FD56519CD61CD00ECFC1C /* ClockCell.swift in Sources */,
@@ -638,6 +664,8 @@
 				AB6FD56119CD4E6700ECFC1C /* DevicesViewController.swift in Sources */,
 				ABB07F0419BAD85600B02BFC /* Controller.swift in Sources */,
 				AB6FD54D19CD491D00ECFC1C /* ControllerType.swift in Sources */,
+				AB9769D419D03C6300F3FDC1 /* _Weather.swift in Sources */,
+				AB9769D019D03BE400F3FDC1 /* YahooWeather.swift in Sources */,
 				AB6FD54519CD3AC800ECFC1C /* Clock.swift in Sources */,
 				ABB07F0119BAD85600B02BFC /* _Room.swift in Sources */,
 				AB6FD54719CD3AD100ECFC1C /* _Clock.swift in Sources */,

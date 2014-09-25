@@ -26,10 +26,15 @@ class ClockCell: SensorCell {
 		super.init(frame: frame);
 		
 		self.backgroundColor = UIColor(red: 0.422, green: 0.505, blue: 0.664, alpha: 1.0);
-			//[UIColor colorWithRed:0.422 green:0.505 blue:0.664 alpha:1.000]
 		
 		self.clockTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("clockTimer_Tick"), userInfo: nil, repeats: true);
 		self.contentView.addSubview(self.clockLabel);
+		
+		self.clockLabel.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self);
+		self.clockLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 10);
+		self.clockLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -10);
+		self.clockLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self);
+
 	}
 	
 	override var sensor: Sensor? {

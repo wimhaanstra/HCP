@@ -18,9 +18,13 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.view.addSubview(self.scrollView);
+		self.view.addSubview(self.menuBar);
 
-//		self.scrollView.autoresizingMask =
-			//UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin;
+		self.view.backgroundColor = UIColor.whiteColor();
+		
+		self.scrollView.backgroundColor = UIColor.redColor();
 		self.scrollView.pagingEnabled = true;
 		self.scrollView.showsHorizontalScrollIndicator = false;
 		self.scrollView.showsVerticalScrollIndicator = false;
@@ -29,34 +33,45 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 		self.menuBar.showsCount = false;
 		self.menuBar.delegate = self;
 		self.menuBar.selectedSegmentIndex = 0;
-		self.menuBar.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
 		self.menuBar.addTarget(self, action: Selector("selectedSegment:"), forControlEvents: UIControlEvents.ValueChanged);
-		
-		self.view.addSubview(self.scrollView);
-		self.view.addSubview(self.menuBar);
-    }
-	
-	override func viewWillAppear(animated: Bool) {
-	}
-	
-	override func viewDidAppear(animated: Bool) {
-	
-		self.view.backgroundColor = UIColor.whiteColor();
 
-		self.scrollView.frame = CGRectMake(0, 56, self.view.bounds.size.width, self.view.bounds.size.height - 56);
-		self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width * 2, self.scrollView.bounds.size.height);
-		self.scrollView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
-		
-		self.roomsViewController.view.frame = self.scrollView.bounds;
-		self.roomsViewController.view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
-		
-		self.devicesViewController.view.frame = CGRectOffset(self.scrollView.bounds, self.view.bounds.size.width, 0);
-		self.devicesViewController.view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+		self.menuBar.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.view);
+		self.menuBar.autoSetDimension(ALDimension.Height, toSize: 56);
+		self.menuBar.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self.view);
+
+		self.scrollView.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: self.menuBar);
+		self.scrollView.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self.view);
+		self.scrollView.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self.view);
+		self.scrollView.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self.view);
+		self.scrollView.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.view);
 		
 		self.scrollView.addSubview(roomsViewController.view);
 		self.scrollView.addSubview(devicesViewController.view);
+
+		self.roomsViewController.view.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.scrollView);
+		self.roomsViewController.view.autoMatchDimension(ALDimension.Height, toDimension: ALDimension.Height, ofView: self.scrollView);
+		self.roomsViewController.view.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self.scrollView)
+		self.roomsViewController.view.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self.scrollView);
 		
-		self.menuBar.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.menuBar.height);
+		self.devicesViewController.containerViewController = self;
+		self.roomsViewController.containerViewController = self;
+		
+		self.devicesViewController.view.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.scrollView);
+		self.devicesViewController.view.autoMatchDimension(ALDimension.Height, toDimension: ALDimension.Height, ofView: self.scrollView);
+		
+		self.devicesViewController.view.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Right, ofView: self.roomsViewController.view)
+		self.devicesViewController.view.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self.scrollView)
+		self.devicesViewController.view.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self.scrollView)
+		self.devicesViewController.view.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self.scrollView);
+    }
+	
+	override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+		self.roomsViewController.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration);
+		self.devicesViewController.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration);
+	}
+	
+	override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+		self .selectedSegment(self.menuBar);
 	}
 	
 	func selectedSegment(menuBar: DZNSegmentedControl) -> Void {
@@ -64,9 +79,6 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 		viewFrame.origin.x = viewFrame.size.width * CGFloat(menuBar.selectedSegmentIndex);
 		viewFrame.origin.y = self.menuBar.height;
 		self.scrollView.scrollRectToVisible(viewFrame, animated: true);
-		
-//		XCGLogger.defaultInstance().info(NSStringFromCGRect(self.devicesViewController.view.frame));
-//		XCGLogger.defaultInstance().info(NSStringFromCGRect(self.scrollView.frame));
 	}
 	
 	func positionForBar(bar: UIBarPositioning) -> UIBarPosition {

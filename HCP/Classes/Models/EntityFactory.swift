@@ -31,9 +31,14 @@ class EntityFactory<T: Sensor> {
 					sensor!.selected = true;
 					sensor!.available = true;
 					sensor!.controller = localController;
+					sensor!.sortOrder = controller.sensors.count;
 					sensor!.onTodayScreen = false;
 					localController.addSensorsObject(sensor);
 				}
+			}
+			
+			if (sensor!.sortOrder == nil) {
+				sensor!.sortOrder = controller.sensors.count;
 			}
 			
 			if (sensor!.available != true) {

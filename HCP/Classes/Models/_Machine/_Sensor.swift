@@ -11,6 +11,7 @@ enum SensorAttributes: String {
     case name = "name"
     case onTodayScreen = "onTodayScreen"
     case selected = "selected"
+    case sortOrder = "sortOrder"
 }
 
 enum SensorRelationships: String {
@@ -78,6 +79,11 @@ class _Sensor: NSManagedObject {
     var selected: NSNumber?
 
     // func validateSelected(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var sortOrder: NSNumber?
+
+    // func validateSortOrder(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
