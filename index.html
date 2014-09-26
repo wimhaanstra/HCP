@@ -28,7 +28,13 @@
         </ul>
       </header>
       <section>
-        <p></p><img src="https://raw.githubusercontent.com/depl0y/HCP/develop/HCP/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png"><h1>
+        <p></p><img src="https://raw.githubusercontent.com/depl0y/HCP/develop/HCP/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png"><p>To stay up-to-date about HCP details, sign up to our mailing list here: <a href="http://eepurl.com/Qa3Rb">http://eepurl.com/Qa3Rb</a>.</p>
+
+<p>Follow me on Twitter: <a href="http://twitter.com/depl0y">@depl0y</a>.</p>
+
+<h2></h2>
+
+<h1>
 <a name="home-control-panel" class="anchor" href="#home-control-panel"><span class="octicon octicon-link"></span></a>Home Control Panel</h1>
 
 <p>Home Control Panel has been in development for a couple of months now, where the first try to set up this project was too complex and user-unfriendly. Because the scope of the project changed a bit (explanation below) and because I was ready for a <em>swift</em>-only project, I decided that most of the stuff could use a rewrite.</p>
@@ -71,7 +77,7 @@
 <p>Does the <a href="http://www2.meethue.com/en-US">Philips Hue Bridge</a> need an introduction? RGB LED powered lights which can be controlled using your phone or tablet.</p>
 
 <h1>
-<a name="model-definitions" class="anchor" href="#model-definitions"><span class="octicon octicon-link"></span></a>Model definitions</h1>
+<a name="controller-definitions" class="anchor" href="#controller-definitions"><span class="octicon octicon-link"></span></a>Controller definitions</h1>
 
 <p>In the model these are defined as <code>Controller</code> objects. A <code>Controller</code> is a device that can control one or more connected devices (like lights, cameras etc.).</p>
 
@@ -138,6 +144,11 @@
 <p>The application will be have both a light and a dark mode. The light mode will show different colors, while the dark mode uses different tints of gray to differentiate different sensors. Themes will be accepted as pull requests also, as long as you are willing to support them.</p>
 
 <h1>
+<a name="triggers" class="anchor" href="#triggers"><span class="octicon octicon-link"></span></a>Triggers</h1>
+
+<p>Events are triggered by certain parameters of sensors and can execute simple commands on other sensors or for example perform a web request.</p>
+
+<h1>
 <a name="also-on-my-mind" class="anchor" href="#also-on-my-mind"><span class="octicon octicon-link"></span></a>Also on my mind</h1>
 
 <p>There are a couple of things that are on my mind, that I would love to integrate in HCP.</p>
@@ -146,7 +157,6 @@
 <li>Time based triggers.</li>
 <li>Sensor based trigger.</li>
 <li>XBMC controller, to control XBMC devices located in your house.</li>
-<li>OSX version, control your house from your OSX status bar.</li>
 </ul><p><em>These things will be build after the first release to the App Store.</em></p>
 
 <h1>
@@ -156,6 +166,8 @@
 
 <ul>
 <li>
+<a href="https://github.com/adamdebono/ADFlipTransition">ADFlipTransition</a> - An awesome transition to open modal screens.</li>
+<li>
 <a href="http://afnetworking.com">AFNetworking</a> - An awesome networking library that I use for all HTTP requests.</li>
 <li>
 <a href="http://classy.as">Classy</a> - Styling of UIKit using CSS-like files.</li>
@@ -164,9 +176,13 @@
 <li>
 <a href="https://github.com/nicklockwood/FXForms">FXForms</a> - A great way to create forms per sensor. This is used for the settings screens.</li>
 <li>
+<a href="https://github.com/lxcid/LXReorderableCollectionViewFlowLayout">LXReorderableCollectionViewFlowLayout</a> - A reorderable collection view layout.</li>
+<li>
 <a href="https://github.com/magicalpanda/MagicalRecord">MagicalRecord/Shorthand</a> - CoreData in an ActiveRecord kind of way.</li>
 <li>
 <a href="https://github.com/rentzsch/mogenerator">Mogenerator</a> - Generate Swift files for my CoreData models.</li>
+<li>
+<a href="https://github.com/smileyborg/PureLayout">PureLayout</a> - Using AutoLayout, but this framework makes it so much easier (and understandable).</li>
 <li>
 <a href="http://www.telerik.com/ios-ui">Telerik UI for iOS</a> (Commercial) - Great graph rendering and feedback system.</li>
 <li>
@@ -179,11 +195,13 @@
 <p>Thanks to the following people, making this project possible:</p>
 
 <ul>
+<li>My wife, for her eternal patience ;)</li>
 <li>
 <a href="http://www.telerik.com/">Telerik</a> for supplying me a <a href="http://www.telerik.com/ios-ui">Telerik UI for iOS</a> license for free to incorporate in this project.</li>
-<li>My wife, for her eternal patience ;)</li>
 <li>My enthousiastic Alpha testers.</li>
-</ul><h2></h2>
+</ul><p>Follow me on Twitter: <a href="http://twitter.com/depl0y">@depl0y</a>.</p>
+
+<h2></h2>
 
 <p><a href="http://creativecommons.org/licenses/by-nc/4.0/"><img src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" alt="BY-NC Logo"></a></p>
 
