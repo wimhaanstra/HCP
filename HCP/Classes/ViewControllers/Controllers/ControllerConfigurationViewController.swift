@@ -39,12 +39,12 @@ class ControllerConfigurationViewController: UIViewController, FXFormControllerD
 	}
 	
 	func initialize() {
-		self.tableView.frame = self.view.bounds;
-		self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
 		self.view.addSubview(self.tableView);
 		
 		self.formController.tableView = self.tableView;
 		self.formController.delegate = self;
+		
+		self.tableView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero);
 	}
 	
 	required init(coder aDecoder: NSCoder) {

@@ -18,8 +18,6 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 	var itemsPerRow = 5;
 	var interItemSpacing = 5.0;
 	
-	private var sensors: [Sensor] = [];
-	
 	private var availableTypes: [String] = ["Sensor", "Switch", "Dimmer", "EnergyLink", "Thermometer", "Clock"];
 	
 	override func viewDidLoad() {
@@ -72,7 +70,6 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated);
 		
-		self.sensors = ControllerManager.sharedInstance.allSensors();
 		self.collectionView?.reloadData();
 		
 		self.view.layoutIfNeeded();
@@ -105,18 +102,17 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 	func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
 		//		XCGLogger.defaultInstance().info(NSStringFromCGRect(self.view.frame));
 		
-		self.sensors = ControllerManager.sharedInstance.allSensors();
 		self.collectionView!.reloadData();
 		
 	}
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return self.sensors.count;
+		return ControllerManager.sharedInstance.allSensors().count;
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
-		var sensor = self.sensors[indexPath.row];
+		var sensor = ControllerManager.sharedInstance.allSensors()[indexPath.row];
 		
 		var settingsTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "cellTapped:");
 		settingsTap.numberOfTouchesRequired = 2;
@@ -141,9 +137,9 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		var sensor = self.sensors[indexPath.row];
-		var attributes = collectionView.layoutAttributesForItemAtIndexPath(indexPath);
+		var sensor = ControllerManager.sharedInstance.allSensors()[indexPath.row];
 		
+		//var attributes = collectionView.layoutAttributesForItemAtIndexPath(indexPath);
 		var cell = collectionView.cellForItemAtIndexPath(indexPath);
 		
 		if (sensor.entity.name == "EnergyLink") {
@@ -159,8 +155,9 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 	
 	 func collectionView(collectionView: UICollectionView!, itemAtIndexPath fromIndexPath: NSIndexPath!, didMoveToIndexPath toIndexPath: NSIndexPath!) {
 		
-		self.sensors = ControllerManager.sharedInstance.moveSenor(fromIndexPath, toIndexPath: toIndexPath);
+		ControllerManager.sharedInstance.moveSenor(fromIndexPath, toIndexPath: toIndexPath);
 
+		self.collectionView!.reloadData();
 		/*
 		var sensor = self.sensors[fromIndexPath.row];
 		
@@ -198,7 +195,7 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 	func numberOfItemsPerRow(interfaceOrientation: UIInterfaceOrientation) -> Int {
 		
 		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
-			return (interfaceOrientation.isLandscape) ? 3 : 2;
+			return (interfaceOrientation.isLandscape) ? 4 : 2;
 		}
 		else {
 			return (interfaceOrientation.isLandscape) ? 5 : 4;

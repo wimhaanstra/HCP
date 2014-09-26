@@ -24,7 +24,9 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 
 		self.view.backgroundColor = UIColor.whiteColor();
 		
-		self.scrollView.backgroundColor = UIColor.redColor();
+		// [UIColor colorWithWhite:0.856 alpha:1.000]
+		
+		self.scrollView.backgroundColor = UIColor(white: 0.950, alpha: 1.0);
 		self.scrollView.pagingEnabled = true;
 		self.scrollView.showsHorizontalScrollIndicator = false;
 		self.scrollView.showsVerticalScrollIndicator = false;
@@ -35,34 +37,41 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 		self.menuBar.selectedSegmentIndex = 0;
 		self.menuBar.addTarget(self, action: Selector("selectedSegment:"), forControlEvents: UIControlEvents.ValueChanged);
 
+		self.scrollView.addSubview(roomsViewController.view);
+		self.scrollView.addSubview(devicesViewController.view);
+		self.devicesViewController.containerViewController = self;
+		self.roomsViewController.containerViewController = self;
+		
 		self.menuBar.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.view);
 		self.menuBar.autoSetDimension(ALDimension.Height, toSize: 56);
 		self.menuBar.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self.view);
 
 		self.scrollView.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: self.menuBar);
+		self.scrollView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero, excludingEdge: ALEdge.Top);
+
+		/*
 		self.scrollView.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self.view);
 		self.scrollView.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self.view);
 		self.scrollView.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self.view);
-		self.scrollView.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.view);
+//		self.scrollView.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.view);
+		*/
 		
-		self.scrollView.addSubview(roomsViewController.view);
-		self.scrollView.addSubview(devicesViewController.view);
-
 		self.roomsViewController.view.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.scrollView);
 		self.roomsViewController.view.autoMatchDimension(ALDimension.Height, toDimension: ALDimension.Height, ofView: self.scrollView);
 		self.roomsViewController.view.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self.scrollView)
 		self.roomsViewController.view.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self.scrollView);
 		
-		self.devicesViewController.containerViewController = self;
-		self.roomsViewController.containerViewController = self;
-		
 		self.devicesViewController.view.autoMatchDimension(ALDimension.Width, toDimension: ALDimension.Width, ofView: self.scrollView);
 		self.devicesViewController.view.autoMatchDimension(ALDimension.Height, toDimension: ALDimension.Height, ofView: self.scrollView);
 		
 		self.devicesViewController.view.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Right, ofView: self.roomsViewController.view)
+		self.devicesViewController.view.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero, excludingEdge: ALEdge.Left);
+		
+		/*
 		self.devicesViewController.view.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self.scrollView)
 		self.devicesViewController.view.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self.scrollView)
 		self.devicesViewController.view.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self.scrollView);
+		*/
     }
 	
 	override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {

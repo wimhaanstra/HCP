@@ -24,10 +24,7 @@ class ThermometerCell: SensorCell {
 		self.backgroundColor = UIColor(red: 0.881, green: 0.646, blue: 0.147, alpha: 1.0);
 		self.contentView.addSubview(self.currentTemperatureLabel);
 		
-		self.currentTemperatureLabel.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self);
-		self.currentTemperatureLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 10);
-		self.currentTemperatureLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -10);
-		self.currentTemperatureLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self);
+		self.currentTemperatureLabel.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10));
 
 	}
 	

@@ -23,21 +23,14 @@ class SwitchCell: SensorCell {
 		self.offButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton;	
 		
 		super.init(frame: frame);
-		
-		self.onButton.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
-		self.onButton.cas_styleClass = "switch";
 
-		self.onButton.addTarget(self, action: Selector("OnButton_Clicked"), forControlEvents: UIControlEvents.TouchUpInside);
-		
-		self.contentView.addSubview(self.onButton);
-		
-		self.onButton.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self);
-		self.onButton.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 10);
-		self.onButton.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -10);
-		self.onButton.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self);
-
-		
 		self.textLabel.textColor = UIColor.whiteColor();
+		
+		self.onButton.cas_styleClass = "switch";
+		self.onButton.addTarget(self, action: Selector("OnButton_Clicked"), forControlEvents: UIControlEvents.TouchUpInside);
+		self.contentView.addSubview(self.onButton);
+
+		self.onButton.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10));
 	}
 	
 	override var sensor: Sensor? {

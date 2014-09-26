@@ -18,10 +18,11 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.tableView.frame = self.view.bounds;
 		self.tableView.delegate = self;
 		self.tableView.dataSource = self;
 		self.view.addSubview(tableView);
+		
+		self.tableView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero);
 		
 		self.title = NSLocalizedString("CONTROLLER_DISCOVERY_TITLE", comment: "Controller discovery popup titlte");
 		

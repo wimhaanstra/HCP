@@ -1,5 +1,10 @@
 <center><img style="margin: 15px" src="https://raw.githubusercontent.com/depl0y/HCP/develop/HCP/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png"></center>
 
+To stay up-to-date about HCP details, sign up to our mailing list here: [http://eepurl.com/Qa3Rb](http://eepurl.com/Qa3Rb).
+
+Follow me on Twitter: [@depl0y](http://twitter.com/depl0y).
+
+-
 #Home Control Panel
 
 Home Control Panel has been in development for a couple of months now, where the first try to set up this project was too complex and user-unfriendly. Because the scope of the project changed a bit (explanation below) and because I was ready for a *swift*-only project, I decided that most of the stuff could use a rewrite.
@@ -96,8 +101,8 @@ The application will be prepared to be fully multi-lingual, but **our** main foc
 
 The application will be have both a light and a dark mode. The light mode will show different colors, while the dark mode uses different tints of gray to differentiate different sensors. Themes will be accepted as pull requests also, as long as you are willing to support them.
 
-#Events
-Events are 
+#Triggers
+Events are triggered by certain parameters of sensors and can execute simple commands on other sensors or for example perform a web request.
 
 #Also on my mind
 There are a couple of things that are on my mind, that I would love to integrate in HCP.
@@ -112,12 +117,15 @@ There are a couple of things that are on my mind, that I would love to integrate
 
 For this application I currently use the following frameworks (in no particular order).
 
+* [ADFlipTransition](https://github.com/adamdebono/ADFlipTransition) - An awesome transition to open modal screens.
 * [AFNetworking](http://afnetworking.com) - An awesome networking library that I use for all HTTP requests.
 * [Classy](http://classy.as) - Styling of UIKit using CSS-like files.
 * [DZNSegmentedControl](https://github.com/dzenbot/DZNSegmentedControl) - A great control, used to page through the screens.
 * [FXForms](https://github.com/nicklockwood/FXForms) - A great way to create forms per sensor. This is used for the settings screens.
+* [LXReorderableCollectionViewFlowLayout](https://github.com/lxcid/LXReorderableCollectionViewFlowLayout) - A reorderable collection view layout.
 * [MagicalRecord/Shorthand](https://github.com/magicalpanda/MagicalRecord) - CoreData in an ActiveRecord kind of way.
 * [Mogenerator](https://github.com/rentzsch/mogenerator) - Generate Swift files for my CoreData models.
+* [PureLayout](https://github.com/smileyborg/PureLayout) - Using AutoLayout, but this framework makes it so much easier (and understandable).
 * [Telerik UI for iOS](http://www.telerik.com/ios-ui) (Commercial) - Great graph rendering and feedback system.
 * [UICKeyChainStore](https://github.com/kishikawakatsumi/UICKeyChainStore) - Easy KeyChain access.
 * [XCGLogger](https://github.com/DaveWoodCom/XCGLogger) - XCGLogger is a log framework written in Swift.
@@ -125,10 +133,11 @@ For this application I currently use the following frameworks (in no particular 
 #Thanks
 Thanks to the following people, making this project possible:
 
-* [Telerik](http://www.telerik.com/) for supplying me a [Telerik UI for iOS](http://www.telerik.com/ios-ui) license for free to incorporate in this project.
 * My wife, for her eternal patience ;)
+* [Telerik](http://www.telerik.com/) for supplying me a [Telerik UI for iOS](http://www.telerik.com/ios-ui) license for free to incorporate in this project.
 * My enthousiastic Alpha testers.
 
+Follow me on Twitter: [@depl0y](http://twitter.com/depl0y).
 
 -
 

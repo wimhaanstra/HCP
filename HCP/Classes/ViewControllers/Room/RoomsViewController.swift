@@ -38,7 +38,7 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 		layout.itemSize = CGSizeMake(itemSize, itemSize);
 		
 		self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout);
-		self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "base");
+		self.collectionView!.registerClass(RoomCell.self, forCellWithReuseIdentifier: "base");
 		self.collectionView!.delegate = self
 		self.collectionView!.dataSource = self;
 		self.collectionView!.backgroundColor = UIColor.whiteColor();
@@ -72,33 +72,40 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-		var cell = collectionView.dequeueReusableCellWithReuseIdentifier("base", forIndexPath: indexPath) as UICollectionViewCell;
-		
-		for v in cell.contentView.subviews {
-			if let view = v as? UIView {
-				view.removeFromSuperview();
-			}
-		}
+		var cell = collectionView.dequeueReusableCellWithReuseIdentifier("base", forIndexPath: indexPath) as RoomCell;
 
 		cell.cas_styleClass = "Room";
 		var room = Room.findAllSortedBy("order", ascending: true)[indexPath.row] as Room;
-		
-		var textLabel = UILabel(frame: CGRectMake(5, cell.frame.size.height - 27, cell.frame.size.width - 10, 30));
-		textLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16);
-		textLabel.textColor = UIColor(white: 0.600, alpha: 1.0);
-		
-		cell.contentView.addSubview(textLabel);
-		
-		textLabel.text = room.name;
-		
+		cell.room = room;
 		return cell;
 		
 	}
 	
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		var cell = collectionView.cellForItemAtIndexPath(indexPath);
+
+		var room = Room.findAllSortedBy("order", ascending: true)[indexPath.row] as Room;
+		
+		var controller = RoomViewController();
+		controller.room = room;
+		self.view.addSubview(controller.view);
+		
+		var viewSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? self.view.frame.size : CGRectInset(self.view.frame, 50, 50).size;
+		self.flipToViewController(controller, fromView: cell, asChildWithSize: viewSize, withCompletion: { () -> Void in
+		});
+
+	
+	}
+	
 	func addRoom_Clicked() {
-		var alert = UIAlertController(title: NSLocalizedString("ADD_ROOM_ALERT_TITLE", comment: "Add room alert title"), message: NSLocalizedString("ADD_ROOM_ALERT_TEXT", comment: "Add room alert text"), preferredStyle: UIAlertControllerStyle.Alert);
+		var alert = UIAlertController(title: NSLocalizedString("ADD_ROOM_ALERT_TITLE",
+			comment: "Add room alert title"),
+			message: NSLocalizedString("ADD_ROOM_ALERT_TEXT", comment: "Add room alert text"),
+			preferredStyle: UIAlertControllerStyle.Alert);
+		
 		alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
 			textField.placeholder = NSLocalizedString("ADD_ROOM_ALERT_PLACEHOLDER", comment: "Add room alert placeholder");
+			textField.autocapitalizationType = .Words;
 			self.roomNameTextField = textField;
 		});
 		

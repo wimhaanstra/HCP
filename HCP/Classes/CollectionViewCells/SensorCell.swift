@@ -45,16 +45,12 @@ class SensorCell: UICollectionViewCell {
 		
 		super.init(frame: frame);
 		
-		self.backgroundColor = UIColor.blackColor();
-		
-		self.contentView.addSubview(self.textLabel);
 		self.cas_styleClass = "Sensor";
-		
-		self.textLabel.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self, withOffset: 8);
-		self.textLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 3);
-		self.textLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -3);
+		self.backgroundColor = UIColor.blackColor();
+		self.contentView.addSubview(self.textLabel);
+
 		self.textLabel.autoSetDimension(ALDimension.Height, toSize: 36);
-		
+		self.textLabel.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 3, bottom: -8, right: 3), excludingEdge: ALEdge.Top);
 	}
 	
 	required init(coder aDecoder: NSCoder) {

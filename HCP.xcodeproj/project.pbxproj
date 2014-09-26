@@ -30,6 +30,8 @@
 		AB6FD56219CD4E6700ECFC1C /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FD55919CD4E6700ECFC1C /* RoomsViewController.swift */; };
 		AB6FD56319CD4E6700ECFC1C /* SensorConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FD55B19CD4E6700ECFC1C /* SensorConfigurationViewController.swift */; };
 		AB6FD56519CD61CD00ECFC1C /* ClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FD56419CD61CD00ECFC1C /* ClockCell.swift */; };
+		AB71891019D434DF00197228 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB71890F19D434DF00197228 /* ProgressCircleView.swift */; };
+		AB71891219D570B700197228 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB71891119D570B700197228 /* RoomViewController.swift */; };
 		AB73CE0619C6B52B00B20EB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB73CE0519C6B52B00B20EB2 /* Localizable.strings */; };
 		AB75087819CEBBAD009AE1A0 /* EnergyLinkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75087719CEBBAD009AE1A0 /* EnergyLinkDetailsViewController.swift */; };
 		AB75087A19CEBBCE009AE1A0 /* SensorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75087919CEBBCE009AE1A0 /* SensorDetailsViewController.swift */; };
@@ -39,6 +41,7 @@
 		AB897EC619C026F20065062E /* _Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC519C026F20065062E /* _Thermometer.swift */; };
 		AB897EC819C026FA0065062E /* Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897EC719C026FA0065062E /* Thermometer.swift */; };
 		AB897ECB19C1708E0065062E /* ControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB897ECA19C1708E0065062E /* ControllerManager.swift */; };
+		AB94888A19D3EDA10036A03D /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94888919D3EDA10036A03D /* RoomCell.swift */; };
 		AB9769CE19D03BDC00F3FDC1 /* _YahooWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9769CD19D03BDC00F3FDC1 /* _YahooWeather.swift */; };
 		AB9769D019D03BE400F3FDC1 /* YahooWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9769CF19D03BE400F3FDC1 /* YahooWeather.swift */; };
 		AB9769D219D03C5200F3FDC1 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9769D119D03C5200F3FDC1 /* Weather.swift */; };
@@ -114,6 +117,8 @@
 		AB6FD55919CD4E6700ECFC1C /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		AB6FD55B19CD4E6700ECFC1C /* SensorConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorConfigurationViewController.swift; sourceTree = "<group>"; };
 		AB6FD56419CD61CD00ECFC1C /* ClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockCell.swift; path = CollectionViewCells/ClockCell.swift; sourceTree = "<group>"; };
+		AB71890F19D434DF00197228 /* ProgressCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressCircleView.swift; path = Views/ProgressCircleView/ProgressCircleView.swift; sourceTree = "<group>"; };
+		AB71891119D570B700197228 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		AB73CE0519C6B52B00B20EB2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		AB75087719CEBBAD009AE1A0 /* EnergyLinkDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnergyLinkDetailsViewController.swift; path = DetailsViewControllers/EnergyLinkDetailsViewController.swift; sourceTree = "<group>"; };
 		AB75087919CEBBCE009AE1A0 /* SensorDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorDetailsViewController.swift; path = DetailsViewControllers/SensorDetailsViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +128,7 @@
 		AB897EC519C026F20065062E /* _Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Thermometer.swift; sourceTree = "<group>"; };
 		AB897EC719C026FA0065062E /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
 		AB897ECA19C1708E0065062E /* ControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
+		AB94888919D3EDA10036A03D /* RoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomCell.swift; path = CollectionViewCells/RoomCell/RoomCell.swift; sourceTree = "<group>"; };
 		AB9769CD19D03BDC00F3FDC1 /* _YahooWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _YahooWeather.swift; sourceTree = "<group>"; };
 		AB9769CF19D03BE400F3FDC1 /* YahooWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YahooWeather.swift; sourceTree = "<group>"; };
 		AB9769D119D03C5200F3FDC1 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 		AB56FBFE19C9596100150666 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				AB94888819D3ED720036A03D /* RoomCell */,
 				AB56FBFF19C959CD00150666 /* SensorCell */,
 			);
 			name = CollectionViewCells;
@@ -288,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				AB6FD55919CD4E6700ECFC1C /* RoomsViewController.swift */,
+				AB71891119D570B700197228 /* RoomViewController.swift */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -327,6 +335,14 @@
 			name = Switches;
 			sourceTree = "<group>";
 		};
+		AB94888819D3ED720036A03D /* RoomCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB94888919D3EDA10036A03D /* RoomCell.swift */,
+			);
+			name = RoomCell;
+			sourceTree = "<group>";
+		};
 		AB9769D519D03C7E00F3FDC1 /* Sensors */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +362,7 @@
 				ABB07EED19BAD85600B02BFC /* Models */,
 				AB56FBFE19C9596100150666 /* CollectionViewCells */,
 				AB6FD54E19CD4E6700ECFC1C /* ViewControllers */,
+				AB71890F19D434DF00197228 /* ProgressCircleView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -634,10 +651,12 @@
 			files = (
 				AB897EC819C026FA0065062E /* Thermometer.swift in Sources */,
 				ABB07F0019BAD85600B02BFC /* _HueBridge.swift in Sources */,
+				AB94888A19D3EDA10036A03D /* RoomCell.swift in Sources */,
 				ABB07F0319BAD85600B02BFC /* _Switch.swift in Sources */,
 				ABBDB7EB19CA7F0B00A67AFA /* DimmerCell.swift in Sources */,
 				ABBDB7EF19CAB20D00A67AFA /* ThermometerCell.swift in Sources */,
 				AB897EC019BFA4390065062E /* _EnergyLink.swift in Sources */,
+				AB71891019D434DF00197228 /* ProgressCircleView.swift in Sources */,
 				AB75087A19CEBBCE009AE1A0 /* SensorDetailsViewController.swift in Sources */,
 				AB6FD56219CD4E6700ECFC1C /* RoomsViewController.swift in Sources */,
 				ABB07F0819BAD85600B02BFC /* Room.swift in Sources */,
@@ -681,6 +700,7 @@
 				AB6FD55D19CD4E6700ECFC1C /* MenuViewController.swift in Sources */,
 				AB897EC419BFA8B10065062E /* CombinedValue.swift in Sources */,
 				AB5977FC19CD1DB000DA0B7E /* _Time.swift in Sources */,
+				AB71891219D570B700197228 /* RoomViewController.swift in Sources */,
 				ABB07EFD19BAD85600B02BFC /* _Controller.swift in Sources */,
 				ABB07F0A19BAD85600B02BFC /* Switch.swift in Sources */,
 			);

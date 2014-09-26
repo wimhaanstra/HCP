@@ -15,10 +15,15 @@ class DimmerCell: SensorCell {
 	var offBackgroundColor: UIColor = UIColor(red: 0.420, green: 0.671, blue: 0.278, alpha: 0.4); //UIColor(red: 0.644, green: 0.996, blue: 0.506, alpha: 1.0);
 	var onBackgroundColor: UIColor = UIColor(red: 0.420, green: 0.671, blue: 0.278, alpha: 1.0);
 	
+	var valueCircleView: ProgressCircleView = ProgressCircleView();
+	
 	override var sensor: Sensor? {
 		didSet {
-			self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
-			self.backgroundColor = ((self.sensor as Dimmer).status == true) ? onBackgroundColor : offBackgroundColor;
+			if ((self.sensor as Dimmer).dimValue != nil) {
+				self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
+				self.backgroundColor = ((self.sensor as Dimmer).status == true) ? onBackgroundColor : offBackgroundColor;
+				self.valueCircleView.value = (self.sensor as Dimmer).dimValue!;
+			}
 		}
 	}
 
@@ -35,10 +40,10 @@ class DimmerCell: SensorCell {
 		
 		self.contentView.addSubview(self.dimValueLabel);
 		
-		self.dimValueLabel.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Bottom, ofView: self);
-		self.dimValueLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 10);
-		self.dimValueLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -10);
-		self.dimValueLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: self);
+		self.dimValueLabel.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10));
+
+		self.contentView.addSubview(valueCircleView);
+		valueCircleView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10));
 
 	}
 	
@@ -52,6 +57,7 @@ class DimmerCell: SensorCell {
 		
 		if (keyPath == "dimValue" && (self.sensor as Dimmer).dimValue != nil) {
 			self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
+			self.valueCircleView.value = (self.sensor as Dimmer).dimValue!;
 		}
 		
 		self.backgroundColor = ((self.sensor as Dimmer).status == true) ? onBackgroundColor : offBackgroundColor;

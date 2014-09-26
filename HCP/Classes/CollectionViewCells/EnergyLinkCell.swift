@@ -13,10 +13,12 @@ class EnergyLinkCell: SensorCell {
 	var currentUsageLabel: UILabel;
 	var maxUsageLabel: UILabel;
 	
+	var usageCircleView: ProgressCircleView = ProgressCircleView();
+	
 	override init(frame: CGRect) {
 		
-		self.currentUsageLabel = UILabel(frame: CGRectMake(25, (frame.size.height / 2) - 30, frame.size.width - 50, 60));
-		self.currentUsageLabel.font = UIFont(name: "HelveticaNeue", size: 32);
+		self.currentUsageLabel = UILabel();
+		self.currentUsageLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 32);
 		self.currentUsageLabel.textAlignment = NSTextAlignment.Center;
 		self.currentUsageLabel.textColor = UIColor.whiteColor();
 		self.currentUsageLabel.adjustsFontSizeToFitWidth = true;
@@ -28,9 +30,22 @@ class EnergyLinkCell: SensorCell {
 		
 		super.init(frame: frame);
 		
+		self.backgroundColor = UIColor(red: 0.341, green: 0.273, blue: 0.502, alpha: 1.0);
+
 		self.contentView.addSubview(self.currentUsageLabel);
 		self.contentView.addSubview(self.maxUsageLabel);
-		self.backgroundColor = UIColor(red: 0.341, green: 0.273, blue: 0.502, alpha: 1.0);
+		self.contentView.addSubview(usageCircleView);
+		
+		self.currentUsageLabel.autoSetDimension(ALDimension.Height, toSize: 36);
+		self.currentUsageLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 15);
+		self.currentUsageLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -15);
+		self.currentUsageLabel.autoAlignAxis(ALAxis.Horizontal, toSameAxisOfView: self.contentView);
+		
+		self.maxUsageLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: self.currentUsageLabel);
+		self.maxUsageLabel.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Left, ofView: self, withOffset: 40);
+		self.maxUsageLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Right, ofView: self, withOffset: -40);
+		
+		self.usageCircleView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10));
 	}
 	
 	required init(coder aDecoder: NSCoder) {
@@ -44,59 +59,17 @@ class EnergyLinkCell: SensorCell {
 			if let usedValue = (self.sensor as EnergyLink).used as? CombinedValue {
 				self.currentUsageLabel.text = "\(usedValue.currentValue.stringValue) W";
 				self.maxUsageLabel.text = "\(usedValue.maxValue.stringValue) W";
+				
+				var currentValue = usedValue.currentValue;
+				var graphMax: NSNumber = (usedValue.maxValue.integerValue < usedValue.currentValue.integerValue) ? currentValue : usedValue.maxValue;
+				var percentage: Double = currentValue / (graphMax / 100);
+
+				self.usageCircleView.value = percentage;
+				
 				self.setNeedsDisplay();
 			}
 		}
 		
-	}
-
-	override func drawRect(rect: CGRect) {
-		
-		super.drawRect(rect);
-		
-		if let usedValue = (self.sensor as EnergyLink).used as? CombinedValue {
-			
-			var graphRect = CGRectInset(rect, rect.size.width / 10, rect.size.width / 10);
-			var currentValue = usedValue.currentValue;
-			
-			var graphMax: NSNumber = (usedValue.maxValue.integerValue < usedValue.currentValue.integerValue) ? currentValue : usedValue.maxValue;
-			
-			var percentage: Double = currentValue / (graphMax / 100);
-
-			self.drawCircleInRect(graphRect, color: UIColor(white: 0.800, alpha: 1.0), percentage: 100.0);
-			
-			var color = UIColor(red: 0.876, green: 0.265, blue: 0.217, alpha: 1.0);
-			
-			if (percentage <= 25) {
-				color = UIColor(red: 0.383, green: 0.876, blue: 0.189, alpha: 1.0);
-			}
-			else if (percentage > 25 && percentage < 75) {
-				color = UIColor(red: 0.876, green: 0.872, blue: 0.270, alpha: 1.0);
-			}
-			
-			self.drawCircleInRect(graphRect, color: color, percentage: percentage);
-		}
-	}
-	
-	
-	
-	func drawCircleInRect(rect: CGRect, color: UIColor, percentage: Double) {
-		
-		var radius: Double = Double(rect.size.width / 2);
-		var _value = (1.0/100.0) * ((percentage * 270) + (100 * 0) - (percentage * 0));
-		var startAngle: Double = 135 * M_PI/180;
-		var endAngle: Double = (135 + _value) * M_PI/180;
-		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-
-		var ovalPattern: [CGFloat] = [1, 1, 1, 1];
-		color.setStroke();
-		
-		var path = UIBezierPath(); //arcCenter: center, radius: 15, startAngle: startAngle, endAngle: endAngle, clockwise: false);
-		path.addArcWithCenter(center, radius: CGFloat(radius), startAngle: CGFloat(135 * M_PI/180), endAngle: CGFloat(endAngle), clockwise: true);
-		path.setLineDash(ovalPattern, count: 4, phase: 0);
-		path.lineWidth = 12;
-		path.stroke();
-
 	}
 	
 }

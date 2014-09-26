@@ -135,14 +135,16 @@ class ControllerManager {
 		
 		var sensors = self.allSensors();
 
+		var sensor = sensors[fromIndexPath.row];
+		sensors.removeAtIndex(fromIndexPath.row);
+		sensors.insert(sensor, atIndex: toIndexPath.row);
+
 		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
-			var sensor = sensors[fromIndexPath.row].inContext(context);
-			sensors.removeAtIndex(fromIndexPath.row);
-			sensors.insert(sensor, atIndex: toIndexPath.row);
 			
 			var index = 0;
 			for item in sensors {
-				item.sortOrder = index;
+				var localItem = item.inContext(context);
+				localItem.sortOrder = index;
 				index++;
 			}
 		}
