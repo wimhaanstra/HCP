@@ -152,10 +152,10 @@ class ControllerManager {
 		return sensors;
 	}
 	
-	func allSensors() -> [Sensor] {
+	func allSensors(sortBy: String = "sortOrder") -> [Sensor] {
 
 		var predicate = NSPredicate(format: "selected = %@", argumentArray: [ true ] );
-		return Sensor.findAllSortedBy("sortOrder", ascending: true, withPredicate: predicate) as [Sensor];
+		return Sensor.findAllSortedBy(sortBy, ascending: true, withPredicate: predicate) as [Sensor];
 
 	}
 

@@ -26,13 +26,11 @@ class SensorConfigurationViewController: UIViewController, FXFormControllerDeleg
 		}
 	}
 	
-	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-
-		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
 		
-		self.tableView.frame = self.view.bounds;
-		self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
 		self.view.addSubview(self.tableView);
+		self.tableView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero);
 		
 		self.formController.tableView = self.tableView;
 		self.formController.delegate = self;
@@ -43,27 +41,7 @@ class SensorConfigurationViewController: UIViewController, FXFormControllerDeleg
 			self.navigationItem.rightBarButtonItem = closeButton;
 			
 		}
-	}
-	
-	override init() {
-		
-		super.init();
 
-		self.tableView.frame = self.view.bounds;
-		self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
-		self.view.addSubview(self.tableView);
-		
-		self.formController.tableView = self.tableView;
-		self.formController.delegate = self;
-		
-	}
-	
-	required init(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented");
-	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {

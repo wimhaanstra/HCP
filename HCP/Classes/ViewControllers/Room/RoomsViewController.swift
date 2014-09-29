@@ -87,13 +87,17 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 		var room = Room.findAllSortedBy("order", ascending: true)[indexPath.row] as Room;
 		
 		var controller = RoomViewController();
+		controller.containerViewController = self.containerViewController;
 		controller.room = room;
 		self.view.addSubview(controller.view);
 		
-		var viewSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? self.view.frame.size : CGRectInset(self.view.frame, 50, 50).size;
+		var viewSize:CGSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? self.view.frame.size : CGRectInset(self.view.frame, 50, 50).size;
+		var edgeInsets = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? UIEdgeInsetsZero : UIEdgeInsetsMake(50, 50, 50, 50);
+		
 		self.flipToViewController(controller, fromView: cell, asChildWithSize: viewSize, withCompletion: { () -> Void in
+			var transition = self.presentedFlipTransition;
+			transition.edgeInsets = edgeInsets;
 		});
-
 	
 	}
 	

@@ -31,9 +31,6 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 		}
 		
 		addControllerButton = self.addButton(NSLocalizedString("CONTROLLERS_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("controllersButton_Clicked"));
-		self.addButton(NSLocalizedString("REFRESH_ALL_BUTTON", comment: "Button title in devices view"), width: 150, selector: Selector("controllersButton_Clicked"));
-		
-		
 		
 		var layout = LXReorderableCollectionViewFlowLayout();
 		layout.sectionInset = UIEdgeInsetsMake(CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset));
@@ -73,7 +70,6 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 		self.collectionView?.reloadData();
 		
 		self.view.layoutIfNeeded();
-
 	}
 	
 	func controllersButton_Clicked() {
@@ -145,10 +141,13 @@ class DevicesViewController: MenuViewController, LXReorderableCollectionViewData
 		if (sensor.entity.name == "EnergyLink") {
 			var controller = EnergyLinkDetailsViewController();
 			controller.sensor = sensor;
-			self.view.addSubview(controller.view);
+
+			var viewSize:CGSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? self.view.frame.size : CGRectInset(self.view.frame, 50, 50).size;
+			var edgeInsets = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? UIEdgeInsetsZero : UIEdgeInsetsMake(50, 50, 50, 50);
 			
-			var viewSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? self.view.frame.size : CGRectInset(self.view.frame, 50, 50).size;
 			self.flipToViewController(controller, fromView: cell, asChildWithSize: viewSize, withCompletion: { () -> Void in
+				var transition = self.presentedFlipTransition;
+				transition.edgeInsets = edgeInsets;
 			});
 		}
 	}

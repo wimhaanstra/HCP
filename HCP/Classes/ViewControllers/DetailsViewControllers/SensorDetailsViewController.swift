@@ -33,6 +33,7 @@ class SensorDetailsViewController: UIViewController {
 		self.textLabel.font = UIFont(name: "HelveticaNeue-UltraLight", size: 64);
 		self.textLabel.textColor = UIColor.whiteColor();
 		self.textLabel.adjustsFontSizeToFitWidth = true;
+		self.textLabel.alpha = 0.3;
 		
 		self.view.addSubview(self.textLabel);
 		
@@ -53,8 +54,10 @@ class SensorDetailsViewController: UIViewController {
 	}
 	
 	func closeButton_Clicked() {
+		
 		self.dismissFlipWithCompletion { () -> Void in
 		}
+
 	}
 	
 	override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
