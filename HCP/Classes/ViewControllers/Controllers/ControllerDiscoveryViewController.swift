@@ -40,26 +40,13 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated);
 		
-		HomeWizard.discover(false, completion: { (results) -> Void in
+
+		ControllerManager.sharedInstance.discoverControllers { (results) -> Void in
+			NSLog("Found \(results.count) controllers");
 			self.discoveredControllers = results;
-			
-			Time.discover(false, completion: { (results) -> Void in
-				
-				for item in results {
-					self.discoveredControllers.append(item);
-				}
-				
-				YahooWeather.discover(false, completion: { (results) -> Void in
-					
-					for item in results {
-						self.discoveredControllers.append(item);
-					}
-					
-					self.tableView.reloadData();
-				});
-				
-			})
-		});
+			self.tableView.reloadData();
+		};
+
 	}
 	
 	func Close_Clicked() {
@@ -81,7 +68,7 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 			return ControllerManager.sharedInstance.all().count;
 		}
 		else {
-			return self.discoveredControllers.count;
+			return (self.discoveredControllers.count > 0) ? self.discoveredControllers.count : 1;
 		}
 	}
 	
@@ -111,22 +98,33 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 			return cell;
 		}
 		else { //if (indexPath.section == 1) {
+			
 			var cell:UITableViewCell! = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
 			
 			if (cell == nil) {
 				cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell");
 			}
 			
-			var discoveredController = self.discoveredControllers[indexPath.row];
-			
-			cell.textLabel?.text = discoveredController.name;
-			
-			cell.userInteractionEnabled = (discoveredController.managedObjectContext == nil);
-			cell.textLabel?.enabled = (discoveredController.managedObjectContext == nil);
-			cell.detailTextLabel?.enabled = (discoveredController.managedObjectContext == nil);
-			
-			cell.accessoryType = (discoveredController.managedObjectContext == nil) ? .None : .Checkmark;
-			
+			if (indexPath.row < self.discoveredControllers.count) {
+				var discoveredController = self.discoveredControllers[indexPath.row];
+				
+				cell.textLabel?.text = discoveredController.name;
+				
+				cell.userInteractionEnabled = (discoveredController.managedObjectContext == nil);
+				cell.textLabel?.enabled = (discoveredController.managedObjectContext == nil);
+				cell.detailTextLabel?.enabled = (discoveredController.managedObjectContext == nil);
+				
+				cell.accessoryType = (discoveredController.managedObjectContext == nil) ? .None : .Checkmark;
+			}
+			else {
+				cell.textLabel?.text = NSLocalizedString("DISCOVERY_NO_CONTROLLERS_FOUND", comment: "Discovery no controllers found");
+				
+				cell.userInteractionEnabled = false;
+				cell.textLabel?.enabled = false;
+				cell.detailTextLabel?.enabled = false;
+				
+				cell.accessoryType = .None;
+			}
 			return cell;
 		}
 		
@@ -137,17 +135,22 @@ class ControllerDiscoveryViewController: UIViewController, UITableViewDataSource
 		tableView.deselectRowAtIndexPath(indexPath, animated: true);
 		
 		if (indexPath.section == 1) {
-			var controller = self.discoveredControllers[indexPath.row] as Controller;
 			
-			switch (controller.type) {
-			case .HomeWizard:
-				self.addHomeWizard(controller as HomeWizard, indexPath: indexPath);
-			case .Time, .Weather:
-				self.addController(controller, indexPath: indexPath);
-			case .HueBridge:
-				println("Hue");
-			default:
-				println("Unknown");
+			if (indexPath.row < self.discoveredControllers.count) {
+				var controller = self.discoveredControllers[indexPath.row] as Controller;
+				
+				switch (controller.type) {
+				case .HomeWizard:
+					self.addHomeWizard(controller as HomeWizard, indexPath: indexPath);
+				case .Time, .Weather:
+					self.addController(controller, indexPath: indexPath);
+				case .HueBridge:
+					self.addController(controller, indexPath: indexPath);
+				case .HomeKit:
+					self.addController(controller, indexPath: indexPath);
+				default:
+					println("Unknown");
+				}
 			}
 		}
 		else if (indexPath.section == 0) {

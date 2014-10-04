@@ -11,11 +11,13 @@ enum SensorAttributes: String {
     case name = "name"
     case onTodayScreen = "onTodayScreen"
     case selected = "selected"
+    case showTitle = "showTitle"
     case sortOrder = "sortOrder"
 }
 
 enum SensorRelationships: String {
     case controller = "controller"
+    case graphValues = "graphValues"
     case rooms = "rooms"
 }
 
@@ -81,6 +83,11 @@ class _Sensor: NSManagedObject {
     // func validateSelected(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
+    var showTitle: NSNumber?
+
+    // func validateShowTitle(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var sortOrder: NSNumber?
 
     // func validateSortOrder(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -93,7 +100,38 @@ class _Sensor: NSManagedObject {
     // func validateController(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
+    var graphValues: NSSet
+
+    @NSManaged
     var rooms: NSSet
+
+}
+
+extension _Sensor {
+
+    func addGraphValues(objects: NSSet) {
+        let mutable = self.graphValues.mutableCopy() as NSMutableSet
+        mutable.unionSet(objects)
+        self.graphValues = mutable.copy() as NSSet
+    }
+
+    func removeGraphValues(objects: NSSet) {
+        let mutable = self.graphValues.mutableCopy() as NSMutableSet
+        mutable.minusSet(objects)
+        self.graphValues = mutable.copy() as NSSet
+    }
+
+    func addGraphValuesObject(value: GraphValue!) {
+        let mutable = self.graphValues.mutableCopy() as NSMutableSet
+        mutable.addObject(value)
+        self.graphValues = mutable.copy() as NSSet
+    }
+
+    func removeGraphValuesObject(value: GraphValue!) {
+        let mutable = self.graphValues.mutableCopy() as NSMutableSet
+        mutable.removeObject(value)
+        self.graphValues = mutable.copy() as NSSet
+    }
 
 }
 

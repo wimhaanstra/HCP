@@ -11,12 +11,21 @@ class Clock: _Clock {
 			}
 			
 		}
+		
+		if (self.showSeconds == nil) {
+			self.showSeconds = false;
+		}
 	}
 	
 	override func fields() -> [AnyObject]! {
 		
-		var fields: [AnyObject] = [ [ "key": "timeZoneOffset", "title": "Timezone Offset", "type": "number", "header" : "Clock" ] ];
+		var fields: [AnyObject] = [
+			[ "key": "timeZoneOffset", "title": "Timezone Offset", "type": "number", "header" : "Clock" ],
+			[ "key": "showSeconds", "title": "Show Seconds", "type": "boolean" ]
+		];
+		
 		fields = fields + super.fields();
+		
 		return fields;
 		
 	}

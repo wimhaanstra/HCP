@@ -30,4 +30,6 @@
 
 #import <PureLayout/PureLayout.h>
 
+#import <TelerikUI/TelerikUI.h>
+
 #endif

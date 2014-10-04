@@ -32,16 +32,31 @@ class ThermometerCell: SensorCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
 		if (keyPath == "temperature") {
-			if let temperatureValue = (self.sensor as Thermometer).temperature as? CombinedValue {
-				self.currentTemperatureLabel.text = "\(temperatureValue.currentValue^1)°C";
-			}
+			self.updateDisplay();
 		}
 		
 	}
+	
+	override var sensor: Sensor? {
+		didSet {
+			self.updateDisplay();
+		}
+	}
+	
+	override func updateDisplay() {
+		
+		super.updateDisplay();
+		
+		if (self.sensor == nil) {
+			return;
+		}
 
-
+		if let temperatureValue = (self.sensor as Thermometer).temperature as? CombinedValue {
+			self.currentTemperatureLabel.text = "\(temperatureValue.currentValue)°C";
+		}
+	}
 }

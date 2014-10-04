@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HomeKit
 
-class ControllerManager {
+class ControllerManager : NSObject, HMHomeManagerDelegate {
 	
 	class var sharedInstance : ControllerManager {
 		struct Static {
@@ -20,8 +21,14 @@ class ControllerManager {
 	
 	private var controllers: [Controller] = [Controller]();
 	
-	init() {
+	var homeManager: HMHomeManager = HMHomeManager();
+	
+	override init() {
+		super.init();
+		
 		controllers = Controller.findAll() as [Controller];
+		
+		self.homeManager.delegate = self;
 		
 		for item in controllers {
 			
@@ -84,7 +91,6 @@ class ControllerManager {
 		}
 	}
 	
-	
 	func add(controller: Controller, completion: (success: Bool) -> Void) {
 		
 		if (controller.managedObjectContext == nil) {
@@ -119,7 +125,6 @@ class ControllerManager {
 	func all() -> [Controller] {
 		return controllers;
 	}
-	
 	
 	func setSensorAvailability(controller: Controller, available: Bool) {
 		MagicalRecord.saveWithBlockAndWait { (context) -> Void in
@@ -159,12 +164,55 @@ class ControllerManager {
 
 	}
 
-	
 	func stopControllers() {
 		for item in self.controllers {
 //			XCGLogger.defaultInstance().info("Stopping " + item.name!);
 			item.stop();
 		}
 	}
+	
+	/* HomeManager Delegate Methods */
+	
+	func homeManagerDidUpdateHomes(manager: HMHomeManager!) {
+	
+		XCGLogger.defaultInstance().debug("HomeKit: HMHomeManager initialized");
+		
+		if (self.homeManager.homes.count == 0) {
+			self.homeManager.addHomeWithName("My Home", completionHandler: { (home, error) -> Void in
+				
+				if (error != nil) {
+					XCGLogger.defaultInstance().error("HomeKit: " + error.localizedDescription);
+				}
+				else {
+					XCGLogger.defaultInstance().debug("HomeKit: Created default home called 'My Home'");
+				}
+				
+			});
+		}
+		else {
+			XCGLogger.defaultInstance().debug("HomeKit: A Home is already present");
+		}
+	}
 
+	func discoverControllers(completion: (results: [Controller]) -> Void) {
+		
+		var controllerClasses: [Controller.Type] = [ HomeKit.self, HomeWizard.self, Time.self, YahooWeather.self, HueBridge.self ];
+		var controllers: [Controller] = [Controller]();
+		var completed = 0;
+
+		for item in controllerClasses {
+			item.discover(false, completion: { (results) -> Void in
+				for item in results {
+					controllers.append(item);
+				}
+				
+				completed++;
+				if (completed == controllerClasses.count) {
+					controllers.sort( {$0.name < $1.name });
+					completion(results: controllers);
+				}
+			});
+		}
+	}
+	
 }

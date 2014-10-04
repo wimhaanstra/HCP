@@ -33,6 +33,7 @@ class EntityFactory<T: Sensor> {
 					sensor!.controller = localController;
 					sensor!.sortOrder = controller.sensors.count;
 					sensor!.onTodayScreen = false;
+					sensor!.showTitle = true;
 					localController.addSensorsObject(sensor);
 				}
 			}

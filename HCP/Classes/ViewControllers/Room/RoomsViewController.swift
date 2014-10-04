@@ -14,28 +14,15 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 	var addRoomButton: UIButton?;
 	private var roomNameTextField: UITextField? = nil;
 	
-	var edgeOffset = 5.0;
-	var itemsPerRow = 5;
-	var interItemSpacing = 5.0;
-
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		addRoomButton = self.addButton(NSLocalizedString("ADD_ROOM_BUTTON", comment: "Button title in rooms view"), width: 150, selector: Selector("addRoom_Clicked"));
 
-		if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
-			itemsPerRow = 2;
-			interItemSpacing = 0;
-			edgeOffset = 0;
-		}
-		
-		var itemSize = (self.view.bounds.size.width - (2 * CGFloat(edgeOffset)) - (CGFloat(itemsPerRow) * CGFloat(edgeOffset))) / CGFloat(itemsPerRow);
-		
 		var layout = UICollectionViewFlowLayout();
-		layout.sectionInset = UIEdgeInsetsMake(CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset), CGFloat(edgeOffset));
-		layout.minimumInteritemSpacing = CGFloat(interItemSpacing);
-		layout.minimumLineSpacing = CGFloat(interItemSpacing);
-		layout.itemSize = CGSizeMake(itemSize, itemSize);
+		layout.sectionInset = CollectionViewConfiguration.sharedInstance.sectionInset;
+		layout.minimumInteritemSpacing = CollectionViewConfiguration.sharedInstance.interItemSpacing;
+		layout.minimumLineSpacing = CollectionViewConfiguration.sharedInstance.lineSpacing;
 		
 		self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout);
 		self.collectionView!.registerClass(RoomCell.self, forCellWithReuseIdentifier: "base");
@@ -43,6 +30,8 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 		self.collectionView!.dataSource = self;
 		self.collectionView!.backgroundColor = UIColor.whiteColor();
 		self.contentView.addSubview(self.collectionView!);
+		
+		self.collectionView!.backgroundColor = UIColor.grayColor();
 		
 		for recognizer in self.collectionView!.gestureRecognizers as [UIGestureRecognizer] {
 			if let panGesture = recognizer as? UIPanGestureRecognizer {
@@ -91,8 +80,8 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 		controller.room = room;
 		self.view.addSubview(controller.view);
 		
-		var viewSize:CGSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? self.view.frame.size : CGRectInset(self.view.frame, 50, 50).size;
-		var edgeInsets = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? UIEdgeInsetsZero : UIEdgeInsetsMake(50, 50, 50, 50);
+		var viewSize:CGSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? UIScreen.mainScreen().bounds.size : UIScreen.mainScreen().bounds.size; //CGRectInset(self.view.frame, 50, 50).size;
+		var edgeInsets = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? UIEdgeInsetsZero : UIEdgeInsetsZero; //UIEdgeInsetsMake(50, 50, 50, 50);
 		
 		self.flipToViewController(controller, fromView: cell, asChildWithSize: viewSize, withCompletion: { () -> Void in
 			var transition = self.presentedFlipTransition;
@@ -100,6 +89,18 @@ class RoomsViewController: MenuViewController, UICollectionViewDataSource, UICol
 		});
 	
 	}
+	
+	func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
+	{
+		return CollectionViewConfiguration.sharedInstance.itemSizeForCollectionView(collectionView);
+	}
+	
+	override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+		self.collectionView!.collectionViewLayout.invalidateLayout();
+		self.collectionView!.reloadData();
+	}
+
+
 	
 	func addRoom_Clicked() {
 		var alert = UIAlertController(title: NSLocalizedString("ADD_ROOM_ALERT_TITLE",

@@ -50,7 +50,7 @@ class SensorConfigurationViewController: UIViewController, FXFormControllerDeleg
     }
     
 	override func viewWillDisappear(animated: Bool) {
-		self.sensor.managedObjectContext.saveToPersistentStoreAndWait();
+		self.sensor.managedObjectContext!.saveToPersistentStoreAndWait();
 	}
 	
 	func Close_Clicked() {

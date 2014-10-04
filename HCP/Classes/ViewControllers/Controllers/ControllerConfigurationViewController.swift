@@ -62,8 +62,14 @@ class ControllerConfigurationViewController: UIViewController, FXFormControllerD
 	
 	override func viewWillDisappear(animated: Bool) {
 		if (self.controller != nil) {
-			self.controller.managedObjectContext.saveToPersistentStoreAndWait();
+			self.controller.managedObjectContext!.saveToPersistentStoreAndWait();
 		}
+	}
+	
+	func discoverHomeKitAccessories() {
+		var c: HomeKitAccessoryBrowserViewController = HomeKitAccessoryBrowserViewController();
+		c.homeKit = self.controller! as? HomeKit;
+		self.navigationController?.pushViewController(c, animated: true);
 	}
 	
 	

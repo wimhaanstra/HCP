@@ -42,7 +42,9 @@ class ControllerSensorManagementViewController: UIViewController, UITableViewDat
 	}
 	
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		
 		return 2;
+
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

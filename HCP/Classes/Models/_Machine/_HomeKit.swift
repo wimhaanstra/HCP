@@ -1,20 +1,15 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Clock.swift instead.
+// Make changes to HomeKit.swift instead.
 
 import CoreData
 
-enum ClockAttributes: String {
-    case showSeconds = "showSeconds"
-    case timeZoneOffset = "timeZoneOffset"
-}
-
 @objc
-class _Clock: Sensor {
+class _HomeKit: Controller {
 
     // MARK: - Class methods
 
     override class func entityName () -> String {
-        return "Clock"
+        return "HomeKit"
     }
 
     override class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -28,21 +23,11 @@ class _Clock: Sensor {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _Clock.entity(managedObjectContext)
+        let entity = _HomeKit.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
-
-    @NSManaged
-    var showSeconds: NSNumber?
-
-    // func validateShowSeconds(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var timeZoneOffset: NSNumber?
-
-    // func validateTimeZoneOffset(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

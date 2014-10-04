@@ -35,13 +35,7 @@ class SwitchCell: SensorCell {
 	
 	override var sensor: Sensor? {
 		didSet {
-			if (self.sensor != nil) {
-				self.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
-				
-				var text = ((self.sensor as Switch).status == true) ? "ON" : "OFF";
-				self.onButton.setTitle(text, forState: .Normal);
-
-			}
+			self.updateDisplay();
 		}
 	}
 
@@ -49,16 +43,11 @@ class SwitchCell: SensorCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
-		
-		if (keyPath == "status") {
-			self.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
-			var text = ((self.sensor as Switch).status == true) ? "ON" : "OFF";
-			self.onButton.setTitle(text, forState: .Normal);
-		}
-		
+
+		self.updateDisplay();
 	}
 	
 	func OnButton_Clicked() {
@@ -74,6 +63,17 @@ class SwitchCell: SensorCell {
 	func OffButton_Clicked() {
 		(self.sensor! as Switch).off();
 	}
-
 	
+	override func updateDisplay() {
+		
+		super.updateDisplay();
+		
+		if (self.sensor == nil) {
+			return;
+		}
+		
+		self.backgroundColor = ((self.sensor as Switch).status == true) ? onBackgroundColor : offBackgroundColor;
+		var text = ((self.sensor as Switch).status == true) ? "ON" : "OFF";
+		self.onButton.setTitle(text, forState: .Normal);
+	}
 }

@@ -29,3 +29,5 @@
 "CONTROLLER_DISCOVERY_TITLE" = "Controllers";
 
 "ADD_SENSOR_BUTTON" = "Add Sensor";
+
+"DISCOVERY_NO_CONTROLLERS_FOUND" = "No controllers found";

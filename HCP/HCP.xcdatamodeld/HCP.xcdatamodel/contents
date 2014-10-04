@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14A361c" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6251" systemVersion="14A379a" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Asun" representedClassName="Asun" parentEntity="Switch" syncable="YES"/>
     <entity name="Clock" representedClassName="Clock" parentEntity="Sensor" syncable="YES">
+        <attribute name="showSeconds" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="timeZoneOffset" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Controller" representedClassName="Controller" isAbstract="YES" syncable="YES">
@@ -26,6 +27,14 @@
         <attribute name="tariff" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="used" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
+    <entity name="GraphValue" representedClassName="GraphValue" syncable="YES">
+        <attribute name="resolution" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="sensor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sensor" inverseName="graphValues" inverseEntity="Sensor" syncable="YES"/>
+    </entity>
+    <entity name="HomeKit" representedClassName="HomeKit" parentEntity="Controller" syncable="YES"/>
     <entity name="HomeWizard" representedClassName="HomeWizard" parentEntity="Controller" syncable="YES">
         <attribute name="dataRefreshInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sensorRefreshInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -46,8 +55,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="onTodayScreen" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="selected" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="showTitle" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="sortOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="controller" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Controller" inverseName="sensors" inverseEntity="Controller" syncable="YES"/>
+        <relationship name="graphValues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GraphValue" inverseName="sensor" inverseEntity="GraphValue" syncable="YES"/>
         <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Room" inverseName="sensors" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Switch" representedClassName="Switch" parentEntity="Sensor" syncable="YES">
@@ -68,19 +79,21 @@
         <attribute name="refreshRate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Asun" positionX="-45" positionY="81" width="128" height="45"/>
-        <element name="Clock" positionX="-45" positionY="81" width="128" height="60"/>
-        <element name="Controller" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="Dimmer" positionX="-27" positionY="54" width="128" height="75"/>
-        <element name="EnergyLink" positionX="-45" positionY="63" width="128" height="165"/>
-        <element name="HomeWizard" positionX="-54" positionY="27" width="128" height="73"/>
-        <element name="HueBridge" positionX="-36" positionY="36" width="128" height="58"/>
-        <element name="Room" positionX="-18" positionY="72" width="128" height="88"/>
-        <element name="Sensor" positionX="-45" positionY="18" width="128" height="193"/>
-        <element name="Switch" positionX="-36" positionY="45" width="128" height="75"/>
-        <element name="Thermometer" positionX="-36" positionY="90" width="128" height="103"/>
-        <element name="Time" positionX="-45" positionY="81" width="128" height="45"/>
-        <element name="Weather" positionX="-18" positionY="108" width="128" height="58"/>
-        <element name="YahooWeather" positionX="-27" positionY="99" width="128" height="60"/>
+        <element name="Asun" positionX="234" positionY="117" width="128" height="43"/>
+        <element name="Clock" positionX="52" positionY="279" width="128" height="75"/>
+        <element name="Controller" positionX="-783" positionY="-138" width="128" height="133"/>
+        <element name="Dimmer" positionX="232" positionY="15" width="128" height="75"/>
+        <element name="EnergyLink" positionX="54" positionY="-126" width="128" height="165"/>
+        <element name="HomeKit" positionX="-1125" positionY="54" width="128" height="43"/>
+        <element name="HomeWizard" positionX="-630" positionY="54" width="128" height="73"/>
+        <element name="HueBridge" positionX="-801" positionY="54" width="128" height="58"/>
+        <element name="Room" positionX="-396" positionY="-142" width="128" height="88"/>
+        <element name="Sensor" positionX="-126" positionY="-198" width="128" height="223"/>
+        <element name="Switch" positionX="54" positionY="54" width="128" height="75"/>
+        <element name="Thermometer" positionX="52" positionY="153" width="128" height="103"/>
+        <element name="Time" positionX="-470" positionY="54" width="128" height="43"/>
+        <element name="Weather" positionX="52" positionY="-198" width="128" height="58"/>
+        <element name="YahooWeather" positionX="-963" positionY="54" width="128" height="60"/>
+        <element name="GraphValue" positionX="-272" positionY="225" width="128" height="118"/>
     </elements>
 </model>

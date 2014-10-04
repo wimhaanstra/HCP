@@ -25,6 +25,7 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 		self.view.backgroundColor = UIColor.whiteColor();
 		
 		self.scrollView.backgroundColor = UIColor(white: 0.950, alpha: 1.0);
+		self.scrollView.backgroundColor = UIColor.grayColor();
 		self.scrollView.pagingEnabled = true;
 		self.scrollView.showsHorizontalScrollIndicator = false;
 		self.scrollView.showsVerticalScrollIndicator = false;
@@ -64,7 +65,7 @@ class ContainerViewController: UIViewController, DZNSegmentedControlDelegate, UI
 		self.devicesViewController.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration);
 	}
 
-	override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		self.scrollView.contentOffset = CGPointMake(CGFloat(self.menuBar.selectedSegmentIndex) * self.scrollView.frame.size.width, 0);
 	}
 	

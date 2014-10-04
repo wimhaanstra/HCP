@@ -19,11 +19,7 @@ class DimmerCell: SensorCell {
 	
 	override var sensor: Sensor? {
 		didSet {
-			if ((self.sensor as Dimmer).dimValue != nil) {
-				self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
-				self.backgroundColor = ((self.sensor as Dimmer).status == true) ? onBackgroundColor : offBackgroundColor;
-				self.valueCircleView.value = (self.sensor as Dimmer).dimValue!;
-			}
+			self.updateDisplay();
 		}
 	}
 
@@ -32,18 +28,21 @@ class DimmerCell: SensorCell {
 		self.dimValueLabel = UILabel();
 		self.dimValueLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 40);
 		self.dimValueLabel.textAlignment = NSTextAlignment.Center;
+		self.dimValueLabel.adjustsFontSizeToFitWidth = true;
 		self.dimValueLabel.textColor = UIColor.whiteColor();
-		
+//		self.dimValueLabel.backgroundColor = UIColor.blackColor();
+		self.dimValueLabel.baselineAdjustment = UIBaselineAdjustment.AlignCenters;
+
 		self.dimValueLabel.text = "0";
 		
 		super.init(frame: frame);
 		
 		self.contentView.addSubview(self.dimValueLabel);
 		
-		self.dimValueLabel.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10));
+		self.dimValueLabel.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25));
 
 		self.contentView.addSubview(valueCircleView);
-		valueCircleView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10));
+		valueCircleView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7));
 
 	}
 	
@@ -51,16 +50,22 @@ class DimmerCell: SensorCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context);
+
+		self.updateDisplay();
+	}
+	
+	override func updateDisplay() {
 		
-		if (keyPath == "dimValue" && (self.sensor as Dimmer).dimValue != nil) {
-			self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
-			self.valueCircleView.value = (self.sensor as Dimmer).dimValue!;
+		super.updateDisplay();
+		if (self.sensor == nil) {
+			return;
 		}
 		
+		self.dimValueLabel.text = "\((self.sensor as Dimmer).dimValue!)%";
+		self.valueCircleView.value = (self.sensor as Dimmer).dimValue!.doubleValue;
 		self.backgroundColor = ((self.sensor as Dimmer).status == true) ? onBackgroundColor : offBackgroundColor;
-		
 	}
 }

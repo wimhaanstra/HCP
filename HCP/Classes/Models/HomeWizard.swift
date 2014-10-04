@@ -8,8 +8,8 @@ class HomeWizard: _HomeWizard {
 		
 		let discoveryUrl = "http://gateway.homewizard.nl/discovery.php";
 		
-		//NSLog("HomeWizard Discovery: " + discoveryUrl);
-		
+		XCGLogger.defaultInstance().debug("HomeWizard: Discovering: \(discoveryUrl)");
+
 		let manager = AFHTTPRequestOperationManager();
 		
 		manager.GET(discoveryUrl, parameters: nil, success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
@@ -21,13 +21,13 @@ class HomeWizard: _HomeWizard {
 			
 			if (status != nil && status == "ok" && ip != nil && ip != "") {
 				
+				XCGLogger.defaultInstance().debug("HomeWizard: Discovered a HomeWizard");
+
+				
 				var ipAddress = responseObject.objectForKey("ip") as String
 				var match: AnyObject! = HomeWizard.findFirstByAttribute("ip", withValue: ipAddress);
 				
 				if (match == nil) {
-					
-					NSLog("Discovered HomeWizard not yet in database (" + ipAddress + ")");
-					
 					var foundObject: HomeWizard = HomeWizard.createEntityInContext(nil) as HomeWizard;
 					foundObject.ip = ipAddress;
 					foundObject.name = "HomeWizard (\(ipAddress))";
@@ -38,9 +38,6 @@ class HomeWizard: _HomeWizard {
 					completion(results: [foundObject]);
 				}
 				else {
-					
-					NSLog("Discovered HomeWizard is already in database (" + ipAddress + ")");
-					
 					if  (includeStored) {
 						var foundObject: HomeWizard = match as HomeWizard
 						completion(results: [foundObject])
@@ -56,7 +53,7 @@ class HomeWizard: _HomeWizard {
 			}
 			},
 			failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
-				NSLog("Error: " + error.localizedDescription)
+				XCGLogger.defaultInstance().error("HomeWizard: \(error.localizedDescription)");
 				completion(results: []);
 			}
 		)
@@ -74,7 +71,7 @@ class HomeWizard: _HomeWizard {
 		
 		let url = "http://" + self.ip! + "/";
 		
-		var request = NSMutableURLRequest(URL: NSURL(string: url));
+		var request = NSMutableURLRequest(URL: NSURL(string: url)!);
 		request.HTTPMethod = "HEAD";
 		request.timeoutInterval = 2.0;
 		var response: NSURLResponse?;
@@ -87,9 +84,10 @@ class HomeWizard: _HomeWizard {
 	}
 	
 	func performAction(command: String, completion: (results: AnyObject!, error: NSError?) -> Void ) -> Void {
-		//NSLog("Performing HomeWizard Command: " + command + " (" + self.ip! + ")");
 		
 		if (self.password() != nil) {
+			
+			XCGLogger.defaultInstance().debug("HomeWizard: Performing action: \(command)");
 			
 			let url = "http://" + self.ip! + "/" + self.password()! + command;
 			
@@ -102,6 +100,7 @@ class HomeWizard: _HomeWizard {
 					NSLog(error.localizedDescription);
 					completion(results: nil, error: error);
 			});
+			
 		}
 	}
 	
@@ -149,15 +148,22 @@ class HomeWizard: _HomeWizard {
 				
 				// When done, start updating data (again)
 				if (self._fetchDataTimer == nil) {
-					self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(self.dataRefreshInterval!, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: false);
+					self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(
+						self.dataRefreshInterval!.doubleValue,
+						target: self,
+						selector: "fetchData",
+						userInfo: nil,
+						repeats: false);
 				}
 			}
-			
-			self._fetchSensorsTimer = NSTimer.scheduledTimerWithTimeInterval(self.sensorRefreshInterval!,
-				target: self,
-				selector: Selector("fetchSensors"),
-				userInfo: nil,
-				repeats: false);
+			else {
+				self._fetchSensorsTimer = NSTimer.scheduledTimerWithTimeInterval(
+					self.sensorRefreshInterval!.doubleValue,
+					target: self,
+					selector: "fetchSensors",
+					userInfo: nil,
+					repeats: false);
+			}
 		});
 	}
 	
@@ -170,10 +176,17 @@ class HomeWizard: _HomeWizard {
 				}
 			}
 			
-			self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(self.dataRefreshInterval!, target: self, selector: Selector("fetchData"), userInfo: nil, repeats: false);
+			self._fetchDataTimer = NSTimer.scheduledTimerWithTimeInterval(
+				self.dataRefreshInterval!.doubleValue,
+				target: self,
+				selector: "fetchData",
+				userInfo: nil,
+				repeats: false);
 		});
 		
 	}
+	
+	
 	
 	override func start() {
 		
@@ -183,9 +196,9 @@ class HomeWizard: _HomeWizard {
 		}
 		
 		self._fetchSensorsTimer = NSTimer.scheduledTimerWithTimeInterval(
-			self.sensorRefreshInterval!,
+			self.sensorRefreshInterval!.doubleValue,
 			target: self,
-			selector: Selector("fetchSensors"),
+			selector: "fetchSensors",
 			userInfo: nil,
 			repeats: false
 		);
@@ -232,6 +245,7 @@ class HomeWizard: _HomeWizard {
 					}
 					else if (switchType == "hue") {
 						// TODO: Add Hue via HomeWizard support
+						//XCGLogger.sharedInstance().debug(itemDictionary.description);
 					}
 					else if (switchType == "asun") {
 						EntityFactory<Asun>.create(self, definition: itemDictionary);

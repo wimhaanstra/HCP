@@ -11,13 +11,13 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
-//	var log = XCGLogger.defaultInstance()
+	var log = XCGLogger.defaultInstance()
 	var window: UIWindow?
 	var containerViewController: ContainerViewController?
 
 	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
 
-//		log.setup(logLevel: .Debug, showLogLevel: false, showFileNames: true, showLineNumbers: true, writeToFile: nil);
+		log.setup(logLevel: .Debug, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil);
 		
 		CASStyler.defaultStyler().filePath = NSBundle.mainBundle().pathForResource("Default", ofType: "css");
 		//CASStyler.defaultStyler().watchFilePath = "/Volumes/Projects/HCP/HCP/Resources/Stylesheets/Default/Default.css";
@@ -34,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 //		println(NSTimeZone.knownTimeZoneNames());
 		
-		return true
+
+		return true;
+		
 	}
 
 	func applicationWillResignActive(application: UIApplication!) {

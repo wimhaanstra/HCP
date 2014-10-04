@@ -34,9 +34,22 @@ class Sensor: _Sensor, FXForm {
 		return [
 			[ "key": "displayName", "title": "Display name", "type": "text", "header" : "General" ],
 			[ "key": "selected", "title": "Active", "type": "boolean" ],
-			[ "key": "onTodayScreen", "title": "Display in Widget", "type": "boolean" ]
+			[ "key": "onTodayScreen", "title": "Display in Widget", "type": "boolean" ],
+			[ "key": "showTitle", "title": "Display title", "type": "boolean" ],
 		];
 		
+	}
+	
+	func lastGraphTimeStamp(resolution: kGraphResolution, dataType: kGraphDataType) -> NSDate? {
+		
+		var searchPredicate = NSPredicate(format: "resolution = %d AND type = %d AND sensor = %@",
+			resolution.rawValue,
+			dataType.rawValue,
+			self);
+		
+		var lastValue = GraphValue.findFirstWithPredicate(searchPredicate, sortedBy: "timeStamp", ascending: false);
+		
+		return (lastValue == nil || lastValue.timeStamp == nil) ? nil : lastValue.timeStamp!;
 	}
 	
 }
